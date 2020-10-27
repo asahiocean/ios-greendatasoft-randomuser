@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.layer.backgroundColor = #colorLiteral(red: 0.0170332063, green: 0.2035003901, blue: 0.1973262429, alpha: 1)
         
-        // Test for Bitrise + TestFlight
+        // Test for Bitrise + TestFlight (2)
         let indicator = UIActivityIndicatorView()
         indicator.center = view.center
         indicator.style = .large
