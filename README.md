@@ -20,9 +20,11 @@
 * Почта
 * Местное время (текущее время + смещение по часовому поясу)
 
-### Требуемый язык программирования: ​Swift
+### Требуемый язык программирования: Swift
+```
+Api с пагинацией для загрузки: https://randomuser.me/documentation#pagination 
+```
 
-Api с пагинацией для загрузки: ​https://randomuser.me/documentation#pagination 
 Вариант реализации ничем не ограничен, плюсом будет использование следующего стека:
 * CoreData
 * SimpleImageViewer (pod)
