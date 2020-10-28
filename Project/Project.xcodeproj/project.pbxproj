@@ -16,6 +16,7 @@
 		3D67A92425486433001E392F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D67A92225486433001E392F /* LaunchScreen.storyboard */; };
 		3D67A92F25486433001E392F /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A92E25486433001E392F /* ProjectTests.swift */; };
 		3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A93925486433001E392F /* ProjectUITests.swift */; };
+		3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* urlValid.swift */; };
 		3DEB76742548998700763A2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76732548998700763A2B /* API.swift */; };
 		3DEB767C254899F400763A2B /* ParserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB767B254899F400763A2B /* ParserStruct.swift */; };
 		3DEB76A82548ABEF00763A2B /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76A72548ABEF00763A2B /* Parser.swift */; };
@@ -63,6 +64,7 @@
 		3D67A93525486433001E392F /* ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A93925486433001E392F /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		3D67A93B25486433001E392F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D79DA08254977C10048B7B0 /* urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urlValid.swift; sourceTree = "<group>"; };
 		3DEB76732548998700763A2B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3DEB767B254899F400763A2B /* ParserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserStruct.swift; sourceTree = "<group>"; };
 		3DEB76A72548ABEF00763A2B /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -156,6 +158,14 @@
 			path = ProjectUITests;
 			sourceTree = "<group>";
 		};
+		3D79DA07254977A30048B7B0 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				3D79DA08254977C10048B7B0 /* urlValid.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		3DEB7672254898F900763A2B /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 		3DEB76EE2548DDC900763A2B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3D79DA07254977A30048B7B0 /* String */,
 				3DEB76F82548DE3200763A2B /* CharacterSet */,
 				3DEB76EF2548DE1400763A2B /* Dictionary */,
 			);
@@ -388,6 +399,7 @@
 				3DEB76CC2548C38800763A2B /* GET.swift in Sources */,
 				3DEB76B42548BB6B00763A2B /* URLs.swift in Sources */,
 				3D67A91725486431001E392F /* SceneDelegate.swift in Sources */,
+				3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */,
 				3D67A91F25486431001E392F /* Project.xcdatamodeld in Sources */,
 				3DEB76742548998700763A2B /* API.swift in Sources */,
 				3DEB76F12548DE1E00763A2B /* PercentEncoded.swift in Sources */,
