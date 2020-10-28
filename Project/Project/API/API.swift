@@ -18,7 +18,7 @@ final class API: GET, POST {
             completion(data)
         })
     }
-
+    
     private init() {
         
     }
