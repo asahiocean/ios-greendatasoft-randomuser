@@ -7,12 +7,13 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class NotebookVC: UIViewController {
     
     let CoreDataDB = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Notebook"
         view.layer.backgroundColor = #colorLiteral(red: 0.0170332063, green: 0.2035003901, blue: 0.1973262429, alpha: 1)
         
         let indicator = UIActivityIndicatorView()
@@ -38,10 +39,10 @@ class ViewController: UIViewController {
                     // допустим, необходимо доставить отчет серверу, что были получены какие-то данные
                     var parameters: [String:Any] = [:]
                     parameters.updateValue(data.count, forKey: "datacount")
-                    API.shared.post(.POST, URLs.post, parameters, completion: { data in
-                        guard let data = data, let answer = String(data: data, encoding: .utf8) else { return }
-                        print("✅ Server confirm: \(answer)")
-                    })
+//                    API.shared.post(.POST, URLs.post, parameters, completion: { data in
+//                        guard let data = data, let answer = String(data: data, encoding: .utf8) else { return }
+//                        print("✅ Server confirm: \(answer)")
+//                    })
                 } catch {
                     print(error.localizedDescription)
                 }

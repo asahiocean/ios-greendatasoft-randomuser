@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D4E30512549FD7F00715411 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E30502549FD7F00715411 /* NavigationController.swift */; };
 		3D67A91525486431001E392F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91425486431001E392F /* AppDelegate.swift */; };
 		3D67A91725486431001E392F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91625486431001E392F /* SceneDelegate.swift */; };
-		3D67A91925486431001E392F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91825486431001E392F /* ViewController.swift */; };
+		3D67A91925486431001E392F /* NotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91825486431001E392F /* NotebookVC.swift */; };
 		3D67A91C25486431001E392F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D67A91A25486431001E392F /* Main.storyboard */; };
 		3D67A91F25486431001E392F /* Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91D25486431001E392F /* Project.xcdatamodeld */; };
 		3D67A92125486433001E392F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D67A92025486433001E392F /* Assets.xcassets */; };
@@ -51,10 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D4E30502549FD7F00715411 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3D67A91125486431001E392F /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A91425486431001E392F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D67A91625486431001E392F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3D67A91825486431001E392F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D67A91825486431001E392F /* NotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC.swift; sourceTree = "<group>"; };
 		3D67A91B25486431001E392F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D67A91E25486431001E392F /* Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project.xcdatamodel; sourceTree = "<group>"; };
 		3D67A92025486433001E392F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D4E303C2549FABC00715411 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D67A91825486431001E392F /* NotebookVC.swift */,
+				3D4E30502549FD7F00715411 /* NavigationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		3D67A90825486431001E392F = {
 			isa = PBXGroup;
 			children = (
@@ -131,10 +142,10 @@
 		3D67A91325486431001E392F /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				3D4E303C2549FABC00715411 /* Controllers */,
 				3DEB7672254898F900763A2B /* API */,
 				3D67A91425486431001E392F /* AppDelegate.swift */,
 				3D67A91625486431001E392F /* SceneDelegate.swift */,
-				3D67A91825486431001E392F /* ViewController.swift */,
 				3D67A91A25486431001E392F /* Main.storyboard */,
 				3D67A92025486433001E392F /* Assets.xcassets */,
 				3D67A92225486433001E392F /* LaunchScreen.storyboard */,
@@ -399,7 +410,7 @@
 				3DEB773025490DB900763A2B /* POST_contentType.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* UrlQueryValueAllowed.swift in Sources */,
 				3DEB76BA2548C33200763A2B /* RequestMethod.swift in Sources */,
-				3D67A91925486431001E392F /* ViewController.swift in Sources */,
+				3D67A91925486431001E392F /* NotebookVC.swift in Sources */,
 				3D67A91525486431001E392F /* AppDelegate.swift in Sources */,
 				3DEB767C254899F400763A2B /* ParserStruct.swift in Sources */,
 				3DEB76CC2548C38800763A2B /* GET.swift in Sources */,
@@ -407,6 +418,7 @@
 				3D67A91725486431001E392F /* SceneDelegate.swift in Sources */,
 				3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */,
 				3D67A91F25486431001E392F /* Project.xcdatamodeld in Sources */,
+				3D4E30512549FD7F00715411 /* NavigationController.swift in Sources */,
 				3DEB76742548998700763A2B /* API.swift in Sources */,
 				3DEB76F12548DE1E00763A2B /* PercentEncoded.swift in Sources */,
 				3DEB76A82548ABEF00763A2B /* Parser.swift in Sources */,
@@ -518,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -573,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -590,7 +602,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -602,7 +614,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -613,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -625,7 +637,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
