@@ -18,8 +18,8 @@ struct API: GET, POST {
     
     func post(_ method: RequestMethod, _ url: String, _ parameters: [String : Any], completion: @escaping ((Data?) -> Void)) {
         DispatchQueue(label: "API.post.utility.queue", qos:.utility).async {
-            contentType(url: url, param: parameters, callback: { request in
-                answer(request: request, { data -> Void in
+            self.contentType(url: url, param: parameters, callback: { request in
+                self.answer(request: request, { data -> Void in
                     guard let data = data else { return }
                     completion(data)
                 })
