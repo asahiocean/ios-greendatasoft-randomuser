@@ -2,6 +2,7 @@ import Foundation
 
 extension String {
     /**
+    Валидация url
     ~~~
     extension String {
         public var urlValid: String {

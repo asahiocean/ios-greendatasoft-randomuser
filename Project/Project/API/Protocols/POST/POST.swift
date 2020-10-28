@@ -1,5 +1,6 @@
 import Foundation
 
-protocol POST: class {
-    static func post(_ method: Method, _ url: String, _ parameters: [String:Any])
+protocol POST {
+    /// в клоужер можно отправить ответ от сервера
+    func post(_ method: RequestMethod, _ url: String, _ parameters: [String:Any], completion: @escaping ((Data?) -> Void))
 }

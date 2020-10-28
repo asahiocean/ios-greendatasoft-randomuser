@@ -1,6 +1,6 @@
 import Foundation
 
-enum Method: String {
+enum RequestMethod: String {
     case GET = "GET"
     case POST = "POST"
 }

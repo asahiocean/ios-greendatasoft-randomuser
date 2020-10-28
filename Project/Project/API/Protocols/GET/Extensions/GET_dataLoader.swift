@@ -1,13 +1,9 @@
 import Foundation
 
 extension GET {
-    static func dataLoader(_ method: Method, _ url: String, _ completion: @escaping (Data?) throws -> Void?) {
+    public func dataLoader(_ method: RequestMethod, _ url: String, _ completion: @escaping (Data?) throws -> Void?) {
         DispatchQueue(label: "GET.dataLoader.utility.queue", qos: .utility).async {
-            // Валидация url
-            guard let url = URL(string: url.urlValid)
-            else {
-                try? completion(nil)
-                return }
+            guard let url = URL(string: url.urlValid) else { try? completion(nil); return }
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
             

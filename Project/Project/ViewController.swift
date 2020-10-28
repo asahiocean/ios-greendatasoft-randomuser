@@ -23,15 +23,25 @@ class ViewController: UIViewController {
         view.addSubview(indicator)
         
         //CoreDataDB
-        API.get(method: .GET, url: URLs.get, completion: { data -> Void in
+        API.shared.get(method: .GET, url: URLs.get, completion: { data -> Void in
             if let data = data {
+//                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//                do {
+//                    try context.fetch(JsonData(context: context)
+//                    context
+//                }
+//                catch {
+//                    print(error.localizedDescription)
+//                }
                 do {
-                    // print(try JSONSerialization.jsonObject(with: data, options: []))
+                    print(try JSONSerialization.jsonObject(with: data, options: []))
                     // допустим, необходимо доставить отчет серверу, что были получены какие-то данные
                     var parameters: [String:Any] = [:]
-                    parameters.updateValue(
-                        data.count, forKey: "datacount")
-                    API.post(.POST, URLs.post, parameters)
+                    parameters.updateValue(data.count, forKey: "datacount")
+                    API.shared.post(.POST, URLs.post, parameters, completion: { data in
+                        guard let data = data, let answer = String(data: data, encoding: .utf8) else { return }
+                        print("✅ Server confirm: \(answer)")
+                    })
                 } catch {
                     print(error.localizedDescription)
                 }

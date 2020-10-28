@@ -17,11 +17,13 @@
 		3D67A92F25486433001E392F /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A92E25486433001E392F /* ProjectTests.swift */; };
 		3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A93925486433001E392F /* ProjectUITests.swift */; };
 		3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* urlValid.swift */; };
+		3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA1D25498A860048B7B0 /* APIGetTest.swift */; };
+		3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA2B25498F180048B7B0 /* APIPostTest.swift */; };
 		3DEB76742548998700763A2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76732548998700763A2B /* API.swift */; };
 		3DEB767C254899F400763A2B /* ParserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB767B254899F400763A2B /* ParserStruct.swift */; };
 		3DEB76A82548ABEF00763A2B /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76A72548ABEF00763A2B /* Parser.swift */; };
 		3DEB76B42548BB6B00763A2B /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B32548BB6B00763A2B /* URLs.swift */; };
-		3DEB76BA2548C33200763A2B /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B92548C33200763A2B /* Method.swift */; };
+		3DEB76BA2548C33200763A2B /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B92548C33200763A2B /* RequestMethod.swift */; };
 		3DEB76CC2548C38800763A2B /* GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76CB2548C38800763A2B /* GET.swift */; };
 		3DEB76DB2548D38700763A2B /* POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76DA2548D38700763A2B /* POST.swift */; };
 		3DEB76F12548DE1E00763A2B /* PercentEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76F02548DE1E00763A2B /* PercentEncoded.swift */; };
@@ -65,11 +67,13 @@
 		3D67A93925486433001E392F /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		3D67A93B25486433001E392F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D79DA08254977C10048B7B0 /* urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urlValid.swift; sourceTree = "<group>"; };
+		3D79DA1D25498A860048B7B0 /* APIGetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetTest.swift; sourceTree = "<group>"; };
+		3D79DA2B25498F180048B7B0 /* APIPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostTest.swift; sourceTree = "<group>"; };
 		3DEB76732548998700763A2B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3DEB767B254899F400763A2B /* ParserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserStruct.swift; sourceTree = "<group>"; };
 		3DEB76A72548ABEF00763A2B /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		3DEB76B32548BB6B00763A2B /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
-		3DEB76B92548C33200763A2B /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		3DEB76B92548C33200763A2B /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		3DEB76CB2548C38800763A2B /* GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GET.swift; sourceTree = "<group>"; };
 		3DEB76DA2548D38700763A2B /* POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST.swift; sourceTree = "<group>"; };
 		3DEB76F02548DE1E00763A2B /* PercentEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentEncoded.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 			children = (
 				3D67A92E25486433001E392F /* ProjectTests.swift */,
 				3D67A93025486433001E392F /* Info.plist */,
+				3D79DA1D25498A860048B7B0 /* APIGetTest.swift */,
+				3D79DA2B25498F180048B7B0 /* APIPostTest.swift */,
 			);
 			path = ProjectTests;
 			sourceTree = "<group>";
@@ -183,7 +189,7 @@
 			children = (
 				3DEB76EE2548DDC900763A2B /* Extensions */,
 				3DEB76B32548BB6B00763A2B /* URLs.swift */,
-				3DEB76B92548C33200763A2B /* Method.swift */,
+				3DEB76B92548C33200763A2B /* RequestMethod.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -392,7 +398,7 @@
 				3DEB773625490DE900763A2B /* POST_answer.swift in Sources */,
 				3DEB773025490DB900763A2B /* POST_contentType.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* UrlQueryValueAllowed.swift in Sources */,
-				3DEB76BA2548C33200763A2B /* Method.swift in Sources */,
+				3DEB76BA2548C33200763A2B /* RequestMethod.swift in Sources */,
 				3D67A91925486431001E392F /* ViewController.swift in Sources */,
 				3D67A91525486431001E392F /* AppDelegate.swift in Sources */,
 				3DEB767C254899F400763A2B /* ParserStruct.swift in Sources */,
@@ -413,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D67A92F25486433001E392F /* ProjectTests.swift in Sources */,
+				3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */,
+				3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
