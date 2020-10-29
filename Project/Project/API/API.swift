@@ -1,17 +1,22 @@
 import Foundation
+import EGOCache
+import CoreData
 
 protocol ParserDelegate: class {
     func reception(data: Data)
 }
 
-struct API: GET, POST {
-
-    static let shared = API()
+struct API: GET, POST, EgoCache {
     
-    func get(method: RequestMethod, url: String, completion: @escaping (Data?) -> Void) {
+    static let shared = API()
+        
+    //MARK: EGOCache
+    var cache: EGOCache!
+    
+    func get(method: RequestMethod, url: String, completion: @escaping (Data?) throws -> Void) {
         DispatchQueue(label: "API.get.utility.queue", qos:.utility).async {
             self.dataLoader(method, url, { data -> Void in
-                completion(data)
+                try? completion(data)
             })
         }
     }
@@ -27,5 +32,7 @@ struct API: GET, POST {
         }
     }
     
-    private init() { }
+    private init() {
+        self.cache = EGOCache.global()
+    }
 }
