@@ -16,34 +16,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y5R-TJ-g6e">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RoyalBlueGradient" translatesAutoresizingMaskIntoConstraints="NO" id="87q-xp-sNe" userLabel="Gradient">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y5R-TJ-g6e" userLabel="Logo">
                                 <rect key="frame" x="87" y="26.5" width="240" height="853"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Секунду!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-e6-ykj">
-                                <rect key="frame" x="0.0" y="551.5" width="414" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.8106248975" green="0.71147090199999996" blue="0.6039040685" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уже запускаюсь!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVI-m9-nfq">
-                                <rect key="frame" x="0.0" y="601.5" width="414" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.81062513589999996" green="0.71544462440000001" blue="0.60390347239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.12449500436562647" green="0.31455344689709663" blue="0.31752627436345171" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.28627450980392155" green="0.3411764705882353" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QVI-m9-nfq" firstAttribute="centerX" secondItem="Uot-e6-ykj" secondAttribute="centerX" id="1bs-86-RtB"/>
-                            <constraint firstItem="QVI-m9-nfq" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="8Zy-qh-sOZ"/>
+                            <constraint firstItem="87q-xp-sNe" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" constant="5" id="59X-vd-v3u"/>
+                            <constraint firstItem="87q-xp-sNe" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="AMw-2A-c95"/>
                             <constraint firstItem="Y5R-TJ-g6e" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HEm-zT-Grp"/>
                             <constraint firstItem="Y5R-TJ-g6e" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.57971" id="J5M-6z-CGQ"/>
-                            <constraint firstItem="Uot-e6-ykj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MV3-uL-EK1"/>
-                            <constraint firstItem="Uot-e6-ykj" firstAttribute="centerY" secondItem="Y5R-TJ-g6e" secondAttribute="centerY" multiplier="10:8" id="Z5A-li-7mn"/>
-                            <constraint firstItem="Uot-e6-ykj" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="ZaF-uq-C5H"/>
+                            <constraint firstItem="87q-xp-sNe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rye-1v-S8b"/>
+                            <constraint firstItem="87q-xp-sNe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-2.5" id="Xah-Yk-2yt"/>
                             <constraint firstItem="Y5R-TJ-g6e" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zu4-Lx-SBJ"/>
-                            <constraint firstItem="QVI-m9-nfq" firstAttribute="top" secondItem="Uot-e6-ykj" secondAttribute="bottom" constant="20" id="fZW-gO-0hj"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -53,6 +42,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="RoyalBlueGradient" width="1050" height="1680"/>
         <image name="logo" width="852" height="853"/>
     </resources>
 </document>
