@@ -6,10 +6,11 @@ class NotebookCustomCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
         
     override func layoutSubviews() {
-//        layer.borderWidth = 0.5
-//        layer.borderColor = UIColor.lightGray.cgColor
-//        autoresizingMask =
-//            [.flexibleWidth, .flexibleHeight]
+        clipsToBounds = true
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.lightGray.cgColor
+        autoresizingMask =
+            [.flexibleWidth, .flexibleHeight]
     }
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

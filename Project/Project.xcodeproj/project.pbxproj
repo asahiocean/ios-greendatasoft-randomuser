@@ -18,21 +18,22 @@
 		3D67A92425486433001E392F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D67A92225486433001E392F /* LaunchScreen.storyboard */; };
 		3D67A92F25486433001E392F /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A92E25486433001E392F /* ProjectTests.swift */; };
 		3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A93925486433001E392F /* ProjectUITests.swift */; };
-		3D680014254B134B0021C56F /* CleanerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D680013254B134B0021C56F /* CleanerEntity.swift */; };
-		3D680019254B13B20021C56F /* NotebookVC_TableViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D680018254B13B20021C56F /* NotebookVC_TableViewSetup.swift */; };
+		3D680019254B13B20021C56F /* NotebookVC_tableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D680018254B13B20021C56F /* NotebookVC_tableViewConfig.swift */; };
 		3D680098254B2C640021C56F /* NotebookCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* NotebookCustomCell.xib */; };
 		3D6800BB254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6800BA254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift */; };
+		3D6800FE254B616F0021C56F /* NotebookVC_leftBarButtonSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6800FD254B616F0021C56F /* NotebookVC_leftBarButtonSetup.swift */; };
+		3D68011B254B64860021C56F /* CoreData_cleanerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68011A254B64860021C56F /* CoreData_cleanerEntity.swift */; };
+		3D68017E254B6DCF0021C56F /* NotebookVC_appDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68017D254B6DCF0021C56F /* NotebookVC_appDelegate.swift */; };
 		3D68FEE0254A35CC0021C56F /* NotebookCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */; };
 		3D68FEE1254A35CC0021C56F /* NotebookCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */; };
 		3D68FEE2254A35CC0021C56F /* NotebookCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */; };
 		3D68FF03254A4EFD0021C56F /* EgoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF02254A4EFD0021C56F /* EgoCache.swift */; };
 		3D68FF04254A4EFD0021C56F /* EgoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF02254A4EFD0021C56F /* EgoCache.swift */; };
 		3D68FF05254A4EFD0021C56F /* EgoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF02254A4EFD0021C56F /* EgoCache.swift */; };
-		3D68FF7E254AE11B0021C56F /* ExitIntuitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF7D254AE11B0021C56F /* ExitIntuitive.swift */; };
-		3D68FF8A254AE84C0021C56F /* NotebookVC_AlertControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF89254AE84C0021C56F /* NotebookVC_AlertControllerPresenter.swift */; };
-		3D68FF95254AE8B50021C56F /* NotebookVC_NavigationBarSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF94254AE8B50021C56F /* NotebookVC_NavigationBarSetup.swift */; };
+		3D68FF7E254AE11B0021C56F /* UIAlertController_exitIntuitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */; };
+		3D68FF95254AE8B50021C56F /* NotebookVC_navigationBarSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF94254AE8B50021C56F /* NotebookVC_navigationBarSetup.swift */; };
 		3D68FFAF254AEB420021C56F /* NotebookVCextraMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */; };
-		3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* urlValid.swift */; };
+		3D79DA09254977C10048B7B0 /* String_urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* String_urlValid.swift */; };
 		3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA1D25498A860048B7B0 /* APIGetTest.swift */; };
 		3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA2B25498F180048B7B0 /* APIPostTest.swift */; };
 		3DEB76742548998700763A2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76732548998700763A2B /* API.swift */; };
@@ -42,8 +43,8 @@
 		3DEB76BA2548C33200763A2B /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B92548C33200763A2B /* RequestMethod.swift */; };
 		3DEB76CC2548C38800763A2B /* GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76CB2548C38800763A2B /* GET.swift */; };
 		3DEB76DB2548D38700763A2B /* POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76DA2548D38700763A2B /* POST.swift */; };
-		3DEB76F12548DE1E00763A2B /* PercentEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76F02548DE1E00763A2B /* PercentEncoded.swift */; };
-		3DEB76FA2548DE3E00763A2B /* UrlQueryValueAllowed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76F92548DE3E00763A2B /* UrlQueryValueAllowed.swift */; };
+		3DEB76F12548DE1E00763A2B /* Dictionary_percentEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76F02548DE1E00763A2B /* Dictionary_percentEncoded.swift */; };
+		3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76F92548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift */; };
 		3DEB772825490D6B00763A2B /* GET_dataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB772725490D6B00763A2B /* GET_dataLoader.swift */; };
 		3DEB773025490DB900763A2B /* POST_contentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB772F25490DB900763A2B /* POST_contentType.swift */; };
 		3DEB773625490DE900763A2B /* POST_answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB773525490DE900763A2B /* POST_answer.swift */; };
@@ -85,17 +86,18 @@
 		3D67A93525486433001E392F /* ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A93925486433001E392F /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		3D67A93B25486433001E392F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D680013254B134B0021C56F /* CleanerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerEntity.swift; sourceTree = "<group>"; };
-		3D680018254B13B20021C56F /* NotebookVC_TableViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_TableViewSetup.swift; sourceTree = "<group>"; };
+		3D680018254B13B20021C56F /* NotebookVC_tableViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_tableViewConfig.swift; sourceTree = "<group>"; };
 		3D680097254B2C640021C56F /* NotebookCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookCustomCell.xib; sourceTree = "<group>"; };
 		3D6800BA254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_navigationBarCustomTheme.swift; sourceTree = "<group>"; };
+		3D6800FD254B616F0021C56F /* NotebookVC_leftBarButtonSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_leftBarButtonSetup.swift; sourceTree = "<group>"; };
+		3D68011A254B64860021C56F /* CoreData_cleanerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData_cleanerEntity.swift; sourceTree = "<group>"; };
+		3D68017D254B6DCF0021C56F /* NotebookVC_appDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_appDelegate.swift; sourceTree = "<group>"; };
 		3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCustomCell.swift; sourceTree = "<group>"; };
 		3D68FF02254A4EFD0021C56F /* EgoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoCache.swift; sourceTree = "<group>"; };
-		3D68FF7D254AE11B0021C56F /* ExitIntuitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitIntuitive.swift; sourceTree = "<group>"; };
-		3D68FF89254AE84C0021C56F /* NotebookVC_AlertControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_AlertControllerPresenter.swift; sourceTree = "<group>"; };
-		3D68FF94254AE8B50021C56F /* NotebookVC_NavigationBarSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_NavigationBarSetup.swift; sourceTree = "<group>"; };
+		3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController_exitIntuitive.swift; sourceTree = "<group>"; };
+		3D68FF94254AE8B50021C56F /* NotebookVC_navigationBarSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVC_navigationBarSetup.swift; sourceTree = "<group>"; };
 		3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVCextraMenu.swift; sourceTree = "<group>"; };
-		3D79DA08254977C10048B7B0 /* urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urlValid.swift; sourceTree = "<group>"; };
+		3D79DA08254977C10048B7B0 /* String_urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_urlValid.swift; sourceTree = "<group>"; };
 		3D79DA1D25498A860048B7B0 /* APIGetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetTest.swift; sourceTree = "<group>"; };
 		3D79DA2B25498F180048B7B0 /* APIPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostTest.swift; sourceTree = "<group>"; };
 		3DEB76732548998700763A2B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -105,8 +107,8 @@
 		3DEB76B92548C33200763A2B /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		3DEB76CB2548C38800763A2B /* GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GET.swift; sourceTree = "<group>"; };
 		3DEB76DA2548D38700763A2B /* POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST.swift; sourceTree = "<group>"; };
-		3DEB76F02548DE1E00763A2B /* PercentEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentEncoded.swift; sourceTree = "<group>"; };
-		3DEB76F92548DE3E00763A2B /* UrlQueryValueAllowed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlQueryValueAllowed.swift; sourceTree = "<group>"; };
+		3DEB76F02548DE1E00763A2B /* Dictionary_percentEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary_percentEncoded.swift; sourceTree = "<group>"; };
+		3DEB76F92548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSet_urlQueryValueAllowed.swift; sourceTree = "<group>"; };
 		3DEB772725490D6B00763A2B /* GET_dataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GET_dataLoader.swift; sourceTree = "<group>"; };
 		3DEB772F25490DB900763A2B /* POST_contentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST_contentType.swift; sourceTree = "<group>"; };
 		3DEB773525490DE900763A2B /* POST_answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST_answer.swift; sourceTree = "<group>"; };
@@ -149,13 +151,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D4E303C2549FABC00715411 /* ViewControllers */ = {
+		3D4E303C2549FABC00715411 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D67A91825486431001E392F /* NotebookVC.swift */,
-				3D4E30502549FD7F00715411 /* NavigationController.swift */,
+				3D680135254B65370021C56F /* NotebookVC */,
+				3D680137254B656B0021C56F /* UIAlertController */,
+				3D680138254B657B0021C56F /* UINavigationController */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		3D67A90825486431001E392F = {
@@ -183,16 +186,16 @@
 		3D67A91325486431001E392F /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				3D68FEDE254A35750021C56F /* TableView */,
-				3D4E303C2549FABC00715411 /* ViewControllers */,
 				3DEB7672254898F900763A2B /* API */,
 				3D67A91425486431001E392F /* AppDelegate.swift */,
-				3D67A91625486431001E392F /* SceneDelegate.swift */,
-				3D67A91A25486431001E392F /* Main.storyboard */,
 				3D67A92025486433001E392F /* Assets.xcassets */,
-				3D67A92225486433001E392F /* LaunchScreen.storyboard */,
+				3D4E303C2549FABC00715411 /* Controllers */,
+				3D68010F254B64050021C56F /* Helpers */,
 				3D67A92525486433001E392F /* Info.plist */,
 				3D67A91D25486431001E392F /* Project.xcdatamodeld */,
+				3D67A91625486431001E392F /* SceneDelegate.swift */,
+				3D6800D7254B5C600021C56F /* Storyboards */,
+				3D68FEDE254A35750021C56F /* TableView */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -218,11 +221,92 @@
 			path = ProjectUITests;
 			sourceTree = "<group>";
 		};
-		3D68FEDE254A35750021C56F /* TableView */ = {
+		3D6800D7254B5C600021C56F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3D67A92225486433001E392F /* LaunchScreen.storyboard */,
+				3D67A91A25486431001E392F /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3D6800EC254B5F240021C56F /* Notebook */ = {
 			isa = PBXGroup;
 			children = (
 				3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */,
 				3D680097254B2C640021C56F /* NotebookCustomCell.xib */,
+			);
+			path = Notebook;
+			sourceTree = "<group>";
+		};
+		3D68010B254B63970021C56F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3D68010F254B64050021C56F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3D68011A254B64860021C56F /* CoreData_cleanerEntity.swift */,
+				3D680113254B64210021C56F /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3D680113254B64210021C56F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3DEB76F82548DE3200763A2B /* CharacterSet */,
+				3DEB76EF2548DE1400763A2B /* Dictionary */,
+				3D79DA07254977A30048B7B0 /* String */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3D680135254B65370021C56F /* NotebookVC */ = {
+			isa = PBXGroup;
+			children = (
+				3D67A91825486431001E392F /* NotebookVC.swift */,
+				3D680136254B65410021C56F /* Extensions */,
+			);
+			path = NotebookVC;
+			sourceTree = "<group>";
+		};
+		3D680136254B65410021C56F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D6800FD254B616F0021C56F /* NotebookVC_leftBarButtonSetup.swift */,
+				3D6800BA254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift */,
+				3D68FF94254AE8B50021C56F /* NotebookVC_navigationBarSetup.swift */,
+				3D680018254B13B20021C56F /* NotebookVC_tableViewConfig.swift */,
+				3D68017D254B6DCF0021C56F /* NotebookVC_appDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3D680137254B656B0021C56F /* UIAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				3D68010B254B63970021C56F /* Extensions */,
+			);
+			path = UIAlertController;
+			sourceTree = "<group>";
+		};
+		3D680138254B657B0021C56F /* UINavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				3D4E30502549FD7F00715411 /* NavigationController.swift */,
+			);
+			path = UINavigationController;
+			sourceTree = "<group>";
+		};
+		3D68FEDE254A35750021C56F /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3D6800EC254B5F240021C56F /* Notebook */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -233,25 +317,6 @@
 				3D68FF02254A4EFD0021C56F /* EgoCache.swift */,
 			);
 			path = EgoCache;
-			sourceTree = "<group>";
-		};
-		3D68FF7C254AE0FC0021C56F /* UIAlertController */ = {
-			isa = PBXGroup;
-			children = (
-				3D68FF7D254AE11B0021C56F /* ExitIntuitive.swift */,
-			);
-			path = UIAlertController;
-			sourceTree = "<group>";
-		};
-		3D68FF88254AE8340021C56F /* NotebookVC */ = {
-			isa = PBXGroup;
-			children = (
-				3D68FF89254AE84C0021C56F /* NotebookVC_AlertControllerPresenter.swift */,
-				3D68FF94254AE8B50021C56F /* NotebookVC_NavigationBarSetup.swift */,
-				3D680018254B13B20021C56F /* NotebookVC_TableViewSetup.swift */,
-				3D6800BA254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift */,
-			);
-			path = NotebookVC;
 			sourceTree = "<group>";
 		};
 		3D68FFAD254AEB010021C56F /* NotebookVC */ = {
@@ -265,7 +330,7 @@
 		3D79DA07254977A30048B7B0 /* String */ = {
 			isa = PBXGroup;
 			children = (
-				3D79DA08254977C10048B7B0 /* urlValid.swift */,
+				3D79DA08254977C10048B7B0 /* String_urlValid.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -285,7 +350,6 @@
 		3DEB76B82548C32900763A2B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3DEB76EE2548DDC900763A2B /* Extensions */,
 				3DEB76B32548BB6B00763A2B /* URLs.swift */,
 				3DEB76B92548C33200763A2B /* RequestMethod.swift */,
 			);
@@ -311,23 +375,10 @@
 			path = POST;
 			sourceTree = "<group>";
 		};
-		3DEB76EE2548DDC900763A2B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3D68FF88254AE8340021C56F /* NotebookVC */,
-				3D68FF7C254AE0FC0021C56F /* UIAlertController */,
-				3D79DA07254977A30048B7B0 /* String */,
-				3DEB76F82548DE3200763A2B /* CharacterSet */,
-				3DEB76EF2548DE1400763A2B /* Dictionary */,
-				3D680013254B134B0021C56F /* CleanerEntity.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		3DEB76EF2548DE1400763A2B /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				3DEB76F02548DE1E00763A2B /* PercentEncoded.swift */,
+				3DEB76F02548DE1E00763A2B /* Dictionary_percentEncoded.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -335,7 +386,7 @@
 		3DEB76F82548DE3200763A2B /* CharacterSet */ = {
 			isa = PBXGroup;
 			children = (
-				3DEB76F92548DE3E00763A2B /* UrlQueryValueAllowed.swift */,
+				3DEB76F92548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift */,
 			);
 			path = CharacterSet;
 			sourceTree = "<group>";
@@ -633,9 +684,9 @@
 				3DEB76DB2548D38700763A2B /* POST.swift in Sources */,
 				3DEB773625490DE900763A2B /* POST_answer.swift in Sources */,
 				3DEB773025490DB900763A2B /* POST_contentType.swift in Sources */,
-				3D680014254B134B0021C56F /* CleanerEntity.swift in Sources */,
+				3D6800FE254B616F0021C56F /* NotebookVC_leftBarButtonSetup.swift in Sources */,
 				3D6800BB254B47900021C56F /* NotebookVC_navigationBarCustomTheme.swift in Sources */,
-				3DEB76FA2548DE3E00763A2B /* UrlQueryValueAllowed.swift in Sources */,
+				3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */,
 				3DEB76BA2548C33200763A2B /* RequestMethod.swift in Sources */,
 				3D67A91925486431001E392F /* NotebookVC.swift in Sources */,
 				3D67A91525486431001E392F /* AppDelegate.swift in Sources */,
@@ -643,16 +694,17 @@
 				3DEB76CC2548C38800763A2B /* GET.swift in Sources */,
 				3DEB76B42548BB6B00763A2B /* URLs.swift in Sources */,
 				3D67A91725486431001E392F /* SceneDelegate.swift in Sources */,
-				3D68FF7E254AE11B0021C56F /* ExitIntuitive.swift in Sources */,
-				3D79DA09254977C10048B7B0 /* urlValid.swift in Sources */,
+				3D68FF7E254AE11B0021C56F /* UIAlertController_exitIntuitive.swift in Sources */,
+				3D79DA09254977C10048B7B0 /* String_urlValid.swift in Sources */,
 				3D67A91F25486431001E392F /* Project.xcdatamodeld in Sources */,
-				3D68FF8A254AE84C0021C56F /* NotebookVC_AlertControllerPresenter.swift in Sources */,
 				3D4E30512549FD7F00715411 /* NavigationController.swift in Sources */,
-				3D680019254B13B20021C56F /* NotebookVC_TableViewSetup.swift in Sources */,
+				3D68011B254B64860021C56F /* CoreData_cleanerEntity.swift in Sources */,
+				3D68017E254B6DCF0021C56F /* NotebookVC_appDelegate.swift in Sources */,
+				3D680019254B13B20021C56F /* NotebookVC_tableViewConfig.swift in Sources */,
 				3DEB76742548998700763A2B /* API.swift in Sources */,
-				3DEB76F12548DE1E00763A2B /* PercentEncoded.swift in Sources */,
+				3DEB76F12548DE1E00763A2B /* Dictionary_percentEncoded.swift in Sources */,
 				3DEB76A82548ABEF00763A2B /* Parser.swift in Sources */,
-				3D68FF95254AE8B50021C56F /* NotebookVC_NavigationBarSetup.swift in Sources */,
+				3D68FF95254AE8B50021C56F /* NotebookVC_navigationBarSetup.swift in Sources */,
 				3DEB772825490D6B00763A2B /* GET_dataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,7 +891,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -863,7 +915,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
