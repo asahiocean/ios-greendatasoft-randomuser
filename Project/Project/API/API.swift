@@ -3,9 +3,7 @@ import EGOCache
 import CoreData
 
 struct API: GET, POST {
-        
-    static let shared = API()
-        
+    
     var cache: EGOCache! = EGOCache.global()
     
     func get(method: RequestMethod, url: String, completion: @escaping (Data?) throws -> Void) {
@@ -22,12 +20,12 @@ struct API: GET, POST {
                 self.answer(request: request, { data -> Void in
                     if let data = data {
                         if let answer = String(data: data, encoding: .utf8) {
-                            print("✅ Server confirm: \(answer)")
+                            print("✅ \(type(of: self)) Server confirm: \(answer)")
                         }
                         guard let _return = response else { return }
                         try? _return(data)
                     } else {
-                        print("🛑 Server confirm: ", String(describing: data?.count))
+                        print("🛑 \(type(of: self)): Server confirm:", String(describing: data?.count))
                         guard let _return = response else { return }
                         try? _return(data)
                     }
@@ -35,6 +33,4 @@ struct API: GET, POST {
             })
         }
     }
-    
-    private init() { }
 }

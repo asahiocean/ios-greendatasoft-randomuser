@@ -13,11 +13,11 @@ extension GET {
                     switch status {
                         case (200...299):
                             if let data = data {
-                                print("\(type(of: self)) data: ", data.count)
+                                print("✅ \(type(of: self)).dataLoader.data.count:", data.count)
                                 do {
                                     try completion(data)
-                                } catch let error as NSError {
-                                    print("\(type(of: self)) docatchError: ", error.localizedDescription)
+                                } catch let dataLoadererror as NSError {
+                                    print("🔴 \(type(of: self)) dataLoadererror:", dataLoadererror.localizedDescription)
                                 }
                             }
                         // fallthrough // принудительно "проваливается" к следующему кейсу

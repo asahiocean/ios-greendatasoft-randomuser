@@ -12,13 +12,13 @@ import FontAwesome_swift
 class NotebookVC: UIViewController, Coredata {
     
     var tableView: UITableView!
-    var persons = [Welcome]()
+//    var persons: [Database] = [Database]()
     
     private(set) var context: NSManagedObjectContext!
     private var fetchRequest: NSFetchRequest<NSFetchRequestResult>!
     private(set) var appDelegate: AppDelegate!
     
-    let api: API = API.shared
+    let api: API = API()
                 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +30,8 @@ class NotebookVC: UIViewController, Coredata {
         navigationBarSetup()
         tableViewConfig()
         
-        sendFetchRequest(appDelegate, JsonData.self)
+//        sendFetchRequest(appDelegate, JsonData.self)
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,21 +42,29 @@ class NotebookVC: UIViewController, Coredata {
                                   forKey: "jsondata\(Int(Date().timeIntervalSince1970))", // чтобы найти по hasPrefix
                                   withTimeoutInterval: 604800) // 1 week
                 saveContextEntity(appDelegate, JsonData.self, context, "jsondata", jsonData)
-                sendFetchRequest(appDelegate, JsonData.self)
-                
+                // sendFetchRequest(appDelegate, JsonData.self)
+                DispatchQueue(label: "\(type(of: self)).apt.get.persons.background", qos: .background).async {
+                    JSONHandler.shared.reception(data: jsonData, completion: { value in
+//                        let person = RandomUser(from: <#T##Decoder#>)
+                        DispatchQueue.main.async { [self] in
+//                            persons.append(value)
+                            tableView.reloadData()
+                        }
+                    })
+                }
                 do {
-                    JSONHandler.shared.reception(data: jsonData)
-                    
-                    print(try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments))
+//                    print(try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments))
 //                    var parameters: [String:Any] = [:]
 //                    parameters.updateValue(jsonData.count, forKey: "datacount")
 //                    API.shared.post(.POST, URLs.post, parameters) // допустим, необходимо доставить отчет серверу, что были получены какие-то данные
-                } catch let error as NSError {
-                    print("\(type(of: self)) docatchError: ", error.localizedDescription)
+                } catch let apigeterror as NSError {
+                    print("🔴 \(type(of: self)).apigeterror:", apigeterror.localizedDescription)
                 }
             }
         })
-
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 }

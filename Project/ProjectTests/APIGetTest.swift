@@ -3,7 +3,7 @@ import XCTest
 
 class APIGetTest: XCTestCase {
         
-    let api: API = API.shared
+    let api: API = API()
     let getMethod: RequestMethod = .GET
     let getUrl = URLs.get
     
@@ -18,8 +18,8 @@ class APIGetTest: XCTestCase {
             if let data = data {
                 do {
                     print(try JSONSerialization.jsonObject(with: data, options: []))
-                } catch let error as NSError {
-                    print("\(type(of: self)) testExample: ", error.localizedDescription)
+                } catch let APIGetTestError as NSError {
+                    print("\(type(of: self)).APIGetTestError:", APIGetTestError.localizedDescription)
                 }
             } else {
                 XCTFail("🔴 Failed to execute GET request")

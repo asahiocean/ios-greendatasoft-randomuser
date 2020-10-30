@@ -27,8 +27,8 @@ extension Coredata {
         }
         do {
             try appDelegate.persistentContainer.viewContext.execute(asyncRequest)
-        } catch let error as NSError {
-            print("\(type(of: self)) docatchError: ", error.localizedDescription)
+        } catch let CoredataError as NSError {
+            print("\(type(of: self)) CoredataError:", CoredataError.localizedDescription)
         }
     }
 }

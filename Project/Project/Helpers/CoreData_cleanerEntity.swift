@@ -2,7 +2,6 @@ import Foundation
 import CoreData
 
 func cleanerEntity(entityName: String, context: NSManagedObjectContext) {
-    // guard let context = NotebookVC().context else { return }
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
     fetchRequest.returnsObjectsAsFaults = false
     do {
@@ -11,10 +10,10 @@ func cleanerEntity(entityName: String, context: NSManagedObjectContext) {
         }
         do {
             try context.save()
-        } catch let error as NSError {
-            print("cleanerEntity_context_docatchError: ", error.localizedDescription)
+        } catch let cleanerEntity_context_error as NSError {
+            print("🔴 cleanerEntity_context_error:", cleanerEntity_context_error.localizedDescription)
         }
-    } catch let error as NSError {
-        print("cleanerEntity_Delete_docatchError: ", error.localizedDescription)
+    } catch let cleanerEntity_Delete_error as NSError {
+        print("🔴 cleanerEntity_Delete_error:", cleanerEntity_Delete_error.localizedDescription)
     }
 }
