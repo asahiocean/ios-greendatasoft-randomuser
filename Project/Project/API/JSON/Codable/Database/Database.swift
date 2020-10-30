@@ -42,4 +42,3 @@ struct Database: Codable {
         try container.encode(info, forKey: .info)
     }
 }
-

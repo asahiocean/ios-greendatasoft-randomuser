@@ -1,7 +1,7 @@
 import UIKit
 
 extension NotebookVC {
-    func navigationBarCustomTheme(_ barStyle: UIBarStyle? = .default,
+    func navigationBarThemeConfig(_ barStyle: UIBarStyle? = .default,
                                   bg: UIColor?,
                                   fontColor: UIColor?,
                                   tintColor: UIColor?

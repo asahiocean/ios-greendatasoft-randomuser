@@ -17,7 +17,7 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     }
        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1// persons.count
+        return persons?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,7 +27,7 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotebookCustomCellID, for: indexPath) as? NotebookCustomCell
             else { fatalError() }
-//        cell.label.text = "\(persons[indexPath.row].results[indexPath.row].name)"
+        cell.label.text = persons?.results[indexPath.row].name.first
         return cell
     }
 }

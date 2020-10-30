@@ -20,6 +20,9 @@ extension GET {
                                     print("🔴 \(type(of: self)) dataLoadererror:", dataLoadererror.localizedDescription)
                                 }
                             }
+                    case 299...:
+//                        try completion(data)
+                        print("")
                         // fallthrough // принудительно "проваливается" к следующему кейсу
                     default:
                         break

@@ -37,7 +37,7 @@ extension NotebookVC {
             alertController.exitIntuitive(vc: self)
         }
     }
-    func leftBarButtonSetup(size: CGSize, textColor: UIColor?) {
+    func navigationBarLeftButton(size: CGSize, textColor: UIColor?) {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage.fontAwesomeIcon(
                 name: .gripLines,
