@@ -18,8 +18,8 @@ class APIGetTest: XCTestCase {
             if let data = data {
                 do {
                     print(try JSONSerialization.jsonObject(with: data, options: []))
-                } catch {
-                    XCTFail("🔴 \(error.localizedDescription)")
+                } catch let error as NSError {
+                    print("\(type(of: self)) testExample: ", error.localizedDescription)
                 }
             } else {
                 XCTFail("🔴 Failed to execute GET request")

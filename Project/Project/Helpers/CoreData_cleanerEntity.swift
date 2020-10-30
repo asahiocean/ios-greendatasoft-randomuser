@@ -11,10 +11,10 @@ func cleanerEntity(entityName: String, context: NSManagedObjectContext) {
         }
         do {
             try context.save()
-        } catch {
-            print(error.localizedDescription)
+        } catch let error as NSError {
+            print("cleanerEntity_context_docatchError: ", error.localizedDescription)
         }
-    } catch {
-        print("Fail Delete:", error.localizedDescription)
+    } catch let error as NSError {
+        print("cleanerEntity_Delete_docatchError: ", error.localizedDescription)
     }
 }

@@ -2,16 +2,11 @@ import Foundation
 import EGOCache
 import CoreData
 
-protocol ParserDelegate: class {
-    func reception(data: Data)
-}
-
-struct API: GET, POST, EgoCache {
-    
+struct API: GET, POST {
+        
     static let shared = API()
         
-    //MARK: EGOCache
-    var cache: EGOCache!
+    var cache: EGOCache! = EGOCache.global()
     
     func get(method: RequestMethod, url: String, completion: @escaping (Data?) throws -> Void) {
         DispatchQueue(label: "API.get.utility.queue", qos:.utility).async {
@@ -21,18 +16,25 @@ struct API: GET, POST, EgoCache {
         }
     }
     
-    func post(_ method: RequestMethod, _ url: String, _ parameters: [String : Any], completion: @escaping ((Data?) -> Void)) {
+    func post(_ method: RequestMethod, _ url: String, _ parameters: [String : Any], response: ((Data?) throws -> Void)? = nil) {
         DispatchQueue(label: "API.post.utility.queue", qos:.utility).async {
             self.contentType(url: url, param: parameters, callback: { request in
                 self.answer(request: request, { data -> Void in
-                    guard let data = data else { return }
-                    completion(data)
+                    if let data = data {
+                        if let answer = String(data: data, encoding: .utf8) {
+                            print("✅ Server confirm: \(answer)")
+                        }
+                        guard let _return = response else { return }
+                        try? _return(data)
+                    } else {
+                        print("🛑 Server confirm: ", String(describing: data?.count))
+                        guard let _return = response else { return }
+                        try? _return(data)
+                    }
                 })
             })
         }
     }
     
-    private init() {
-        self.cache = EGOCache.global()
-    }
+    private init() { }
 }

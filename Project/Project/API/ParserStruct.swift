@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Welcome
 struct Welcome: Codable {
     let results: [Result]
-    let info: Info
+    let info: Info?
 }
 
 // MARK: - Info
