@@ -4,7 +4,7 @@ import XCTest
 class APIGetTest: XCTestCase {
         
     let api: API = API()
-    let getMethod: RequestMethod = .GET
+    let getMethod: httpMethod = .GET
     let getUrl = URLs.get
     
     override func setUpWithError() throws {

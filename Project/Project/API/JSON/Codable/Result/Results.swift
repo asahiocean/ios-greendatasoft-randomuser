@@ -1,6 +1,6 @@
 import Foundation
 
-struct Result: Codable {
+struct Results: Codable {
     var gender: Gender
     var name: Name
     var location: Location

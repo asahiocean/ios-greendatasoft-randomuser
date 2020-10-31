@@ -1,11 +1,11 @@
 import UIKit
 
 extension NotebookVC {
-    func coreDataSetup() {
+    func storageManagerSetup() {
         if let delegate = (UIApplication.shared.delegate as? AppDelegate) {
-            self.appDelegate = delegate
+            appDelegate = delegate
             context = appDelegate.persistentContainer.viewContext
-            coredata = Coredata.shared
+            storage = StorageManager.shared
         }
     }
 }

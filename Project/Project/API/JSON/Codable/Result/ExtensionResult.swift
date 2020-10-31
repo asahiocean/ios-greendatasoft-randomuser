@@ -1,8 +1,8 @@
 import Foundation
 
-extension Result {
+extension Results {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(Result.self, from: data)
+        self = try newJSONDecoder().decode(Results.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -29,8 +29,8 @@ extension Result {
         id: ID? = nil,
         picture: Picture? = nil,
         nat: String? = nil
-    ) -> Result {
-        return Result(
+    ) -> Results {
+        return Results(
             gender: gender ?? self.gender,
             name: name ?? self.name,
             location: location ?? self.location,

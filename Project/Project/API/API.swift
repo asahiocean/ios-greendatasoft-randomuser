@@ -2,35 +2,32 @@ import Foundation
 import EGOCache
 import CoreData
 
-struct API: GET, POST {
+struct API: GET, POST {    
     
-    var cache: EGOCache! = EGOCache.global()
+    static let shared = API()
     
-    func get(method: RequestMethod, url: String, completion: @escaping (Data?) throws -> Void) {
-        DispatchQueue(label: "API.get.utility.queue", qos:.utility).async {
-            self.dataLoader(method, url, { data -> Void in
-                try? completion(data)
-            })
-        }
+    func loadRandomuser(_ updateDatabase: @escaping (Database) -> Void){
+        print("➡️ \(type(of: self)): start of session")
+
+        self.get(.dataTask, URLRequest(url: URL(string: Url.get.rawValue.urlValid)!), { data -> Void in
+            if let jsondata = data {
+                print("✅ \(type(of: self)): new database received!")
+                let operationQueue = OperationQueue()
+
+                let addPersons = BlockOperation {
+                    print("✅ \(type(of: self)): pushing the database to the handler!")
+                    JSONHandler.shared.reception(jsondata, { db in
+                        updateDatabase(db)
+                    })
+                }
+                operationQueue.addOperations([addPersons], waitUntilFinished: false)
+                operationQueue.addBarrierBlock {
+                    print("⬅️ \(type(of: self)): end of session")
+                }
+            }
+        })
     }
     
-    func post(_ method: RequestMethod, _ url: String, _ parameters: [String : Any], response: ((Data?) throws -> Void)? = nil) {
-        DispatchQueue(label: "API.post.utility.queue", qos:.utility).async {
-            self.contentType(url: url, param: parameters, callback: { request in
-                self.answer(request: request, { data -> Void in
-                    if let data = data {
-                        if let answer = String(data: data, encoding: .utf8) {
-                            print("✅ \(type(of: self)) Server confirm: \(answer)")
-                        }
-                        guard let _return = response else { return }
-                        try? _return(data)
-                    } else {
-                        print("🛑 \(type(of: self)): Server confirm:", String(describing: data?.count))
-                        guard let _return = response else { return }
-                        try? _return(data)
-                    }
-                })
-            })
-        }
-    }
+    private init() { }
+
 }

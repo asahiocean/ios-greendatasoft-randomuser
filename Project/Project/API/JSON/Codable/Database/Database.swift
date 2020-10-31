@@ -1,23 +1,7 @@
 import Foundation
 
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
-    }
-    return decoder
-}
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
-}
-
-struct Database: Codable {
-    var results: [Result]
+struct Database: Codable  {
+    var results: [Results]
     var info: Info
 
     private enum CodingKeys: String, CodingKey {
@@ -25,14 +9,14 @@ struct Database: Codable {
         case info = "info"
     }
 
-    public init(results: [Result], info: Info) {
+    public init(results: [Results], info: Info) {
         self.results = results
         self.info = info
     }
 
     internal init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        results = try values.decode([Result].self, forKey: .results)
+        results = try values.decode([Results].self, forKey: .results)
         info = try values.decode(Info.self, forKey: .info)
     }
 

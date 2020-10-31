@@ -4,17 +4,10 @@ public let NotebookCustomCellID = "NotebookCustomCell"
 class NotebookCustomCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
-        
-    override func layoutSubviews() {
-        clipsToBounds = true
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.lightGray.cgColor
-        autoresizingMask =
-            [.flexibleWidth, .flexibleHeight]
-    }
-        
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            
+    override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initViews()
     }
             
     required init?(coder aDecoder: NSCoder) {
@@ -22,14 +15,21 @@ class NotebookCustomCell: UITableViewCell {
             fatalError("init(coder:) has not been implemented")
         } else {
             super.init(coder: aDecoder)
+            initViews()
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
+        
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+}
+
+extension NotebookCustomCell {
+    func initViews() {
+        clipsToBounds = true
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.lightGray.cgColor
+        autoresizingMask =
+            [.flexibleWidth, .flexibleHeight]
     }
 }

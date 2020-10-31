@@ -1,13 +1,17 @@
 import Foundation
 import CoreData
+import EGOCache
 
-final class Coredata {
+final class StorageManager {
+    
+    let cache: EGOCache = EGOCache.global()
 
-    static let shared: Coredata = {
-        let instance = Coredata()
+    static let shared: StorageManager = {
+        let instance = StorageManager()
         return instance
     }()
-
+    
+    /// CoreData
     func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ : T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any) {
         DispatchQueue.main.async {
             let fetchRequest: NSManagedObject = T.init(context: context)
@@ -17,6 +21,8 @@ final class Coredata {
             }
         }
     }
+    
+    /// CoreData
     func getObject<T: NSManagedObject>(_ appDelegate: AppDelegate, _ : T.Type, output: (([T]) -> Void)? = nil) {
         guard let request = T.fetchRequest() as? NSFetchRequest<T> else { return }
         request.returnsObjectsAsFaults = false
@@ -35,7 +41,7 @@ final class Coredata {
     private init() {}
 }
 
-extension Coredata: NSCopying {
+extension StorageManager: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
         return self
     }

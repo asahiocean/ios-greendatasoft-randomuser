@@ -4,7 +4,7 @@ import XCTest
 class APIPostTest: XCTestCase {
     
     let api: API = API.shared
-    let met: RequestMethod = .POST
+    let met: httpMethod = .POST
     let url = URLs.post.urlValid
     private var parameters: [String:Any] = [:]
     let expectation = XCTestExpectation(description: "Exceeded waiting!")

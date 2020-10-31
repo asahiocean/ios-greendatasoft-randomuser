@@ -1,6 +1,27 @@
 import Foundation
 
+enum POSTRequestType {
+    case contentType
+}
+
 protocol POST {
-    /// в клоужер можно отправить ответ от сервера
-    func post(_ method: RequestMethod, _ url: String, _ parameters: [String:Any], response: ((Data?) throws -> Void)?)
+    func post(_ type: POSTRequestType, _ request: URLRequest, _ parameters: [String:Any], _ competion: ((URLRequest) throws -> Void)?)
+}
+
+extension POST {
+    func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((URLRequest) throws -> Void)? = nil) {
+        var request = request
+        switch type {
+        case .contentType:
+            DispatchQueue(label: "POST.contentTypeRequest.utility", qos: .utility).async {
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.httpMethod = httpMethod.POST.rawValue
+                request.httpBody = parameters.percentEncoded()
+            }
+        default:
+            break
+        }
+        guard let competion = serverConfirmation else { return }
+        try? competion(request)
+    }
 }
