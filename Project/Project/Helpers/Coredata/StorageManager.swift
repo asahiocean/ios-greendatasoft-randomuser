@@ -10,12 +10,11 @@ struct StorageManager {
     dynamic func accept<T>(_ value: T) {
         switch value {
             case let data as Data:
-                print("StorageManager_accept_data: ", data.count)
-                StorageManager.shared.cache.setData(data, forKey: "jsondata\(Int(Date().timeIntervalSince1970))", withTimeoutInterval: 2592000) // 2592000 sec == 1 month
                 DispatchQueue.main.async {
-                    guard let delegate = NotebookVC().appDelegate, let context = NotebookVC().context else { return }
-                    StorageManager.saveObject(delegate, JsonData.self, context, "jsondata", data)
-                    print("StorageManager.saveObject: OK")
+                    StorageManager.shared.cache.setData(data, forKey: "jsondata\(Int(Date().timeIntervalSince1970))", withTimeoutInterval: 2592000) // 2592000 sec == 1 month
+                    if let delegate = NotebookVC()._appDelegate(), let context = NotebookVC()._context() {
+                        StorageManager.saveObject(delegate, JsonData.self, context, "jsondata", data)
+                    }
                 }
             default: break
         }
@@ -37,14 +36,13 @@ struct StorageManager {
         guard let request = T.fetchRequest() as? NSFetchRequest<T> else { return }
         request.returnsObjectsAsFaults = false
         let asyncRequest = NSAsynchronousFetchRequest(fetchRequest: request) { rawdata in
-            print("🟢 sendFetchRequest.finalResult?.count: \(String(describing: rawdata.finalResult?.count))")
             guard let result = rawdata.finalResult, let export = output else { return }
             export(result)
         }
         do {
             try appDelegate.persistentContainer.viewContext.execute(asyncRequest)
-        } catch let error as NSError {
-            print("\(type(of: self)) GetObjectError:", error.localizedDescription)
+        } catch {
+            
         }
     }
     private init() {}

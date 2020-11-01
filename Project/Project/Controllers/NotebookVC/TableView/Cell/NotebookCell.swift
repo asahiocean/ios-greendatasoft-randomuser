@@ -1,8 +1,7 @@
-import UIKit
-import SimpleImageViewer
+import UIKit.UITableViewCell
 
-public let NotebookCustomCellID = "NotebookCustomCell"
-class NotebookCustomCell: UITableViewCell {
+public let NotebookCellID = "NotebookCellID"
+class NotebookCell: UITableViewCell {
     
     @IBOutlet weak var nameStack: UIStackView!
     @IBOutlet weak var firstname: UILabel!
@@ -28,9 +27,8 @@ class NotebookCustomCell: UITableViewCell {
     }
 }
 
-extension NotebookCustomCell {
+extension NotebookCell {
     fileprivate func initViews() {        
-        clipsToBounds = true
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.lightGray.cgColor
         autoresizingMask =

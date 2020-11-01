@@ -1,6 +1,4 @@
 import Foundation
-import EGOCache
-import CoreData
 
 struct API: GET, POST {    
     
@@ -8,7 +6,8 @@ struct API: GET, POST {
     
     dynamic func loadRandomuser(_ completion: @escaping (Database) throws -> Void) {
         self.get(.dataTask, URLRequest(url: URL(string: Url.get.rawValue.urlValid)!), { data -> Void in
-            if let data = data {
+            //MARK: хз почему через iflet пролетала нулевая data
+            if (data?.count ?? 0) > 0, let data = data {
                 let d = JSONDecoder()
                 d.keyDecodingStrategy = .convertFromSnakeCase
                 d.dateDecodingStrategy = .iso8601

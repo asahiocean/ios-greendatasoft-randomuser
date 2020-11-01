@@ -1,10 +1,14 @@
-import Foundation
+import UIKit
 
 struct Picture: Codable {
-    let large: String
+    var large: String
     var medium: String
     var thumbnail: String
-
+    
+//    var large_image: UIImage
+//    var medium_image: UIImage
+//    var thumbnail_image: UIImage
+    
     private enum CodingKeys: String, CodingKey {
         case large = "large"
         case medium = "medium"
@@ -15,6 +19,10 @@ struct Picture: Codable {
         self.large = large
         self.medium = medium
         self.thumbnail = thumbnail
+        
+//        self.large_image = loadImage(large)
+//        self.medium_image = loadImage(medium)
+//        self.thumbnail_image = loadImage(thumbnail)
     }
 
     internal init(from decoder: Decoder) throws {
@@ -22,6 +30,9 @@ struct Picture: Codable {
         large = try values.decode(String.self, forKey: .large)
         medium = try values.decode(String.self, forKey: .medium)
         thumbnail = try values.decode(String.self, forKey: .thumbnail)
+//        large_image = self.loadImage(try values.decode(String.self, forKey: .large))
+//        medium_image = self.loadImage(try values.decode(String.self, forKey: .medium))
+//        thumbnail_image = self.loadImage(try values.decode(String.self, forKey: .thumbnail))
     }
 
     func encode(to encoder: Encoder) throws {
