@@ -2,10 +2,6 @@ import XCTest
 @testable import Project
 
 class APIGetTest: XCTestCase {
-        
-    let api: API = API()
-    let getMethod: httpMethod = .GET
-    let getUrl = URLs.get
     
     override func setUpWithError() throws {
     }
@@ -14,7 +10,8 @@ class APIGetTest: XCTestCase {
     }
 
     func testExample() throws {
-        api.get(method: getMethod, url: getUrl, completion: { data in
+        guard let url = URL(string: Url.get.rawValue.urlValid) else { fatalError() }
+        API.shared.get(.dataTask, URLRequest(url: url), { data in
             if let data = data {
                 do {
                     print(try JSONSerialization.jsonObject(with: data, options: []))

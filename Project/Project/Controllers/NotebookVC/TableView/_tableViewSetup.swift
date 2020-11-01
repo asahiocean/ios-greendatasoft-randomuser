@@ -1,4 +1,5 @@
 import UIKit
+import SimpleImageViewer
 
 extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     internal func _tableViewSetup() {
@@ -31,7 +32,8 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     //MARK: -- cellForRowAt
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotebookCustomCellID, for: indexPath) as? NotebookCustomCell else { fatalError() }
-        cell.label.text = persons?.results[indexPath.row].name.first
+        cell.firstname.text = persons?.results[indexPath.row].name.first
+        cell.surname.text = persons?.results[indexPath.row].name.last
         return cell
     }
         
@@ -44,5 +46,9 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
                 default: break
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("")
     }
 }

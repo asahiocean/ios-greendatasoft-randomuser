@@ -421,7 +421,6 @@
 				3D67A91D25486431001E392F /* Project.xcdatamodeld */,
 				3D67A91625486431001E392F /* SceneDelegate.swift */,
 				3D6800D7254B5C600021C56F /* Storyboards */,
-				3D68FEDE254A35750021C56F /* TableView */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -456,15 +455,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		3D6800EC254B5F240021C56F /* Notebook */ = {
-			isa = PBXGroup;
-			children = (
-				3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */,
-				3D680097254B2C640021C56F /* NotebookCustomCell.xib */,
-			);
-			path = Notebook;
-			sourceTree = "<group>";
-		};
 		3D68010B254B63970021C56F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				3D67A91825486431001E392F /* NotebookVC.swift */,
+				3D68FEDE254A35750021C56F /* TableView */,
 				3D680136254B65410021C56F /* Extensions */,
 			);
 			path = NotebookVC;
@@ -505,12 +496,11 @@
 		3D680136254B65410021C56F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3D6800FD254B616F0021C56F /* _navigationBarLeftButton.swift */,
-				3D6800BA254B47900021C56F /* _navigationBarThemeConfig.swift */,
-				3D68FF94254AE8B50021C56F /* _navigationBarSetup.swift */,
-				3D680018254B13B20021C56F /* _tableViewSetup.swift */,
-				3D15484D254CCA0800F6BBA2 /* _storageManagerSetup.swift */,
 				3D6FB33E254E5B0F00CEF2C8 /* _loadRandomuser.swift */,
+				3D6800FD254B616F0021C56F /* _navigationBarLeftButton.swift */,
+				3D68FF94254AE8B50021C56F /* _navigationBarSetup.swift */,
+				3D6800BA254B47900021C56F /* _navigationBarThemeConfig.swift */,
+				3D15484D254CCA0800F6BBA2 /* _storageManagerSetup.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -534,7 +524,8 @@
 		3D68FEDE254A35750021C56F /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				3D6800EC254B5F240021C56F /* Notebook */,
+				3D680018254B13B20021C56F /* _tableViewSetup.swift */,
+				3D6FB387254E858E00CEF2C8 /* Cell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -545,6 +536,15 @@
 				3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */,
 			);
 			path = NotebookVC;
+			sourceTree = "<group>";
+		};
+		3D6FB387254E858E00CEF2C8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3D68FEDF254A35CC0021C56F /* NotebookCustomCell.swift */,
+				3D680097254B2C640021C56F /* NotebookCustomCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3D79DA07254977A30048B7B0 /* String */ = {

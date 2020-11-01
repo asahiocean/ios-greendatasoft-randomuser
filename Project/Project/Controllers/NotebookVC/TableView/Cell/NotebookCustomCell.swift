@@ -1,10 +1,14 @@
 import UIKit
+import SimpleImageViewer
 
 public let NotebookCustomCellID = "NotebookCustomCell"
 class NotebookCustomCell: UITableViewCell {
     
-    @IBOutlet weak var label: UILabel!
-            
+    @IBOutlet weak var nameStack: UIStackView!
+    @IBOutlet weak var firstname: UILabel!
+    @IBOutlet weak var surname: UILabel!
+    @IBOutlet weak var photo: UIImageView!
+    
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initViews()
@@ -25,7 +29,7 @@ class NotebookCustomCell: UITableViewCell {
 }
 
 extension NotebookCustomCell {
-    fileprivate func initViews() {
+    fileprivate func initViews() {        
         clipsToBounds = true
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.lightGray.cgColor

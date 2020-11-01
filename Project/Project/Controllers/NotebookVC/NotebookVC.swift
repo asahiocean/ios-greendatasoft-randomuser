@@ -6,8 +6,6 @@
 
 import UIKit
 import CoreData
-import EGOCache
-import FontAwesome_swift
 
 class NotebookVC: UIViewController {
     
@@ -31,5 +29,5 @@ class NotebookVC: UIViewController {
         _navigationBarSetup()
         _tableViewSetup()
         _loadRandomuser()
-    }    
+    }
 }

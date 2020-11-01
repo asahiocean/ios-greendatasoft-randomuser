@@ -1,4 +1,5 @@
 import UIKit
+import FontAwesome_swift
 
 extension NotebookVC {
     fileprivate func cacheRemoveKey(_ allKeys: [String], _ completion: @escaping (String,Any) -> Void) {
