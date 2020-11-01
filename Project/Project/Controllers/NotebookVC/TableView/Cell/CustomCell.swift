@@ -1,7 +1,7 @@
 import UIKit.UITableViewCell
 
-public let NotebookCellID = "NotebookCellID"
-class NotebookCell: UITableViewCell {
+public let CustomCellID: String = "CustomCellID"
+class CustomCell: UITableViewCell {
     
     @IBOutlet weak var nameStack: UIStackView!
     @IBOutlet weak var firstname: UILabel!
@@ -27,8 +27,8 @@ class NotebookCell: UITableViewCell {
     }
 }
 
-extension NotebookCell {
-    fileprivate func initViews() {        
+extension CustomCell {
+    fileprivate func initViews() {
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.lightGray.cgColor
         autoresizingMask =

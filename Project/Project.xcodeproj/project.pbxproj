@@ -50,12 +50,11 @@
 		3D67A92F25486433001E392F /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A92E25486433001E392F /* ProjectTests.swift */; };
 		3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A93925486433001E392F /* ProjectUITests.swift */; };
 		3D680019254B13B20021C56F /* _tableViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D680018254B13B20021C56F /* _tableViewSetup.swift */; };
-		3D680098254B2C640021C56F /* NotebookCellID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* NotebookCellID.xib */; };
 		3D6800BB254B47900021C56F /* _navigationBarThemeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6800BA254B47900021C56F /* _navigationBarThemeConfig.swift */; };
 		3D6800FE254B616F0021C56F /* _navigationBarLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6800FD254B616F0021C56F /* _navigationBarLeftButton.swift */; };
-		3D68FEE0254A35CC0021C56F /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCell.swift */; };
-		3D68FEE1254A35CC0021C56F /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCell.swift */; };
-		3D68FEE2254A35CC0021C56F /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* NotebookCell.swift */; };
+		3D68FEE0254A35CC0021C56F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* CustomCell.swift */; };
+		3D68FEE1254A35CC0021C56F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* CustomCell.swift */; };
+		3D68FEE2254A35CC0021C56F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* CustomCell.swift */; };
 		3D68FF7E254AE11B0021C56F /* UIAlertController_exitIntuitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */; };
 		3D68FF95254AE8B50021C56F /* _navigationBarSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF94254AE8B50021C56F /* _navigationBarSetup.swift */; };
 		3D68FFAF254AEB420021C56F /* NotebookVCextraMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */; };
@@ -69,6 +68,9 @@
 		3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA1D25498A860048B7B0 /* APIGetTest.swift */; };
 		3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA2B25498F180048B7B0 /* APIPostTest.swift */; };
 		3DA12348254ED6AA00A54768 /* loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA12347254ED6AA00A54768 /* loadImage.swift */; };
+		3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
+		3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
+		3DC7C924254F1A32001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
 		3DEB76742548998700763A2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76732548998700763A2B /* API.swift */; };
 		3DEB76B42548BB6B00763A2B /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B32548BB6B00763A2B /* Url.swift */; };
 		3DEB76BA2548C33200763A2B /* httpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B92548C33200763A2B /* httpMethod.swift */; };
@@ -146,10 +148,10 @@
 		3D67A93925486433001E392F /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		3D67A93B25486433001E392F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D680018254B13B20021C56F /* _tableViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _tableViewSetup.swift; sourceTree = "<group>"; };
-		3D680097254B2C640021C56F /* NotebookCellID.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookCellID.xib; sourceTree = "<group>"; };
+		3D680097254B2C640021C56F /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		3D6800BA254B47900021C56F /* _navigationBarThemeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarThemeConfig.swift; sourceTree = "<group>"; };
 		3D6800FD254B616F0021C56F /* _navigationBarLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarLeftButton.swift; sourceTree = "<group>"; };
-		3D68FEDF254A35CC0021C56F /* NotebookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCell.swift; sourceTree = "<group>"; };
+		3D68FEDF254A35CC0021C56F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController_exitIntuitive.swift; sourceTree = "<group>"; };
 		3D68FF94254AE8B50021C56F /* _navigationBarSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarSetup.swift; sourceTree = "<group>"; };
 		3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVCextraMenu.swift; sourceTree = "<group>"; };
@@ -547,8 +549,8 @@
 		3D6FB387254E858E00CEF2C8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3D68FEDF254A35CC0021C56F /* NotebookCell.swift */,
-				3D680097254B2C640021C56F /* NotebookCellID.xib */,
+				3D68FEDF254A35CC0021C56F /* CustomCell.swift */,
+				3D680097254B2C640021C56F /* CustomCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -790,8 +792,8 @@
 			files = (
 				3D67A92425486433001E392F /* LaunchScreen.storyboard in Resources */,
 				3D67A92125486433001E392F /* Assets.xcassets in Resources */,
+				3DC7C924254F1A32001A1D83 /* CustomCell.xib in Resources */,
 				3D67A91C25486431001E392F /* Main.storyboard in Resources */,
-				3D680098254B2C640021C56F /* NotebookCellID.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +801,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +809,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,7 +924,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D15479E254C6B9600F6BBA2 /* Login.swift in Sources */,
-				3D68FEE0254A35CC0021C56F /* NotebookCell.swift in Sources */,
+				3D68FEE0254A35CC0021C56F /* CustomCell.swift in Sources */,
 				3DEB76DB2548D38700763A2B /* POST.swift in Sources */,
 				3D154758254C674600F6BBA2 /* ExtensionLocation.swift in Sources */,
 				3D1547B4254C6C7A00F6BBA2 /* ExtensionName.swift in Sources */,
@@ -985,7 +989,7 @@
 			files = (
 				3D67A92F25486433001E392F /* ProjectTests.swift in Sources */,
 				3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */,
-				3D68FEE1254A35CC0021C56F /* NotebookCell.swift in Sources */,
+				3D68FEE1254A35CC0021C56F /* CustomCell.swift in Sources */,
 				3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,7 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D68FEE2254A35CC0021C56F /* NotebookCell.swift in Sources */,
+				3D68FEE2254A35CC0021C56F /* CustomCell.swift in Sources */,
 				3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */,
 				3D68FFAF254AEB420021C56F /* NotebookVCextraMenu.swift in Sources */,
 			);

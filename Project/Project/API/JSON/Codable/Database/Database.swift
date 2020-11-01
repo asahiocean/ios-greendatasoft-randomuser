@@ -15,9 +15,10 @@ struct Database: Codable  {
     }
 
     internal init(from decoder: Decoder) throws {
+        var arrayContrainer = try decoder.unkeyedContainer()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        results = try values.decode([Results].self, forKey: .results)
-        info = try values.decode(Info.self, forKey: .info)
+        results = try arrayContrainer.decode([Results].self)
+        info = try arrayContrainer.decode(Info.self)
     }
 
     func encode(to encoder: Encoder) throws {

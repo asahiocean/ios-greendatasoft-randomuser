@@ -7,13 +7,19 @@
 import UIKit
 
 class NotebookVC: UIViewController {
-    
-    var persons: Database?
-    
+        
+    static public var persons: Database? { didSet {
+        print(persons?.results.count)
+    }}
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         _loadRandomUsers()
         _tableViewSetup()
         _navigationBarSetup()
+    }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }

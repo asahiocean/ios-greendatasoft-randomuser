@@ -6,14 +6,22 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.clipsToBounds = true
+        tableView.setNeedsDisplay()
+        tableView.layoutIfNeeded()
+        
         tableView.separatorStyle = .none
         
         // чтобы выиграть время на загрузку новых пользователей при попытке быстрого скроллинга
         tableView.decelerationRate = .fast //MARK: smooth scrolling
         
         //MARK: Cell
-        tableView.register(UINib(nibName: NotebookCellID, bundle: .main), forCellReuseIdentifier: NotebookCellID)
+        let nib = UINib(nibName: "NotebookCellNib", bundle: .main)
+        tableView.register(nib, forCellReuseIdentifier: CustomCellID)
         
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
+                
         view.addSubview(tableView)
     }
     
@@ -25,35 +33,54 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     
     //MARK: -- numberOfSections & numberOfRowsInSection
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return persons?.results.count ?? .zero
-    }
-    //MARK: -- cellForRowAt
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NotebookCellID, for: indexPath) as? NotebookCell else { fatalError() }
-        cell.firstname.text = persons?.results[indexPath.row].name.first
-        cell.surname.text = persons?.results[indexPath.row].name.last
-        return cell
+        if section == 0 {
+            return NotebookVC.persons?.results.count ?? 0
+        } else if section == 1 {
+            return 1
+        }
+        return 0
     }
         
+    //MARK: -- cellForRowAt
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = CustomCellID
+        var cell: CustomCell! = tableView.dequeueReusableCell(withIdentifier: identifier) as? CustomCell
+        if cell == nil {
+            tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: identifier)
+            cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? CustomCell
+        }
+
+        
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellID", for: indexPath) as? CustomCell else {
+//            return tableView.dequeueReusableCell(withIdentifier: "CustomCellID", for: indexPath)
+//        }
+        cell.firstname.text = NotebookVC.persons?.results[indexPath.row].name.first
+        cell.surname.text = NotebookVC.persons?.results[indexPath.row].name.last
+        return cell
+    }
+    
     //MARK: -- willDisplay cell
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let count = persons?.results.count {
+        if let count = NotebookVC.persons?.results.count {
             switch indexPath.row {
+                case count - 3:
+                    tableView.reloadData()
                 case count - 6: // preload new results
                     _loadRandomUsers()
-                default: break
+                default:
+                    break
             }
         }
     }
-        
+    
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? NotebookCell {
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? CustomCell {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
             cell.backgroundColor = .systemRed
         }
