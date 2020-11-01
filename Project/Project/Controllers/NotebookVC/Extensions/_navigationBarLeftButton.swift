@@ -22,11 +22,12 @@ extension NotebookVC {
         let clearCache = UIAlertAction(title: "Очистить кэш", style: .destructive) { [self] action -> Void in
 
             let operationQueue = OperationQueue()
-            var params: [String:Any] = [:] {
-                didSet {
-                    print(params.count)
-                }
-            }
+            operationQueue.name = "\(type(of: self))._navigationBarLeftButton.clearCache"
+            operationQueue.qualityOfService = .background
+            operationQueue.maxConcurrentOperationCount = 1
+            operationQueue.underlyingQueue = .global(qos: .background)
+            
+            var params: [String:Any] = [:]
 
             let clearCache = BlockOperation {
                 guard let keys = StorageManager.shared.cache.allKeys() as? [String] else { return }
