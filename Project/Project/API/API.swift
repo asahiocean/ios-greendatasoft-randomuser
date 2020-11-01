@@ -20,9 +20,10 @@ struct API: GET, POST {
                         updateDatabase(db)
                     })
                 }
+                
                 operationQueue.addOperations([addPersons], waitUntilFinished: false)
                 operationQueue.addBarrierBlock {
-                    print("⬅️ \(type(of: self)): end of session")
+                    StorageManager.shared.accept(jsondata)
                 }
             }
         })

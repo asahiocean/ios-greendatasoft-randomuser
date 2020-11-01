@@ -5,11 +5,27 @@ import EGOCache
 final class StorageManager {
     
     let cache: EGOCache = EGOCache.global()
+    let timestamp = Int(Date().timeIntervalSince1970)
 
     static let shared: StorageManager = {
         let instance = StorageManager()
         return instance
     }()
+    
+    func accept<T>(_ value: T) {
+        switch value {
+        case let data as Data:
+            print("-> \(type(of: self)): as Data", data.count)
+            StorageManager.shared.cache.setData(data, forKey: "jsondata\(timestamp)", withTimeoutInterval: 2592000) // 2592000 sec == 1 month
+            DispatchQueue.main.async {
+                guard let delegate = NotebookVC().appDelegate, let context = NotebookVC().context else { return }
+                StorageManager.shared.saveObject(delegate, JsonData.self, context, "jsondata", data)
+            }
+            print("-> StorageManager: SAVED!")
+        default:
+            break
+        }
+    }
     
     /// CoreData
     func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ : T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any) {

@@ -25,7 +25,7 @@ class NotebookCustomCell: UITableViewCell {
 }
 
 extension NotebookCustomCell {
-    func initViews() {
+    fileprivate func initViews() {
         clipsToBounds = true
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.lightGray.cgColor
