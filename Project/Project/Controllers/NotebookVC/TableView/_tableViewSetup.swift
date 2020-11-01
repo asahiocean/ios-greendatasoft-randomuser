@@ -1,9 +1,8 @@
-import UIKit
-import SimpleImageViewer
+import UIKit.UITableView
 
 extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
-    internal func _tableViewSetup() {
-        tableView = UITableView(frame: view.frame, style: .plain)
+    final internal dynamic func _tableViewSetup() {
+        let tableView = UITableView(frame: view.frame, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,10 +30,13 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
     }
     //MARK: -- cellForRowAt
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NotebookCustomCellID, for: indexPath) as? NotebookCustomCell else { fatalError() }
-        cell.firstname.text = persons?.results[indexPath.row].name.first
-        cell.surname.text = persons?.results[indexPath.row].name.last
-        return cell
+        if let customCell = tableView.dequeueReusableCell(withIdentifier: NotebookCustomCellID, for: indexPath as IndexPath) as? NotebookCustomCell {
+            customCell.firstname.text = persons?.results[indexPath.row].name.first
+            customCell.surname.text = persons?.results[indexPath.row].name.last
+            return customCell
+        } else {
+            return UITableViewCell(style: .default, reuseIdentifier: NotebookCustomCellID)
+        }
     }
         
     //MARK: -- willDisplay cell
@@ -47,8 +49,13 @@ extension NotebookVC: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("")
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? NotebookCustomCell {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            cell.backgroundColor = .systemRed
+        }
     }
 }

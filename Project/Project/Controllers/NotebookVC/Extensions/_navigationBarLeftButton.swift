@@ -2,60 +2,45 @@ import UIKit
 import FontAwesome_swift
 
 extension NotebookVC {
-    fileprivate func cacheRemoveKey(_ allKeys: [String], _ completion: @escaping (String,Any) -> Void) {
+    fileprivate func cacheRemoveKey(_ allKeys: [String], _ completion: @escaping ([String:Any]) throws -> Void) {
+        var params: [String:Any] = [:]
         for timestamp in allKeys.indices {
             StorageManager.shared.cache.remove(forKey: allKeys[timestamp])
-            completion("deleted","\(allKeys[timestamp])")
+            params.updateValue(allKeys[timestamp], forKey: "deleted")
             if timestamp == allKeys.indices.dropLast().count {
-                completion("exist","\(allKeys[timestamp])")
+                params.updateValue(allKeys[timestamp], forKey: "exist")
+                try? completion(params)
             }
         }
     }
     
     @objc fileprivate func action() {
-        let alertController = UIAlertController(
+        let alert = UIAlertController(
             title: "Дополнительное меню",
             message: .none,
             preferredStyle: .actionSheet)
         
         // - - - - - -
-            
         let clearCache = UIAlertAction(title: "Очистить кэш", style: .destructive) { [self] action -> Void in
+            
+            var parameters: [String:Any] = [:]
 
-            let operationQueue = OperationQueue()
-            operationQueue.name = "\(type(of: self))._navigationBarLeftButton.clearCache"
-            operationQueue.qualityOfService = .background
-            operationQueue.maxConcurrentOperationCount = 1
-            operationQueue.underlyingQueue = .global(qos: .background)
-            
-            var params: [String:Any] = [:]
-
-            let clearCache = BlockOperation {
-                guard let keys = StorageManager.shared.cache.allKeys() as? [String] else { return }
-                func find(_ prefix: String) -> [String] { keys.filter { obj in obj.hasPrefix(prefix)}}
-                let jsondata = find("jsondata").sorted()
-                cacheRemoveKey(jsondata, { key,value in
-                    params.updateValue(value, forKey: key)
-                })
-            }
-            
-            operationQueue.addOperations([clearCache], waitUntilFinished: true)
-            
-            operationQueue.addBarrierBlock {
-                DispatchQueue(label: "\(type(of: self)).API.shared.post", qos: .utility).async {
-                    let rqst = URLRequest(url: URL(string: Url.post.rawValue.urlValid)!)
-                    API.shared.post(.contentType, rqst, params,{ data in
-                        print("✅", String(data: data, encoding: .utf8) ?? "")
-                    })
+            guard let keys = StorageManager.shared.cache.allKeys() as? [String] else { return }
+            cacheRemoveKey(keys.prefix("jsondata").sorted(), { array in
+                for (key,value) in array {
+                    parameters.updateValue(value, forKey: key)
                 }
-            }
+            })
+            
+            let request = URLRequest(url: URL(string: Url.post.rawValue.urlValid)!)
+            API.shared.post(.contentType, request, parameters,{ data in
+                print("✅", String(data: data, encoding: .utf8) ?? "")
+            })
         }
-        alertController.addAction(clearCache)
+        alert.addAction(clearCache)
         // - - - - - -
         
-        present(alertController, animated: true) {
-            alertController.exitIntuitive(vc: self)
-        }
+        present(alert, animated: true) { alert.exitIntuitive(vc: self) }
     }
     
     func _navigationBarLeftButton(size: CGSize, textColor: UIColor?) {

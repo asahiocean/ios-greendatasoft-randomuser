@@ -9,25 +9,16 @@ import CoreData
 
 class NotebookVC: UIViewController {
     
-    var tableView: UITableView!
-    var persons: Database? {
-        didSet {
-            DispatchQueue.main.async { [self] in
-                tableView.reloadData()
-            }
-        }
-    }
+    var persons: Database? { didSet { _databaseServiceFunction() }}
     
-    public var appDelegate: AppDelegate!
-    public var context: NSManagedObjectContext!
+    open var appDelegate: AppDelegate!
+    open var context: NSManagedObjectContext!
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Notebook"
-        view.layer.backgroundColor = #colorLiteral(red: 0.0170332063, green: 0.2035003901, blue: 0.1973262429, alpha: 1)
         _storageManagerSetup()
+        _loadRandomuser()
         _navigationBarSetup()
         _tableViewSetup()
-        _loadRandomuser()
     }
 }

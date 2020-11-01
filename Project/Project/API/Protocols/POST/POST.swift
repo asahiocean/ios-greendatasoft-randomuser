@@ -19,6 +19,7 @@ extension POST {
     
     func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)? = nil) {
         var request = request
+        
         switch type {
             case .contentType:
             DispatchQueue(label: "post.contentType", qos: .utility).async {
@@ -31,8 +32,8 @@ extension POST {
                     }
                 })
             }
-        default:
             break
+            // default: break
         }
     }
 }

@@ -19,7 +19,8 @@ extension GET {
                         completion(nil)
                     }
                 }
-            default: break
+            break
+            // default: break
         }
     }
 }
@@ -42,8 +43,7 @@ extension GET {
                 case 299...: // == error
                     try? completion(data, response, error)
                 // fallthrough // принудительно "проваливается" к следующему кейсу
-                default:
-                    break
+                default: break
                 }
             }
         }.resume()
