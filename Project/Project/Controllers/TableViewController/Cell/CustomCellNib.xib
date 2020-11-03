@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCellID" id="7ff-AS-XAc" customClass="CustomCell" customModule="Project" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomCellNib" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCellNib" id="7ff-AS-XAc" customClass="CustomCell" customModule="Project" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ff-AS-XAc" id="pXA-1m-1UH">
@@ -50,7 +50,7 @@
                     <constraint firstItem="Y8x-Ba-Xya" firstAttribute="leading" secondItem="adL-BY-if9" secondAttribute="trailing" constant="10" id="e1G-y3-HUr"/>
                 </constraints>
             </tableViewCellContentView>
-            <accessibility key="accessibilityConfiguration" identifier="CustomCellID">
+            <accessibility key="accessibilityConfiguration" hint="CustomCellNib" identifier="CustomCellNib" label="CustomCellNib">
                 <bool key="isElement" value="YES"/>
             </accessibility>
             <connections>

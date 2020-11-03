@@ -1,6 +1,6 @@
 import UIKit.UITableViewCell
 
-class CustomCell: UITableViewCell {    
+class CustomCell: UITableViewCell {
     @IBOutlet weak var nameStack: UIStackView!
     @IBOutlet weak var firstname: UILabel!
     @IBOutlet weak var surname: UILabel!

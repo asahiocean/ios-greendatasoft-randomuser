@@ -45,7 +45,6 @@
 		3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FFB254F4E8D0052A195 /* JSON.swift */; };
 		3D4C5014254F63380052A195 /* egoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C5013254F63380052A195 /* egoCache.swift */; };
 		3D4C5025254F640A0052A195 /* appDelegateSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C5024254F640A0052A195 /* appDelegateSetup.swift */; };
-		3D4E30512549FD7F00715411 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E30502549FD7F00715411 /* NavigationController.swift */; };
 		3D67A91525486431001E392F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91425486431001E392F /* AppDelegate.swift */; };
 		3D67A91725486431001E392F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91625486431001E392F /* SceneDelegate.swift */; };
 		3D67A91C25486431001E392F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D67A91A25486431001E392F /* Main.storyboard */; };
@@ -68,9 +67,9 @@
 		3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA1D25498A860048B7B0 /* APIGetTest.swift */; };
 		3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA2B25498F180048B7B0 /* APIPostTest.swift */; };
 		3DA12348254ED6AA00A54768 /* loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA12347254ED6AA00A54768 /* loadImage.swift */; };
-		3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
-		3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
-		3DC7C924254F1A32001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
+		3DC7C91F254F1A31001A1D83 /* CustomCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCellNib.xib */; };
+		3DC7C923254F1A31001A1D83 /* CustomCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCellNib.xib */; };
+		3DC7C924254F1A32001A1D83 /* CustomCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCellNib.xib */; };
 		3DE8F4FA25503B970036D5F3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE8F4F925503B970036D5F3 /* TableViewController.swift */; };
 		3DEB76742548998700763A2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76732548998700763A2B /* API.swift */; };
 		3DEB76B42548BB6B00763A2B /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB76B32548BB6B00763A2B /* Url.swift */; };
@@ -146,7 +145,6 @@
 		3D4C4FFB254F4E8D0052A195 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3D4C5013254F63380052A195 /* egoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = egoCache.swift; sourceTree = "<group>"; };
 		3D4C5024254F640A0052A195 /* appDelegateSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appDelegateSetup.swift; sourceTree = "<group>"; };
-		3D4E30502549FD7F00715411 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3D67A91125486431001E392F /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A91425486431001E392F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D67A91625486431001E392F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +159,7 @@
 		3D67A93525486433001E392F /* ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A93925486433001E392F /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		3D67A93B25486433001E392F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D680097254B2C640021C56F /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		3D680097254B2C640021C56F /* CustomCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellNib.xib; sourceTree = "<group>"; };
 		3D6800BA254B47900021C56F /* _navigationBarThemeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarThemeConfig.swift; sourceTree = "<group>"; };
 		3D6800FD254B616F0021C56F /* _navigationBarLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarLeftButton.swift; sourceTree = "<group>"; };
 		3D68FEDF254A35CC0021C56F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 			children = (
 				3D680135254B65370021C56F /* TableViewController */,
 				3D680137254B656B0021C56F /* UIAlertController */,
-				3D680138254B657B0021C56F /* UINavigationController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -572,14 +569,6 @@
 			path = UIAlertController;
 			sourceTree = "<group>";
 		};
-		3D680138254B657B0021C56F /* UINavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				3D4E30502549FD7F00715411 /* NavigationController.swift */,
-			);
-			path = UINavigationController;
-			sourceTree = "<group>";
-		};
 		3D68FFAD254AEB010021C56F /* NotebookVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,7 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				3D68FEDF254A35CC0021C56F /* CustomCell.swift */,
-				3D680097254B2C640021C56F /* CustomCell.xib */,
+				3D680097254B2C640021C56F /* CustomCellNib.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -867,7 +856,7 @@
 			files = (
 				3D67A92425486433001E392F /* LaunchScreen.storyboard in Resources */,
 				3D67A92125486433001E392F /* Assets.xcassets in Resources */,
-				3DC7C924254F1A32001A1D83 /* CustomCell.xib in Resources */,
+				3DC7C924254F1A32001A1D83 /* CustomCellNib.xib in Resources */,
 				3D67A91C25486431001E392F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -876,7 +865,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */,
+				3DC7C923254F1A31001A1D83 /* CustomCellNib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,7 +873,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */,
+				3DC7C91F254F1A31001A1D83 /* CustomCellNib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,7 +1039,6 @@
 				3DF73C8D2550B2BC0053BA81 /* HandlerDelegate.swift in Sources */,
 				3D67A91F25486431001E392F /* Project.xcdatamodeld in Sources */,
 				3D15476C254C689E00F6BBA2 /* Coordinates.swift in Sources */,
-				3D4E30512549FD7F00715411 /* NavigationController.swift in Sources */,
 				3D1546CC254C5C2600F6BBA2 /* Results.swift in Sources */,
 				3D154895254CFBFF00F6BBA2 /* newJSONEncoder.swift in Sources */,
 				3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */,
