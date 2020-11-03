@@ -10,7 +10,7 @@ class APIGetTest: XCTestCase {
     }
 
     func testExample() throws {
-        guard let url = URL(string: Url.get.rawValue.urlValid) else { fatalError() }
+        guard let url = URL(string: Url.getUsers.rawValue.urlValid) else { fatalError() }
         API.shared.get(.dataTask, URLRequest(url: url), { data in
             if let data = data {
                 do {

@@ -1,8 +1,7 @@
 import UIKit
 
-extension NotebookVC {
-    internal func _navigationBarColorConfig(_ style: UIBarStyle? = .default, bg: UIColor?, font: UIColor?, tint: UIColor?
-    ) {
+extension TableViewController {
+    internal func _navigationBarColorConfig(_ style: UIBarStyle? = .default, bg: UIColor?, font: UIColor?, tint: UIColor?){
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = bg ?? .systemBackground
         appearance.titleTextAttributes =

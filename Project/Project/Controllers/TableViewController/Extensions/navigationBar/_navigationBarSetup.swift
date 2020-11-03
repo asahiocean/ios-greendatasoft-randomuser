@@ -1,6 +1,6 @@
 import UIKit.UIGeometry
 
-extension NotebookVC {    
+extension TableViewController {
     final internal dynamic func _navigationBarSetup() {
         self.title = "Notebook"
         

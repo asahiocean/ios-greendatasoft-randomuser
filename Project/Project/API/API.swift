@@ -1,20 +1,14 @@
-import Foundation
+import UIKit
 
-struct API: GET, POST {    
-    
-    static let shared = API()
-    
-    dynamic func loadRandomuser(_ completion: @escaping (Database) throws -> Void) {
-        self.get(.dataTask, URLRequest(url: URL(string: Url.get.rawValue.urlValid)!), { data -> Void in
-            //MARK: хз почему через iflet пролетала нулевая data
-            if (data?.count ?? 0) > 0, let data = data {
-                let d = JSONDecoder()
-                d.keyDecodingStrategy = .convertFromSnakeCase
-                d.dateDecodingStrategy = .iso8601
-                StorageManager.shared.accept(data)
-                try? completion(try d.decode(Database.self, from: data))
-            }
-        })
+final class API: GET, POST {
+    public static let shared = API()
+
+    func loadRandomUsers(_ n: Int) {
+        if let url = URL(string: Url.getUsers.rawValue+"\(n)") {
+            self.get(URLRequest(url: url),{ data,_,_ -> Void in
+                Handler.shared.apidata(data)
+            })
+        }
     }
     private init() { }
 }

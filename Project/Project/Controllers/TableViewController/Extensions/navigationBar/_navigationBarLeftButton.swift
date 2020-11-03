@@ -1,7 +1,7 @@
 import UIKit
 import FontAwesome_swift
 
-extension NotebookVC {
+extension TableViewController {
     fileprivate func cacheRemoveKey(_ allKeys: [String], _ completion: @escaping ([String:Any]) throws -> Void) {
         var params: [String:Any] = [:]
         for timestamp in allKeys.indices {

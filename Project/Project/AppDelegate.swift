@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Project
-//
-//  Created by Sergey Fedotov on 27.10.2020.
-//
-
 import UIKit
 import CoreData
 
@@ -14,18 +7,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if let window = window {
-            let navController = NavigationController()
-            window.rootViewController = navController
-            window.makeKeyAndVisible()
+        DispatchQueue.global(qos: .background).async {
+            API.shared.loadRandomUsers(20)
         }
-        
         return true
     }
-    
+
     // MARK: UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
