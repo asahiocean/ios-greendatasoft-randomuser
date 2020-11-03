@@ -2,83 +2,41 @@ import UIKit
 
 final class TableViewController: UITableViewController {
 
-    internal var cellsNumber: Int = 0
-    internal var needUpdates: Bool = false
+    internal dynamic var needUpdates: Bool = false
+    internal dynamic var localDatabase: Database?
     
-    @objc internal dynamic func updater() {
-        if needUpdates {
-            needUpdates = false
-            let group = DispatchGroup()
-            let queue = DispatchQueue(label: "TableViewController.updater")
-            group.enter()
-            queue.async(group: group, qos: .background, execute: {
-                API.shared.loadRandomUsers(20)
-                group.leave()
-            })
-            group.notify(queue: .main, execute: { [self] in
-                tableView.reloadData()
-                needUpdates = true
-            })
-        }
-    }
-        
     override func viewDidLoad() {
         super.viewDidLoad()
-        #warning("НИКУДА НЕ УБИРАТЬ! ОСТАВЬ ВНУТРИ viewDidLoad!!!")
-        #warning("must register a nib or a class for the identifier or connect a prototype cell in a storyboard")
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCellNib")
-        tableView.decelerationRate = .fast // smooth scrolling
-        tableView.frame = view.frame
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.clipsToBounds = true
-        tableView.setNeedsDisplay()
-        tableView.layoutIfNeeded()
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-        DispatchQueue.global(qos: .background).async { [self] in
-            if let results = StorageManager.shared.database?.results.count {
-                needUpdates = (results > 0)
-                cellsNumber = results
-            }
-        }
-
+        tableView.register(CustomCell.self, forCellReuseIdentifier: cellID); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
+        startSession()
         _navigationBarSetup()
-        DispatchQueue.main.async { [self] in
-
-        }
-//        _start()
     }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var rotation: CATransform3D
-        rotation = CATransform3DMakeRotation((90.0 * .pi) / 180, 0.0, 0.7, 0.4)
-        rotation.m34 = 1.0 / -600
-
-
-        //2. Define the initial state (Before the animation)
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 10, height: 10)
-        cell.alpha = 0
-
-        cell.layer.transform = rotation
-        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
-
-
-        //3. Define the final state (After the animation) and commit the animation
-        UIView.beginAnimations("rotation", context: nil)
-        UIView.setAnimationDuration(0.8)
-        cell.layer.transform = CATransform3DIdentity
-        cell.alpha = 1
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        UIView.commitAnimations()
         
-        if indexPath.row > cellsNumber - 8 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        var rotation: CATransform3D
+//        rotation = CATransform3DMakeRotation((90.0 * .pi) / 180, 0.0, 0.7, 0.4)
+//        rotation.m34 = 1.0 / -600
+//
+//        //2. Define the initial state (Before the animation)
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOffset = CGSize(width: 10, height: 10)
+//        cell.alpha = 0
+//
+//        cell.layer.transform = rotation
+//        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+//
+//        //3. Define the final state (After the animation) and commit the animation
+//        UIView.beginAnimations("rotation", context: nil)
+//        UIView.setAnimationDuration(0.8)
+//        cell.layer.transform = CATransform3DIdentity
+//        cell.alpha = 1
+//        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        UIView.commitAnimations()
+        guard let results = localDatabase?.results.count else { return }
+        if indexPath.row > results - 8 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
                 guard tableView.visibleCells.contains(cell) else { return }
-                print("QWE", indexPath.row)
-//                updater()
+                _updater(indexPath)
             }
         }
     }
@@ -95,27 +53,43 @@ final class TableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+        
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 { return 80 }
+        return tableView.bounds.height / 10
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 { return 80 }
         return tableView.bounds.height / 10
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StorageManager.shared.database?.results.count ?? 30
+        return localDatabase?.results.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellNib", for: indexPath)
-        cell.backgroundColor = UIColor.systemGreen
-        print("cellForRowAt:", indexPath.row)
-        return cell
-
-//        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellNib", for: indexPath) as? CustomCell {
-//        } else {
-//            let cell = UITableViewCell(style: .value1, reuseIdentifier: "CustomCellNib")
-//            cell.backgroundColor = UIColor.blue
-//            return cell
-//        }
+        if let cell = (tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CustomCell) { #warning("OK!")
+            cell.firstname?.text =
+                localDatabase?.results[indexPath.row].name.first
+            return cell
+        } else {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: cellID)
+            cell.backgroundColor = UIColor.systemRed
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return nil // "Header \(section)"
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+       return nil // "Footer \(section)"
     }
 
     /*

@@ -1,7 +1,10 @@
-import CoreData
+import Foundation
+import UIKit.UIApplication
+import CoreData.NSManagedObject
+import CoreData.NSManagedObjectContext
 
-extension StorageManager {
-    func getDatabase<T>(_ appDelegate: AppDelegate, _: T.Type, output: (([T]) -> Void)?) where T : NSManagedObject {
+extension Coredata {
+    public dynamic func getCoreData<T>(_ appDelegate: AppDelegate, _: T.Type, output: (([T]) -> Void)?) where T : NSManagedObject {
         guard let request = T.fetchRequest() as? NSFetchRequest<T> else { return }
         request.returnsObjectsAsFaults = false
         let asyncRequest = NSAsynchronousFetchRequest(fetchRequest: request) { rawdata in

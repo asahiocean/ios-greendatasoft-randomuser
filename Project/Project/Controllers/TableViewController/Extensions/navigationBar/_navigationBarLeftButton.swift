@@ -9,12 +9,15 @@ extension TableViewController {
             params.updateValue(allKeys[timestamp], forKey: "deleted")
             if timestamp == allKeys.indices.dropLast().count {
                 params.updateValue(allKeys[timestamp], forKey: "exist")
+                for (key,value) in params {
+                    print(key,value)
+                }
                 try? completion(params)
             }
         }
     }
     
-    @objc fileprivate func action() {
+    @objc fileprivate func actionLeft() {
         let alert = UIAlertController(
             title: "Дополнительное меню",
             message: .none,
@@ -52,6 +55,6 @@ extension TableViewController {
                 size: size),
             style: .plain,
             target: self,
-            action: #selector(action))
+            action: #selector(actionLeft))
     }
 }

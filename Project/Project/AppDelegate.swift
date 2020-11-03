@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-@UIApplicationMain //@main
+@main // @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

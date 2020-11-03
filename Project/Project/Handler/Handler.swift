@@ -7,7 +7,7 @@ final class Handler: APIData, JSON {
     
     func apidata(_ data: Data?) {
         if let data = data {
-            self.jsonStorageManager(data)
+            jsonHandler(data)
         } else {
             
         }

@@ -2,12 +2,15 @@ import UIKit.UIApplication
 import CoreData
 import EGOCache
 
-final class StorageManager: DatabaseWorker {
 
+final class StorageManager: Coredata, DatabaseWorker {
+    
     public static var shared = StorageManager()
     
     public let cache: EGOCache = EGOCache.global()
-    fileprivate(set) public dynamic var database: Database?
+    fileprivate(set) public dynamic var database: Database? { didSet {
+        print(database?.results.count)
+    }}
     
     dynamic func statusDatabase(_ status: Status, result: @escaping StatusType){
         switch status {
@@ -26,6 +29,11 @@ final class StorageManager: DatabaseWorker {
                 database?.results.append(result)
             }
         }
+    }
+    
+    public dynamic func getDatabase(_ result: @escaping GetDB) {
+        guard let db = database else { return }
+        result(db)
     }
         
     dynamic func handlerData(_ data: Data) {

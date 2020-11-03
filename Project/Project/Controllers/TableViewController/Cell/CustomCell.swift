@@ -1,23 +1,26 @@
-import UIKit.UITableViewCell
+import UIKit
 
+public let cellID: String = "CustomCell"
 class CustomCell: UITableViewCell {
-    @IBOutlet weak var nameStack: UIStackView!
-    @IBOutlet weak var firstname: UILabel!
-    @IBOutlet weak var surname: UILabel!
-    @IBOutlet weak var photo: UIImageView!
+
+    @IBOutlet var view: UIView?
+    @IBOutlet var firstname: UILabel?
     
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        initViews()
+        config(); #warning("OK")
     }
-            
+    
     required init?(coder aDecoder: NSCoder) {
         if aDecoder == .none {
             fatalError("init(coder:) has not been implemented")
         } else {
             super.init(coder: aDecoder)
-            initViews()
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
         
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,8 +29,9 @@ class CustomCell: UITableViewCell {
 }
 
 extension CustomCell {
-    fileprivate func initViews() {
-        layer.borderWidth = 0.5
+    fileprivate func config() {
+        layer.cornerRadius = 5
+        layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
         autoresizingMask =
             [.flexibleWidth, .flexibleHeight]

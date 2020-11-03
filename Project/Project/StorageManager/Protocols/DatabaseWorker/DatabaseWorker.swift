@@ -3,7 +3,8 @@ import CoreData.NSManagedObject
 
 protocol DatabaseWorker {
     typealias StatusType = ((Status._type) -> ())
+    typealias GetDB = ((Database) -> Void)
     dynamic mutating func setDatabase(_ db: Database)
-    dynamic func getDatabase<T: NSManagedObject>(_ appDelegate: AppDelegate, _ : T.Type, output: (([T]) -> Void)?)
+    dynamic mutating func getDatabase(_ result: @escaping GetDB)
     dynamic func statusDatabase(_ status: Status, result: @escaping StatusType)
 }

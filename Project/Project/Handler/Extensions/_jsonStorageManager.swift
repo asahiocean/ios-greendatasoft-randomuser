@@ -1,7 +1,7 @@
 import Foundation
 
 extension Handler {
-    final internal dynamic func jsonStorageManager(_ data: Data) {
+    final internal dynamic func jsonHandler(_ data: Data) {
         do {
             let json = try jsonDecoder.decode(Database.self, from: data)
             let queue = DispatchQueue(label: "Handler.jsonStorageManager")
