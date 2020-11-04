@@ -1,6 +1,7 @@
 import Foundation
 
-struct Login: Codable {
+struct Login: Codable, Equatable, Identifiable {
+    var id: UUID
     let uuid: String
     var username: String
     var password: String
@@ -8,6 +9,10 @@ struct Login: Codable {
     let md5: String
     var sha1: String
     var sha256: String
+    
+    static func ==(lhs: Login, rhs: Login) -> Bool {
+        return lhs.uuid == rhs.uuid && lhs.username == rhs.username && lhs.password == rhs.password && lhs.salt == rhs.salt && lhs.md5 == rhs.md5 && lhs.sha1 == rhs.sha1 && lhs.sha256 == rhs.sha256
+    }
 
     private enum CodingKeys: String, CodingKey {
         case uuid = "uuid"
@@ -27,6 +32,7 @@ struct Login: Codable {
         self.md5 = md5
         self.sha1 = sha1
         self.sha256 = sha256
+        self.id = UUID()
     }
 
     internal init(from decoder: Decoder) throws {
@@ -38,6 +44,7 @@ struct Login: Codable {
         md5 = try values.decode(String.self, forKey: .md5)
         sha1 = try values.decode(String.self, forKey: .sha1)
         sha256 = try values.decode(String.self, forKey: .sha256)
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

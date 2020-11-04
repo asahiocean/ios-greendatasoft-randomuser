@@ -1,9 +1,9 @@
 import Foundation
 
-enum Postcode: Codable {
+enum Postcode: Codable, Equatable {
     case integer(Int)
     case string(String)
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let x = try? container.decode(Int.self) {

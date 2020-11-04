@@ -3,6 +3,8 @@ import CoreData
 
 extension StorageManager {
     public func coreData(_ data: Data) {
-        saveObject(StorageManager.appDelegate, JsonData.self, StorageManager.viewContext, "jsondata", data)
-    }        
+        DispatchQueue.main.async { [self] in
+            saveObject(appDelegate, JsonData.self, viewContext, "jsondata", data); // #warning("OK")
+        }
+    }
 }

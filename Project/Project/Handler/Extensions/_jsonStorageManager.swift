@@ -1,17 +1,17 @@
 import Foundation
 
+let jsonHandlerQueue = DispatchQueue(label: "com.Handler.jsonHandler")
+let jsonHandlerGroup = DispatchGroup()
 extension Handler {
-    final internal dynamic func jsonHandler(_ data: Data) {
+    final dynamic func jsonHandler(_ data: Data) {
         do {
             let json = try jsonDecoder.decode(Database.self, from: data)
-            let queue = DispatchQueue(label: "Handler.jsonStorageManager")
-            let group = DispatchGroup()
-            group.enter()
-            queue.async(group: group, execute: {
+            jsonHandlerGroup.enter()
+            jsonHandlerQueue.async(group: jsonHandlerGroup, qos: .background, execute: {
                 StorageManager.shared.setDatabase(json)
-                group.leave()
+                // jsonHandlerGroup.leave()
             })
-            group.notify(qos: .background, queue: queue, execute: {
+            jsonHandlerGroup.notify(queue: .main, execute: {
                 StorageManager.shared.handlerData(data)
             })
         } catch let error as NSError {

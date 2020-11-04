@@ -1,11 +1,19 @@
 import Foundation
 
-struct Location: Codable {
+struct Location: Codable, Equatable, Identifiable {
+    var id: UUID
     var street: Street
-    var city, state, country: String
+    var city: String
+    var state: String
+    var country: String
     var postcode: Postcode
     var coordinates: Coordinates
     var timezone: Timezone
+    
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        return lhs.id == rhs.id && lhs.street == rhs.street && lhs.city == rhs.city && lhs.state == rhs.state && lhs.country == rhs.country && lhs.postcode == rhs.postcode && lhs.coordinates == rhs.coordinates && lhs.timezone == rhs.timezone
+    }
+
     
     private enum CodingKeys: String, CodingKey {
         case street = "street"
@@ -25,6 +33,7 @@ struct Location: Codable {
         self.postcode = postcode
         self.coordinates = coordinates
         self.timezone = timezone
+        self.id = UUID()
     }
 
     internal init(from decoder: Decoder) throws {
@@ -36,6 +45,7 @@ struct Location: Codable {
         postcode = try values.decode(Postcode.self, forKey: .postcode)
         coordinates = try values.decode(Coordinates.self, forKey: .coordinates)
         timezone = try values.decode(Timezone.self, forKey: .timezone)
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

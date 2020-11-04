@@ -1,10 +1,12 @@
 import UIKit
+import SimpleImageViewer
 
-public let cellID: String = "CustomCell"
 class CustomCell: UITableViewCell {
-
-    @IBOutlet var view: UIView?
-    @IBOutlet var firstname: UILabel?
+    
+    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var firstname: UILabel!
+    @IBOutlet weak var surname: UILabel!
     
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,6 +21,14 @@ class CustomCell: UITableViewCell {
         }
     }
     
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
     }
@@ -30,10 +40,9 @@ class CustomCell: UITableViewCell {
 
 extension CustomCell {
     fileprivate func config() {
-        layer.cornerRadius = 5
         layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
-        autoresizingMask =
-            [.flexibleWidth, .flexibleHeight]
+//        autoresizingMask =
+//            [.flexibleWidth, .flexibleHeight]
     }
 }

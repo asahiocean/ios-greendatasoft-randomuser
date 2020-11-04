@@ -1,8 +1,13 @@
 import Foundation
 
-struct Dob: Codable {
+struct Dob: Codable, Equatable, Identifiable {
     var date: String
     var age: Int
+    var id: UUID
+    
+    static func ==(lhs: Dob, rhs: Dob) -> Bool {
+        return lhs.id == rhs.id && lhs.date == rhs.date && lhs.age == rhs.age
+    }
     
     private enum CodingKeys: String, CodingKey {
         case date = "date"
@@ -12,12 +17,14 @@ struct Dob: Codable {
     init(date: String?, age: Int?) {
         self.date = date ?? ""
         self.age = age ?? 0
+        self.id = UUID()
     }
 
     internal init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         date = try values.decode(String.self, forKey: .date)
         age = try values.decode(Int.self, forKey: .age)
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

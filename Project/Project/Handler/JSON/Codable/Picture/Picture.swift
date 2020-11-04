@@ -1,14 +1,15 @@
 import UIKit
 
-struct Picture: Codable {
+struct Picture: Codable, Equatable, Identifiable {
+    var id: UUID
     var large: String
     var medium: String
     var thumbnail: String
     
-//    var large_image: UIImage
-//    var medium_image: UIImage
-//    var thumbnail_image: UIImage
-    
+    static func ==(lhs: Picture, rhs: Picture) -> Bool {
+        return lhs.large == rhs.large && lhs.medium == rhs.medium && lhs.thumbnail == rhs.thumbnail
+    }
+        
     private enum CodingKeys: String, CodingKey {
         case large = "large"
         case medium = "medium"
@@ -19,10 +20,7 @@ struct Picture: Codable {
         self.large = large
         self.medium = medium
         self.thumbnail = thumbnail
-        
-//        self.large_image = loadImage(large)
-//        self.medium_image = loadImage(medium)
-//        self.thumbnail_image = loadImage(thumbnail)
+        self.id = UUID()
     }
 
     internal init(from decoder: Decoder) throws {
@@ -30,9 +28,7 @@ struct Picture: Codable {
         large = try values.decode(String.self, forKey: .large)
         medium = try values.decode(String.self, forKey: .medium)
         thumbnail = try values.decode(String.self, forKey: .thumbnail)
-//        large_image = self.loadImage(try values.decode(String.self, forKey: .large))
-//        medium_image = self.loadImage(try values.decode(String.self, forKey: .medium))
-//        thumbnail_image = self.loadImage(try values.decode(String.self, forKey: .thumbnail))
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

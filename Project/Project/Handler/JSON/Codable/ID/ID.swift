@@ -1,9 +1,13 @@
 import Foundation
 
 // MARK: - ID
-struct ID: Codable {
+struct ID: Codable, Equatable {
     var name: String
     var value: String?
+    
+    static func ==(lhs: ID, rhs: ID) -> Bool {
+        return lhs.name == rhs.name && lhs.value == rhs.value
+    }
     
     private enum CodingKeys: String, CodingKey {
         case name = "name"

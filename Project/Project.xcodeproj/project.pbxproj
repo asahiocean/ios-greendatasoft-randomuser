@@ -73,7 +73,7 @@
 		3DDC58512551224E00AC120F /* Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC58502551224E00AC120F /* Coredata.swift */; };
 		3DDC5857255122D100AC120F /* getCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC5856255122D100AC120F /* getCoreData.swift */; };
 		3DDC585F2551231000AC120F /* saveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC585E2551231000AC120F /* saveObject.swift */; };
-		3DDC58C12551277300AC120F /* _updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC58C02551277300AC120F /* _updater.swift */; };
+		3DDC58C12551277300AC120F /* updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC58C02551277300AC120F /* updater.swift */; };
 		3DDC59042551327500AC120F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC59022551327500AC120F /* NavigationController.swift */; };
 		3DDC59052551327500AC120F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC59022551327500AC120F /* NavigationController.swift */; };
 		3DDC59062551327500AC120F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC59022551327500AC120F /* NavigationController.swift */; };
@@ -182,7 +182,7 @@
 		3DDC58502551224E00AC120F /* Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coredata.swift; sourceTree = "<group>"; };
 		3DDC5856255122D100AC120F /* getCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoreData.swift; sourceTree = "<group>"; };
 		3DDC585E2551231000AC120F /* saveObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveObject.swift; sourceTree = "<group>"; };
-		3DDC58C02551277300AC120F /* _updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _updater.swift; sourceTree = "<group>"; };
+		3DDC58C02551277300AC120F /* updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updater.swift; sourceTree = "<group>"; };
 		3DDC59022551327500AC120F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3DE8F4F925503B970036D5F3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3DEB76732548998700763A2B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -568,7 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF73D822550D65A0053BA81 /* _startFunc.swift */,
-				3DDC58C02551277300AC120F /* _updater.swift */,
+				3DDC58C02551277300AC120F /* updater.swift */,
 				3D6FB432254ECDF400CEF2C8 /* navigationBar */,
 			);
 			path = Extensions;
@@ -1053,7 +1053,7 @@
 				3DA12348254ED6AA00A54768 /* loadImage.swift in Sources */,
 				3D154786254C69E200F6BBA2 /* Timezone.swift in Sources */,
 				3D6800BB254B47900021C56F /* _navigationBarThemeConfig.swift in Sources */,
-				3DDC58C12551277300AC120F /* _updater.swift in Sources */,
+				3DDC58C12551277300AC120F /* updater.swift in Sources */,
 				3D154772254C68CE00F6BBA2 /* ExtensionCoordinates.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */,
 				3DEB76BA2548C33200763A2B /* httpMethod.swift in Sources */,
@@ -1291,7 +1291,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1315,7 +1315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

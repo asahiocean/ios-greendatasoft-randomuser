@@ -1,6 +1,6 @@
 import Foundation
 
-struct Results: Codable {
+struct Results: Codable, Equatable {
     var gender: Gender
     var name: Name
     var location: Location
@@ -8,10 +8,15 @@ struct Results: Codable {
     var login: Login
     var dob: Dob
     var registered: Registered
-    var phone, cell: String
+    var phone: String
+    var cell: String
     var id: ID
     var picture: Picture
     var nat: String
+    
+    static func == (lhs: Results, rhs: Results) -> Bool {
+        lhs.gender == rhs.gender && lhs.name == rhs.name && lhs.location == rhs.location && lhs.email == rhs.email && lhs.login == rhs.login && lhs.dob == rhs.dob && lhs.registered == rhs.registered && lhs.phone == rhs.phone && lhs.cell == rhs.cell && lhs.id == rhs.id && lhs.picture == rhs.picture && lhs.nat == rhs.nat
+    }
     
     private enum CodingKeys: String, CodingKey {
         case gender = "gender"

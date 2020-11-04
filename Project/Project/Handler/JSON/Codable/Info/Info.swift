@@ -1,15 +1,22 @@
 import Foundation
 
-struct Info: Codable {
+struct Info: Codable, Equatable, Identifiable {
+    var id: UUID
     var seed: String
-    var results, page: Int
+    var results: Int
+    var page: Int
     var version: String
+    
+    static func ==(lhs: Info, rhs: Info) -> Bool {
+        return lhs.id == rhs.id && lhs.seed == rhs.seed && lhs.results == rhs.results && lhs.page == rhs.page && lhs.version == rhs.version
+    }
     
     init(seed: String?, results: Int?, page: Int?, version: String?) {
         self.seed = seed ?? ""
         self.results = results ?? 0
         self.page = page ?? 0
         self.version = version ?? ""
+        self.id = UUID()
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -25,6 +32,7 @@ struct Info: Codable {
         results = try values.decode(Int.self, forKey: .results)
         page = try values.decode(Int.self, forKey: .page)
         version = try values.decode(String.self, forKey: .version)
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

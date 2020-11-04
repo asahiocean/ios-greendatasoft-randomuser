@@ -1,9 +1,14 @@
 import Foundation
 
-struct Name: Codable {
+struct Name: Codable, Equatable, Identifiable {
+    var id: UUID
     let title: String
     var first: String
     var last: String
+    
+    static func ==(lhs: Name, rhs: Name) -> Bool {
+        return lhs.title == rhs.title && lhs.first == rhs.first && lhs.last == rhs.last
+    }
 
     private enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -15,6 +20,7 @@ struct Name: Codable {
         self.title = title
         self.first = first
         self.last = last
+        self.id = UUID()
     }
 
     internal init(from decoder: Decoder) throws {
@@ -22,6 +28,7 @@ struct Name: Codable {
         title = try values.decode(String.self, forKey: .title)
         first = try values.decode(String.self, forKey: .first)
         last = try values.decode(String.self, forKey: .last)
+        id = UUID()
     }
 
     func encode(to encoder: Encoder) throws {

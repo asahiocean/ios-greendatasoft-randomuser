@@ -1,24 +1,26 @@
 import Foundation
 
 protocol GET {
-    func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void)
+    static func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void)
 }
 
 extension GET {
-    internal func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void) {
+    internal static dynamic func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void) {
+        DispatchQueue(label: "URLSession.shared.dataTask", qos: .background).async {
         URLSession.shared.dataTask(with: request) { (data,resp,error) in
-            if let status = (resp as? HTTPURLResponse)?.statusCode {
+            if let data = data, let status = (resp as? HTTPURLResponse)?.statusCode {
                 switch status {
                 case (200...299):
-                    if let data = data {
-                        completion(data,resp,error)
-                    }
+                    completion(data,resp,error)
                 case 299...: // == error
                     completion(nil,nil,nil)
                 // fallthrough // принудительно "проваливается" к следующему кейсу
                 default: break
                 }
+            } else { // NO INTERNET
+                completion(nil,nil,nil)
             }
         }.resume()
+        }
     }
 }
