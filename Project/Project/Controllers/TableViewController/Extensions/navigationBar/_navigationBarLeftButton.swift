@@ -36,7 +36,7 @@ extension TableViewController {
             })
             
             let request = URLRequest(url: URL(string: Url.post.rawValue.urlValid)!)
-            API.shared.post(.contentType, request, parameters,{ data in
+            API.post(.contentType, request, parameters,{ data in
                 print("✅", String(data: data, encoding: .utf8) ?? "")
             })
         }

@@ -1,5 +1,5 @@
 import Foundation
 
 protocol APIData {
-    func apidata(_ data: Data?)
+    mutating func apidata(_ data: Data?)
 }

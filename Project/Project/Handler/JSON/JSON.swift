@@ -1,10 +1,10 @@
 import Foundation
 
 protocol JSON {
-    var jsonDecoder: JSONDecoder! { get }
+    static var jsonDecoder: JSONDecoder! { get }
 }
 extension JSON {
-    var jsonDecoder: JSONDecoder {
+    static var jsonDecoder: JSONDecoder {
         let decod = JSONDecoder()
         decod.keyDecodingStrategy = .convertFromSnakeCase
         decod.dateDecodingStrategy = .iso8601

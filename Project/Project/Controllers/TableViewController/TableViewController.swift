@@ -1,23 +1,29 @@
 import UIKit
+import Nuke
 
-let updaterQueue = DispatchQueue(label: "com.updater.queue")
+let updaterQueue = DispatchQueue(label: "com.updater.queue", qos: .background, attributes: .concurrent)
 let updaterGroup = DispatchGroup()
 
 final class TableViewController: UITableViewController {
     
     internal var needUpdates: Bool = true
     internal let storage = StorageManager.shared
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
+        tableView.decelerationRate = .fast // smooth scrolling
         updater()
         _navigationBarSetup()
-        tableView.decelerationRate = .fast // smooth scrolling
     }
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewSetup()
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let results = storage.database?.results, indexPath.row > (results.count - 8), needUpdates == false else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.10, qos: .background, execute: { [self] in
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1, execute: { [self] in
             guard tableView.visibleCells.contains(cell) else { return }
             needUpdates = true
             updater()
@@ -50,18 +56,19 @@ final class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height / 10
     }
-    
     //MARK: -- cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
         if let cell: CustomCell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath as IndexPath) as? CustomCell) { // #warning("OK!")
             cell.firstname?.text =
                 storage.database?.results[indexPath.row].name.first
+            cell.surname?.text =
+                storage.database?.results[indexPath.row].name.last
+            cell.imageViewPhoto?.image = storage.database?.results[indexPath.row].picture.thumbnailImage
             return cell
         } else {
-            let cell: UITableViewCell = UITableViewCell(style: .value1, reuseIdentifier: CustomCell.identifier)
-            cell.backgroundColor = UIColor.systemRed
-            return cell
+            let defaultCell: UITableViewCell = UITableViewCell(style: .value1, reuseIdentifier: CustomCell.identifier)
+            defaultCell.backgroundColor = UIColor.systemRed
+            return defaultCell
         }
     }
     /*

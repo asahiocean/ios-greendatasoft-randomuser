@@ -1,7 +1,8 @@
 import Foundation
 
 final class Handler: APIData, JSON {
-    var jsonDecoder: JSONDecoder!
+    static var jsonDecoder: JSONDecoder!
+    internal let storage: StorageManager = StorageManager.shared
 
     public static let shared = Handler()
     
@@ -9,7 +10,7 @@ final class Handler: APIData, JSON {
         if let data = data {
             jsonHandler(data)
         } else {
-            let cache = StorageManager.shared.cache
+            let cache = storage.cache
             if let keys = cache.allKeys() as? [String] {
                 let items = keys.prefix("jsondata").sorted()
                 for item in items {

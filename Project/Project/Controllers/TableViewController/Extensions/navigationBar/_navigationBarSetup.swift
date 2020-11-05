@@ -12,8 +12,9 @@ extension TableViewController {
         let color = navigationController?.navigationBar.tintColor ?? .white
         
         _navigationBarLeftButton(size: buttonSize, textColor: color) //MARK: <- Left Button Action
-        _navigationBarRightButton(size: buttonSize, textColor: color) //MARK: <- Left Button Action
-        
         navigationItem.leftBarButtonItem?.accessibilityIdentifier = "navigationItem.leftBarButtonItem"
+        
+         _navigationBarRightActivityIndicator()
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "navigationItem.rightBarButtonItem"
     }
 }

@@ -9,51 +9,37 @@ final class StorageManager: Coredata, DatabaseWorker {
     internal var viewContext: NSManagedObjectContext!
     
     public let cache: EGOCache = EGOCache.global()
-    fileprivate(set) public dynamic var database: Database? {
-        didSet {
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.15, execute: {
-                self.setGroup.leave()
-            })
+    fileprivate(set) public dynamic var database: Database?
+    
+    func setdb(results: [Results], info: Info) {
+        switch database {
+        case nil:
+            database = Database.init(results: results, info: info)
+        default:
+            for item in results {
+                database?.results.append(item)
+            }
         }
     }
     
-    dynamic func statusDatabase(_ status: Status, state: @escaping State) {
+    static func getdb(_ completion: @escaping InfRes) {
+        guard let db = StorageManager().database else { return }
+        completion(db.results, db.info)
+    }
+    
+    static func statusdb(_ status: Status, state: @escaping State) {
+        guard let db = StorageManager().database else { return }
         switch status {
             case .count:
-                state(database?.results.count ?? 0)
+                state(db.results.count)
             break
             // default: break
         }
     }
-
-    private let setQueue = DispatchQueue(label: "com.StorageManager.setQueue")
-    private let setGroup = DispatchGroup()
-    public func setDatabase(_ db: Database) {
-        setGroup.enter()
-        setQueue.async(group: setGroup, execute: { [self] in
-            switch database {
-            case nil:
-                database = db
-            default:
-                database?.results.append(contentsOf: db.results)
-            }
-        })
-        setGroup.notify(qos: .background, flags: .barrier, queue: setQueue, execute: {
-            jsonHandlerGroup.leave()
-            updaterGroup.leave()
-        })
-    }
     
-    public dynamic func getDatabase(_ result: @escaping DBV) {
-        guard let db = self.database else { return }
-        result(db)
-    }
-        
     dynamic func handlerData(_ data: Data) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, qos: .background, execute: {
-            self.egoCache(data)
-            self.coreData(data)
-        })
+        self.egoCache(data)
+        self.coreData(data)
     }
         
     private init() {

@@ -16,9 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="photo" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-nY-f7W">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="imageViewPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-nY-f7W">
                         <rect key="frame" x="5" y="5" width="90" height="90"/>
-                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vP4-nY-f7W" secondAttribute="height" multiplier="1:1" id="zzb-FZ-U7t"/>
                         </constraints>
@@ -52,7 +52,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="firstname" destination="i8E-nI-g3g" id="HjD-Az-bzk"/>
-                <outlet property="photo" destination="vP4-nY-f7W" id="XAd-Nc-kYf"/>
+                <outlet property="imageViewPhoto" destination="vP4-nY-f7W" id="DYr-VU-qPI"/>
                 <outlet property="surname" destination="mLx-8B-Rbl" id="D4F-51-cpt"/>
                 <outlet property="view" destination="pXA-1m-1UH" id="YPF-vc-b0f"/>
             </connections>
