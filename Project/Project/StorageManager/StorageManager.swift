@@ -9,16 +9,18 @@ final class StorageManager: Coredata, DatabaseWorker {
     internal var viewContext: NSManagedObjectContext!
     
     public let cache: EGOCache = EGOCache.global()
-    fileprivate(set) public dynamic var database: Database?
-    
+    internal(set) public dynamic var database: Database? {
+        didSet {
+            // print(try? database?.jsonData().count ?? 0)
+        }
+    }
+
     func setdb(results: [Results], info: Info) {
         switch database {
         case nil:
             database = Database.init(results: results, info: info)
         default:
-            for item in results {
-                database?.results.append(item)
-            }
+            database?.results.append(contentsOf: results)
         }
     }
     

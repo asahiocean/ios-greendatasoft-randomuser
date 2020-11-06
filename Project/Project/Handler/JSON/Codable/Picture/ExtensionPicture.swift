@@ -22,9 +22,9 @@ extension Picture {
         thumbnail: String? = nil
     ) -> Picture {
         return Picture(
-            large: large ?? self.large,
-            medium: medium ?? self.medium,
-            thumbnail: thumbnail ?? self.thumbnail
+            large: large ?? self.largeUrl,
+            medium: medium ?? self.mediumUrl,
+            thumbnail: thumbnail ?? self.thumbnailUrl
         )
     }
 

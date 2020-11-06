@@ -22,6 +22,11 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vP4-nY-f7W" secondAttribute="height" multiplier="1:1" id="zzb-FZ-U7t"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iCl-fL-8SV">
                         <rect key="frame" x="105" y="5" width="106" height="24"/>
@@ -40,11 +45,20 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKG-cP-1Ac">
+                        <rect key="frame" x="105" y="71" width="314" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="vP4-nY-f7W" firstAttribute="centerY" secondItem="pXA-1m-1UH" secondAttribute="centerY" id="3Dc-Tf-Hfs"/>
+                    <constraint firstItem="qKG-cP-1Ac" firstAttribute="bottom" secondItem="vP4-nY-f7W" secondAttribute="bottom" id="Mna-wN-MVW"/>
                     <constraint firstItem="vP4-nY-f7W" firstAttribute="height" secondItem="pXA-1m-1UH" secondAttribute="height" multiplier="0.9" id="TPS-Gm-Z2E"/>
+                    <constraint firstItem="qKG-cP-1Ac" firstAttribute="trailing" secondItem="pXA-1m-1UH" secondAttribute="trailing" constant="5" id="Tlb-ao-zE6"/>
+                    <constraint firstItem="qKG-cP-1Ac" firstAttribute="leading" secondItem="iCl-fL-8SV" secondAttribute="leading" id="bbO-7U-xV9"/>
                     <constraint firstItem="vP4-nY-f7W" firstAttribute="leading" secondItem="pXA-1m-1UH" secondAttribute="leadingMargin" constant="-15" id="ipP-1n-lod"/>
                     <constraint firstItem="vP4-nY-f7W" firstAttribute="top" secondItem="iCl-fL-8SV" secondAttribute="top" id="rHH-JF-qQ7"/>
                     <constraint firstItem="iCl-fL-8SV" firstAttribute="leading" secondItem="vP4-nY-f7W" secondAttribute="trailing" constant="10" id="sRb-ZJ-IS9"/>
@@ -56,7 +70,7 @@
                 <outlet property="surname" destination="mLx-8B-Rbl" id="D4F-51-cpt"/>
                 <outlet property="view" destination="pXA-1m-1UH" id="YPF-vc-b0f"/>
             </connections>
-            <point key="canvasLocation" x="-148" y="532"/>
+            <point key="canvasLocation" x="-149.27536231884059" y="531.52173913043487"/>
         </tableViewCell>
     </objects>
     <resources>

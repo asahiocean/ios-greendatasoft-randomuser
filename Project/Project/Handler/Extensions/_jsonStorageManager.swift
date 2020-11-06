@@ -3,26 +3,26 @@ import Nuke
 
 extension Handler {
     final func jsonHandler(_ data: Data) {
+        let task = ImagePipeline.shared
         do {
             var db = try Self.jsonDecoder.decode(Database.self, from: data)
             for index in db.results.indices {
-                ImagePipeline.shared.loadImage(with: URL(string: db.results[index].picture.thumbnail)!, { response in
-                    switch response {
-                    case .failure:
-                        db.results[index].picture.thumbnailImage = UIImage(systemName: "person.crop.circle")
-                    case let .success(imageResponse):
-                        db.results[index].picture.thumbnailImage = imageResponse.image
-                    }
-                    switch index == db.results.endIndex - 1 {
-                    case true:
-                        print("case true")
-                        self.storage.setdb(results: db.results, info: db.info)
-                        updaterGroup.leave()
-                    default:
-                        //print("break", index)
-                        break
-                    }
-                })
+            task.loadImage(with: URL(string: db.results[index].picture.mediumUrl)!, { resp in
+                switch resp {
+                case let .success(result):
+                    db.results[index].picture.image = result.image
+                if let data = result.image.pngData() {
+                self.storage.cache.setData(data, forKey: "\(db.results[index].picture.id)")
+                }
+                case .failure(_):
+                    db.results[index].picture.image =
+                        UIImage(systemName: "person.crop.circle")!
+                }
+                if index == db.results.endIndex - 1 {
+                    self.storage.setdb(results: db.results, info: db.info)
+                    updaterGroup.leave()
+                }
+            })
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                 StorageManager.shared.handlerData(data)
