@@ -1,14 +1,14 @@
 import UIKit
 import Nuke
 
-struct Picture: Codable, Equatable, Identifiable {
-    var id: UUID
-    var largeUrl: String
-    var mediumUrl: String
-    var thumbnailUrl: String
-    var image: UIImage
+public struct Picture: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let largeUrl: String
+    public let mediumUrl: String
+    public let thumbnailUrl: String
+    public var image: UIImage
     
-    static func ==(lhs: Picture, rhs: Picture) -> Bool {
+    public static func ==(lhs: Picture, rhs: Picture) -> Bool {
         return lhs.largeUrl == rhs.largeUrl && lhs.mediumUrl == rhs.mediumUrl && lhs.thumbnailUrl == rhs.thumbnailUrl
     }
         
@@ -26,16 +26,17 @@ struct Picture: Codable, Equatable, Identifiable {
         self.image = UIImage()
     }
     
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         largeUrl = try values.decode(String.self, forKey: .large)
         mediumUrl = try values.decode(String.self, forKey: .medium)
         thumbnailUrl = try values.decode(String.self, forKey: .thumbnail)
         id = UUID()
+        
         image = UIImage()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(largeUrl, forKey: .large)
         try container.encode(mediumUrl, forKey: .medium)

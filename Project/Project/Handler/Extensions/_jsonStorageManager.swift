@@ -24,13 +24,8 @@ extension Handler {
                 }
             })
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                StorageManager.shared.handlerData(data)
-            })
         } catch let error as NSError {
             print("Проверьте структуру для декодирования!", error.localizedDescription)
         }
     }
 }
-
-// UIImage(data: try Data(contentsOf:  URL()))

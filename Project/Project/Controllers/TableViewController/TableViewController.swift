@@ -5,6 +5,8 @@ final class TableViewController: UITableViewController {
     
     internal let storage = StorageManager.shared
     
+    override func loadViewIfNeeded() { self._updater() }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         _navigationBarSetup()
@@ -13,17 +15,11 @@ final class TableViewController: UITableViewController {
         tableView.rowHeight = rowHeight
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.decelerationRate = .fast
-        updaterGroup.notify(queue: .main, execute: { [self] in
-            tableView.reloadData()
-            _navigationBarRightActivityIndicator(hide: true)
-        })
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let _ = cell as? CustomCell, let res = storage.database?.results else { return }
-        if indexPath.row == (res.count - 8) {
-            self.updater()
-        }
+        if indexPath.row == (res.count - 8) { self._updater() }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,11 +39,13 @@ final class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let result = storage.database?.results[indexPath.row]
         if let cell: CustomCell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell) { // #warning("OK!")
+            
             //MARK: Name Block
             cell.idname = result?.name.id
             cell.gender = result?.name.title
             cell.firstname?.text = result?.name.first
             cell.surname?.text = result?.name.last
+            
             //MARK: Image Block
             cell.imageViewPhoto?.image = result?.picture.image
             cell.urlPackPhoto.append((
@@ -56,6 +54,7 @@ final class TableViewController: UITableViewController {
                 result?.picture.largeUrl) ?? ""
             )
             cell.idpic = result?.picture.id // for extract from cache
+            cell.phone.text = result?.phone
             return cell
         } else {
             let defaultCell: UITableViewCell = UITableViewCell(style: .value1, reuseIdentifier: CustomCell.identifier)

@@ -1,16 +1,16 @@
 import Foundation
 
-struct Location: Codable, Equatable, Identifiable {
-    var id: UUID
-    var street: Street
-    var city: String
-    var state: String
-    var country: String
-    var postcode: Postcode
-    var coordinates: Coordinates
-    var timezone: Timezone
+public struct Location: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let street: Street
+    public let city: String
+    public let state: String
+    public let country: String
+    public let postcode: Postcode
+    public let coordinates: Coordinates
+    public let timezone: Timezone
     
-    static func == (lhs: Location, rhs: Location) -> Bool {
+    public static func == (lhs: Location, rhs: Location) -> Bool {
         return lhs.id == rhs.id && lhs.street == rhs.street && lhs.city == rhs.city && lhs.state == rhs.state && lhs.country == rhs.country && lhs.postcode == rhs.postcode && lhs.coordinates == rhs.coordinates && lhs.timezone == rhs.timezone
     }
 
@@ -36,7 +36,7 @@ struct Location: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         street = try values.decode(Street.self, forKey: .street)
         city = try values.decode(String.self, forKey: .city)
@@ -48,7 +48,7 @@ struct Location: Codable, Equatable, Identifiable {
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(street, forKey: .street)
         try container.encode(city, forKey: .city)

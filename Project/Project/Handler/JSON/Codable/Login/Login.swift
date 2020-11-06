@@ -1,16 +1,16 @@
 import Foundation
 
-struct Login: Codable, Equatable, Identifiable {
-    var id: UUID
+public struct Login: Codable, Equatable, Identifiable {
+    public let id: UUID
     let uuid: String
-    var username: String
-    var password: String
-    var salt: String
+    public let username: String
+    public let password: String
+    public let salt: String
     let md5: String
-    var sha1: String
-    var sha256: String
+    public let sha1: String
+    public let sha256: String
     
-    static func ==(lhs: Login, rhs: Login) -> Bool {
+    public static func ==(lhs: Login, rhs: Login) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.username == rhs.username && lhs.password == rhs.password && lhs.salt == rhs.salt && lhs.md5 == rhs.md5 && lhs.sha1 == rhs.sha1 && lhs.sha256 == rhs.sha256
     }
 
@@ -35,7 +35,7 @@ struct Login: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         uuid = try values.decode(String.self, forKey: .uuid)
         username = try values.decode(String.self, forKey: .username)
@@ -47,7 +47,7 @@ struct Login: Codable, Equatable, Identifiable {
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(uuid, forKey: .uuid)
         try container.encode(username, forKey: .username)

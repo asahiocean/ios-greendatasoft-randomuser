@@ -1,12 +1,12 @@
 import Foundation
 
-final class Handler: APIData, JSON {
+final class Handler: SetData, JSON {
     static var jsonDecoder: JSONDecoder!
     internal let storage: StorageManager = StorageManager.shared
 
     public static let shared = Handler()
     
-    func apidata(_ data: Data?) {
+    func setdata(_ data: Data?) {
         if let data = data {
             jsonHandler(data)
         } else {

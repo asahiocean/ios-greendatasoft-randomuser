@@ -1,6 +1,6 @@
 import Foundation
 
-enum Gender: String, Codable, Equatable {
+public enum Gender: String, Codable, Equatable {
     case female = "female"
     case male = "male"
 }

@@ -1,12 +1,12 @@
 import Foundation
 
-struct Name: Codable, Equatable, Identifiable {
-    var id: UUID
-    let title: String
-    var first: String
-    var last: String
+public struct Name: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let title: String
+    public let first: String
+    public let last: String
     
-    static func ==(lhs: Name, rhs: Name) -> Bool {
+    public static func ==(lhs: Name, rhs: Name) -> Bool {
         return lhs.title == rhs.title && lhs.first == rhs.first && lhs.last == rhs.last
     }
 
@@ -23,7 +23,7 @@ struct Name: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         first = try values.decode(String.self, forKey: .first)
@@ -31,7 +31,7 @@ struct Name: Codable, Equatable, Identifiable {
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(title, forKey: .title)
         try container.encode(first, forKey: .first)

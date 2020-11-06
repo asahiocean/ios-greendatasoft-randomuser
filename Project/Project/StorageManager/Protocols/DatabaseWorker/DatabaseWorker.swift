@@ -1,5 +1,4 @@
 import Foundation
-import CoreData.NSManagedObject
 
 protocol DatabaseWorker {
     typealias State = ((Status._type) -> ())

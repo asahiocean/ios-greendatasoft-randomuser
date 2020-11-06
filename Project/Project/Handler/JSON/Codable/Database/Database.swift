@@ -1,11 +1,11 @@
 import Foundation
 
-struct Database: Codable, Identifiable  {
-    var results: [Results]
-    var info: Info
-    var id: UUID
+public struct Database: Codable, Identifiable  {
+    public var results: [Results]
+    public let info: Info
+    public let id: UUID
     
-    static func ==(lhs: Database, rhs: Database) -> Bool {
+    public static func ==(lhs: Database, rhs: Database) -> Bool {
         return lhs.results == rhs.results && lhs.info == rhs.info
     }
 
@@ -20,14 +20,14 @@ struct Database: Codable, Identifiable  {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         results = try values.decode([Results].self, forKey: .results)
         info = try values.decode(Info.self, forKey: .info)
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(results, forKey: .results)
         try container.encode(info, forKey: .info)

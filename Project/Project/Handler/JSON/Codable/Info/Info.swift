@@ -1,13 +1,13 @@
 import Foundation
 
-struct Info: Codable, Equatable, Identifiable {
-    var id: UUID
-    var seed: String
-    var results: Int
-    var page: Int
-    var version: String
+public struct Info: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let seed: String
+    public let results: Int
+    public let page: Int
+    public let version: String
     
-    static func ==(lhs: Info, rhs: Info) -> Bool {
+    public static func ==(lhs: Info, rhs: Info) -> Bool {
         return lhs.id == rhs.id && lhs.seed == rhs.seed && lhs.results == rhs.results && lhs.page == rhs.page && lhs.version == rhs.version
     }
     
@@ -26,7 +26,7 @@ struct Info: Codable, Equatable, Identifiable {
         case version = "version"
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         seed = try values.decode(String.self, forKey: .seed)
         results = try values.decode(Int.self, forKey: .results)
@@ -35,7 +35,7 @@ struct Info: Codable, Equatable, Identifiable {
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(seed, forKey: .seed)
         try container.encode(results, forKey: .results)

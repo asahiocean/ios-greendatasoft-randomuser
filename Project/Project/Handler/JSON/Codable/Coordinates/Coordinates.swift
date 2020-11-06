@@ -1,11 +1,11 @@
 import Foundation
 
-struct Coordinates: Codable, Equatable, Identifiable {
-    var id: UUID
-    var latitude: String
-    var longitude: String
+public struct Coordinates: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let latitude: String
+    public let longitude: String
     
-    static func ==(lhs: Coordinates, rhs: Coordinates) -> Bool {
+    public static func ==(lhs: Coordinates, rhs: Coordinates) -> Bool {
         return lhs.id == rhs.id && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
     
@@ -20,14 +20,14 @@ struct Coordinates: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         latitude = try values.decode(String.self, forKey: .latitude)
         longitude = try values.decode(String.self, forKey: .longitude)
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)

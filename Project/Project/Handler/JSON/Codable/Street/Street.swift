@@ -1,11 +1,11 @@
 import Foundation
 
-struct Street: Codable, Equatable, Identifiable {
-    var id: UUID
-    var number: Int
-    var name: String
+public struct Street: Codable, Equatable, Identifiable {
+    public let id: UUID
+    public let number: Int
+    public let name: String
     
-    static func ==(lhs: Street, rhs: Street) -> Bool {
+    public static func ==(lhs: Street, rhs: Street) -> Bool {
         return lhs.number == rhs.number && lhs.name == rhs.name
     }
     
@@ -20,14 +20,14 @@ struct Street: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
-    internal init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         number = try values.decode(Int.self, forKey: .number)
         name = try values.decode(String.self, forKey: .name)
         id = UUID()
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(number, forKey: .number)
         try container.encode(name, forKey: .name)

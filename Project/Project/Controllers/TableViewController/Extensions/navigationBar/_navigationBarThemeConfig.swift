@@ -1,11 +1,16 @@
 import UIKit
 
 extension TableViewController {
-    internal func _navigationBarColorConfig(_ style: UIBarStyle? = .default, bg: UIColor?, font: UIColor?, tint: UIColor?){
+    internal func _navigationBarColorConfig(_ style: UIBarStyle?, bg: UIColor?, font: UIColor?, tint: UIColor?) {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = bg ?? .systemBackground
-        appearance.titleTextAttributes =
-            [.foregroundColor: font ?? .white]
+        
+        if let fontColor = font, let bgcolor = bg {
+            appearance.backgroundColor = bgcolor
+            appearance.titleTextAttributes = [.foregroundColor: fontColor]
+        } else {
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            appearance.backgroundColor = .systemBackground
+        }
         
         navigationController?.navigationBar.barStyle = style ?? .default
         navigationController?.navigationBar.tintColor = tint ?? .white
