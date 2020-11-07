@@ -6,6 +6,7 @@ public struct Picture: Codable, Equatable, Identifiable {
     public let largeUrl: String
     public let mediumUrl: String
     public let thumbnailUrl: String
+    
     public var image: UIImage
     
     public static func ==(lhs: Picture, rhs: Picture) -> Bool {
@@ -23,7 +24,8 @@ public struct Picture: Codable, Equatable, Identifiable {
         self.mediumUrl = medium
         self.thumbnailUrl = thumbnail
         self.id = UUID()
-        self.image = UIImage()
+        
+        self.image = UIImage(systemName: "person.crop.circle")!
     }
     
     public init(from decoder: Decoder) throws {
@@ -32,7 +34,6 @@ public struct Picture: Codable, Equatable, Identifiable {
         mediumUrl = try values.decode(String.self, forKey: .medium)
         thumbnailUrl = try values.decode(String.self, forKey: .thumbnail)
         id = UUID()
-        
         image = UIImage()
     }
 

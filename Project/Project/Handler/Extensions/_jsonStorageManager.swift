@@ -7,16 +7,13 @@ extension Handler {
         do {
             var db = try Self.jsonDecoder.decode(Database.self, from: data)
             for index in db.results.indices {
-            task.loadImage(with: URL(string: db.results[index].picture.mediumUrl)!, { resp in
+                task.loadImage(with: URL(string: db.results[index].picture.largeUrl)!, { resp in
                 switch resp {
                 case let .success(result):
                     db.results[index].picture.image = result.image
-                if let data = result.image.pngData() {
-                self.storage.cache.setData(data, forKey: "\(db.results[index].picture.id)")
-                }
-                case .failure(_):
-                    db.results[index].picture.image =
-                        UIImage(systemName: "person.crop.circle")!
+                    self.storage.cache.setData(result.image.pngData()!, forKey: db.results[index].picture.id.uuidString)
+                case .failure(_): break
+                    //db.results[index].picture.thumbnailImage = UIImage(systemName: "person.crop.circle")!
                 }
                 if index == db.results.endIndex - 1 {
                     self.storage.setdb(results: db.results, info: db.info)

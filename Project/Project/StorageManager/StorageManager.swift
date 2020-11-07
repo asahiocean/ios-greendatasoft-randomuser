@@ -2,69 +2,36 @@ import UIKit
 import CoreData
 import EGOCache
 
-protocol Coredata {
-    func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ entity: T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any)
-    func getCoreData<T>(_ appDelegate: AppDelegate, _: T.Type, output: (([T]) -> Void)?) where T : NSManagedObject
-}
-
-final class StorageManager: SetData, DatabaseWorker {
+final class StorageManager: DatabaseWorker, Coredata {
 
     public static var shared = StorageManager()
-    internal(set) public var appDelegate: AppDelegate!
-    internal(set) public var viewContext: NSManagedObjectContext!
+    fileprivate(set) public var appDelegate: AppDelegate!
+    fileprivate(set) public var viewContext: NSManagedObjectContext!
+    fileprivate(set) var setQueue: DispatchQueue!
+    fileprivate(set) var setGroup: DispatchGroup!
     
     public let cache: EGOCache = EGOCache.global()
     internal(set) public dynamic var database: Database?
-
-    func setdb(results: [Results], info: Info) {
-        let queue = DispatchQueue(label: "updater.queue")
-        let group = DispatchGroup()
         
-        group.enter()
-        queue.async(group: group, execute: { [self] in
+    func setdb(results: [Results], info: Info) {
+        setGroup.enter()
+        setQueue.async(group: setGroup, execute: { [self] in
         switch database {
         case nil:
             database = Database(results: results, info: info)
+            setGroup.leave()
         default:
             database?.results.append(contentsOf: results)
+            setGroup.leave()
         }
-        group.leave()
         })
-        group.notify(queue: .main, execute: {
-            
+        setGroup.notify(queue: .main, execute: { [self] in
+        guard let jsonData = try? database?.jsonData() else { return }
+        saveObject(appDelegate, JsondataEntity.self, viewContext, "jsonData", jsonData)
+        cache.setData(jsonData, forKey: "jsonData", withTimeoutInterval: 2592000) // 2592000 sec == 1 month
         })
     }
     
-    func setdata(_ data: Data?) {
-        if let data = data {
-            func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ entity: T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any) {
-                DispatchQueue.main.async {
-                    let object = entity.init(context: context)
-                    object.setValue(value, forKey: key)
-                    appDelegate.saveContext()
-                }
-            }
-            
-            DispatchQueue.main.async {
-                saveObject(self.appDelegate, JsondataEntity.self, self.viewContext, "jsondata", data)
-            }
-        }
-    }
-    
-    func getCoreData<T>(_ appDelegate: AppDelegate, _: T.Type, output: (([T]) -> Void)?) where T : NSManagedObject{
-        guard let request = T.fetchRequest() as? NSFetchRequest<T> else { return }
-        request.returnsObjectsAsFaults = false
-        let asyncRequest = NSAsynchronousFetchRequest(fetchRequest: request) { rawdata in
-            guard let result = rawdata.finalResult, let export = output else { return }
-            export(result)
-        }
-        do {
-            try appDelegate.persistentContainer.viewContext.execute(asyncRequest)
-        } catch {
-            
-        }
-    }
-        
     static func getdb(_ completion: @escaping InfRes) {
         guard let db = StorageManager().database else { return }
         completion(db.results, db.info)
@@ -84,10 +51,12 @@ final class StorageManager: SetData, DatabaseWorker {
 //        self.egoCache(data)
 //        self.coreData(data)
 //    }
-        
+    
     private init() {
+        self.setQueue = DispatchQueue(label: "com.StorageManager.setQueue.queue")
+        self.setGroup = DispatchGroup()
         DispatchQueue.main.async {
-            guard let delegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate), let context = try? delegate.persistentContainer.viewContext else { fatalError() }
+            guard let delegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate), let context = try? delegate.persistentContainer.viewContext else { fatalError("ERROR") }
             self.appDelegate = delegate
             self.viewContext = context
         }

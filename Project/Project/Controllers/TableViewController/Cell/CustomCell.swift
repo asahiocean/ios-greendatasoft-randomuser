@@ -6,7 +6,7 @@ class CustomCell: UITableViewCell {
     static var identifier: String {String(describing:self)}
     static var nib: UINib {UINib(nibName:identifier,bundle:nil)}
     @IBOutlet weak var view: UIView!
-
+    
     public var idname: UUID?
     public var gender: String?
     @IBOutlet weak var firstname: UILabel!

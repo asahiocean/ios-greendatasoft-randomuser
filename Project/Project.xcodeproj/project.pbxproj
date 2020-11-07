@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2D4F14EC126EC181D820E146 /* Pods_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31BA3F516697C5BB4BAC5F /* Pods_Project.framework */; };
+		3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2DC2555E3E8005006D9 /* Coredata.swift */; };
+		3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */; };
 		3D1545BE254C26A500F6BBA2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1545BD254C26A500F6BBA2 /* StorageManager.swift */; };
 		3D1546B3254C5ACE00F6BBA2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1546B2254C5ACE00F6BBA2 /* Database.swift */; };
 		3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1546B7254C5AFF00F6BBA2 /* ExtensionDatabase.swift */; };
@@ -45,7 +47,6 @@
 		3D2AEB4A2555550E00C08802 /* _phoneIconConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2AEB492555550E00C08802 /* _phoneIconConfig.swift */; };
 		3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FE9254F4CD30052A195 /* Handler.swift */; };
 		3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FFB254F4E8D0052A195 /* JSON.swift */; };
-		3D4C5014254F63380052A195 /* egoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C5013254F63380052A195 /* egoCache.swift */; };
 		3D63A9E52555C4A00066A25A /* Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91D25486431001E392F /* Project.xcdatamodeld */; };
 		3D63A9ED2555C4A10066A25A /* Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91D25486431001E392F /* Project.xcdatamodeld */; };
 		3D63A9EE2555C4A20066A25A /* Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D67A91D25486431001E392F /* Project.xcdatamodeld */; };
@@ -123,6 +124,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0FB2DC2555E3E8005006D9 /* Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coredata.swift; sourceTree = "<group>"; };
+		3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionStorageManager.swift; sourceTree = "<group>"; };
 		3D1545BD254C26A500F6BBA2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3D1546B2254C5ACE00F6BBA2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		3D1546B7254C5AFF00F6BBA2 /* ExtensionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDatabase.swift; sourceTree = "<group>"; };
@@ -160,7 +163,6 @@
 		3D2AEB492555550E00C08802 /* _phoneIconConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _phoneIconConfig.swift; sourceTree = "<group>"; };
 		3D4C4FE9254F4CD30052A195 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		3D4C4FFB254F4E8D0052A195 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		3D4C5013254F63380052A195 /* egoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = egoCache.swift; sourceTree = "<group>"; };
 		3D6729322551374300095BEE /* _navigationBarRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _navigationBarRightButton.swift; sourceTree = "<group>"; };
 		3D67A91125486431001E392F /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D67A91425486431001E392F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -423,8 +425,8 @@
 		3D4C4FAF254F47FF0052A195 /* StorageManager */ = {
 			isa = PBXGroup;
 			children = (
+				3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */,
 				3D1545BD254C26A500F6BBA2 /* StorageManager.swift */,
-				3D4C5011254F63220052A195 /* EGOCache */,
 				3DF73C982550B4C00053BA81 /* Enums */,
 				3DF73C972550B4A50053BA81 /* Protocols */,
 			);
@@ -440,14 +442,6 @@
 				3DF73C8B2550B2AF0053BA81 /* Protocols */,
 			);
 			path = Handler;
-			sourceTree = "<group>";
-		};
-		3D4C5011254F63220052A195 /* EGOCache */ = {
-			isa = PBXGroup;
-			children = (
-				3D4C5013254F63380052A195 /* egoCache.swift */,
-			);
-			path = EGOCache;
 			sourceTree = "<group>";
 		};
 		3D4E303C2549FABC00715411 /* Controllers */ = {
@@ -650,6 +644,7 @@
 		3DDC584F2551224400AC120F /* Coredata */ = {
 			isa = PBXGroup;
 			children = (
+				3D0FB2DC2555E3E8005006D9 /* Coredata.swift */,
 			);
 			path = Coredata;
 			sourceTree = "<group>";
@@ -1053,6 +1048,7 @@
 				3D154786254C69E200F6BBA2 /* Timezone.swift in Sources */,
 				3D6800BB254B47900021C56F /* _navigationBarThemeConfig.swift in Sources */,
 				3DDC58C12551277300AC120F /* _updater.swift in Sources */,
+				3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */,
 				3D154772254C68CE00F6BBA2 /* ExtensionCoordinates.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */,
 				3DEB76BA2548C33200763A2B /* httpMethod.swift in Sources */,
@@ -1063,8 +1059,8 @@
 				3D1546D1254C5C4D00F6BBA2 /* ExtensionResult.swift in Sources */,
 				3D15475D254C67B400F6BBA2 /* Postcode.swift in Sources */,
 				3D15477B254C697100F6BBA2 /* Street.swift in Sources */,
+				3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */,
 				3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */,
-				3D4C5014254F63380052A195 /* egoCache.swift in Sources */,
 				3D63A9F52555C4A80066A25A /* AppDelegate.swift in Sources */,
 				3D1546ED254C5DA000F6BBA2 /* ExtensionID.swift in Sources */,
 				3DEB76B42548BB6B00763A2B /* Url.swift in Sources */,
