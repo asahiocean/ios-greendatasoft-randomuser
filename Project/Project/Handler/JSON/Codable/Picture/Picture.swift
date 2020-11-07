@@ -3,29 +3,29 @@ import Nuke
 
 public struct Picture: Codable, Equatable, Identifiable {
     public let id: UUID
-    public let largeUrl: String
-    public let mediumUrl: String
-    public let thumbnailUrl: String
+    public var largeUrl: String
+    public var mediumUrl: String
+    public var thumbnailUrl: String
     
     public var image: UIImage
     
     public static func ==(lhs: Picture, rhs: Picture) -> Bool {
         return lhs.largeUrl == rhs.largeUrl && lhs.mediumUrl == rhs.mediumUrl && lhs.thumbnailUrl == rhs.thumbnailUrl
     }
-        
+    
     private enum CodingKeys: String, CodingKey {
         case large = "large"
         case medium = "medium"
         case thumbnail = "thumbnail"
     }
             
-    init(large: String, medium: String, thumbnail: String) {
+    init(large: String, medium: String, thumbnail: String, photo: UIImage = .init()) {
         self.largeUrl = large
         self.mediumUrl = medium
         self.thumbnailUrl = thumbnail
         self.id = UUID()
         
-        self.image = UIImage(systemName: "person.crop.circle")!
+        self.image = photo
     }
     
     public init(from decoder: Decoder) throws {

@@ -5,8 +5,8 @@ protocol GET {
 }
 
 extension GET {
-    internal static dynamic func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void) {
-        DispatchQueue(label: "URLSession.shared.dataTask", qos: .background).async {
+    internal static func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void) {
+        DispatchQueue(label: "com.getRequest.dataTask", qos: .background).async {
         URLSession.shared.dataTask(with: request) { (data,resp,error) in
             if let data = data, let status = (resp as? HTTPURLResponse)?.statusCode {
                 switch status {

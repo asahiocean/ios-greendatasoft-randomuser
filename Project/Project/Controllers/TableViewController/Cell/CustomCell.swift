@@ -1,19 +1,17 @@
 import UIKit
-import Nuke
 import FontAwesome_swift
 
 class CustomCell: UITableViewCell {
-    static var identifier: String {String(describing:self)}
-    static var nib: UINib {UINib(nibName:identifier,bundle:nil)}
+    static var identifier: String { String(describing: self )}
+    static var nib: UINib { UINib(nibName: identifier, bundle: nil )}
     @IBOutlet weak var view: UIView!
     
     public var idname: UUID?
     public var gender: String?
     @IBOutlet weak var firstname: UILabel!
     @IBOutlet weak var surname: UILabel!
-    @IBOutlet weak var imageViewPhoto: UIImageView!
-    public var idpic: UUID?
-    public var urlPackPhoto: [String] = []
+    @IBOutlet weak var photo: UIImageView!
+    public var imageUrl: String!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var phoneIcon: FontAwesomeImageView!
     
@@ -23,13 +21,32 @@ class CustomCell: UITableViewCell {
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
-        _initViewConfig()
-        _imageViewPhotoConfig()        
-        _phoneIconConfig()
-    }
+
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+        self.autoresizingMask =
+            [.flexibleWidth, .flexibleHeight]
         
+        photo.clipsToBounds = true
+        photo.layer.masksToBounds = true
+        photo.layer.cornerRadius = photo.bounds.width/2
+        photo.layer.borderColor = #colorLiteral(red: 0.2031390071, green: 0.2078698874, blue: 0.2164929211, alpha: 1)
+        photo.layer.borderWidth = 2
+
+        let n = bounds.height / 8
+        let sizeicon = CGSize(width: n, height: n)
+        phoneIcon.image = .fontAwesomeIcon(
+            name: .phoneAlt,
+            style: .solid,
+            textColor: #colorLiteral(red: 0.2030032575, green: 0.2080235779, blue: 0.2164820433, alpha: 1),
+            size: sizeicon)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

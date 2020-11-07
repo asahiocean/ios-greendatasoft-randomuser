@@ -2,7 +2,7 @@ import CoreData
 
 extension StorageManager {
     func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ entity: T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             let object = entity.init(context: context)
             object.setValue(value, forKey: key)
             appDelegate.saveContext()

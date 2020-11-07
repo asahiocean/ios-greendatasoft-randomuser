@@ -9,6 +9,7 @@ final class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         _navigationBarSetup()
         tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -18,12 +19,14 @@ final class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let _ = cell as? CustomCell, let res = storage.database?.results else { return }
-        if indexPath.row == (res.count - 8) { self._updater() }
+        if let count = storage.database?.results.count,
+           indexPath.row == (count - 8) {
+            self._updater()
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // tableView.deselectRow(at: indexPath, animated: true)
+// tableView.deselectRow(at: indexPath, animated: true)
 //        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? CustomCell {
 //            tableView.cellForRow(at: indexPath)?.accessoryType = .none
 //            cell.backgroundColor = .systemRed
@@ -34,26 +37,38 @@ final class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return storage.database?.results.count ?? 0
     }
-
+    
     //MARK: -- cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let result = storage.database?.results[indexPath.row]
-        if let cell: CustomCell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell) { // #warning("OK!")
+        if let cell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell) {
+            
+            let result = storage.database?.results[indexPath.row]
             
             //MARK: Name Block
             cell.idname = result?.name.id
             cell.gender = result?.name.title
             cell.firstname?.text = result?.name.first
             cell.surname?.text = result?.name.last
-            
+            // - - - - - - - - - - - - - - - - - - - -
             //MARK: Image Block
-            cell.imageViewPhoto?.image = result?.picture.image
-            cell.urlPackPhoto.append((
-                result?.picture.thumbnailUrl ??
-                result?.picture.mediumUrl ??
-                result?.picture.largeUrl) ?? ""
-            )
-            cell.idpic = result?.picture.id // for extract from cache
+            if let imageUrl = result?.picture.mediumUrl,
+               let url = URL(string: imageUrl) {
+                let nuke = ImagePipeline.shared
+                let rqst = ImageRequest(url: url, priority: .high)
+                if let cached = nuke.cachedImage(for: rqst) {
+                    cell.photo?.image = cached.image
+                } else {
+                    nuke.loadImage(with: rqst, { resp in
+                        switch resp {
+                        case let .success(result):
+                            cell.photo?.image = result.image
+                        case .failure(_):
+                            break
+                        }
+                    })
+                }
+            }
+            // - - - - - - - - - - - - - - - - - - - -
             cell.phone.text = result?.phone
             return cell
         } else {
