@@ -9,7 +9,6 @@ final class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         _navigationBarSetup()
         tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -19,10 +18,7 @@ final class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let count = storage.database?.results.count,
-           indexPath.row == (count - 8) {
-            self._updater()
-        }
+        if let count = storage.database?.results.count, indexPath.row == (count - 8) { self._updater() }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,26 +45,29 @@ final class TableViewController: UITableViewController {
             cell.gender = result?.name.title
             cell.firstname?.text = result?.name.first
             cell.surname?.text = result?.name.last
-            // - - - - - - - - - - - - - - - - - - - -
-            //MARK: Image Block
-            if let imageUrl = result?.picture.mediumUrl,
-               let url = URL(string: imageUrl) {
-                let nuke = ImagePipeline.shared
-                let rqst = ImageRequest(url: url, priority: .high)
-                if let cached = nuke.cachedImage(for: rqst) {
-                    cell.photo?.image = cached.image
+            
+            //MARK: Picture Block
+            if let string = result?.picture.mediumUrl, let url = URL(string: string) {
+                let request = ImageRequest(url: url, priority: .high)
+                if let cached = ImagePipeline.shared.cachedImage(for: request) {
+                    DispatchQueue.main.async {
+                        cell.photo?.image = cached.image; print("Cached image size:", cached.image.pngData() ?? .init())
+                    }
                 } else {
-                    nuke.loadImage(with: rqst, { resp in
-                        switch resp {
+                    ImagePipeline.shared.loadImage(with: request, { response in
+                        switch response {
                         case let .success(result):
-                            cell.photo?.image = result.image
+                            DispatchQueue.main.async {
+                                cell.photo?.image = result.image; print("Load image:", url)
+                            }
                         case .failure(_):
-                            break
+                            DispatchQueue.main.async {
+                                cell.photo?.image = UIImage(named: "avatar")!
+                            }
                         }
                     })
                 }
             }
-            // - - - - - - - - - - - - - - - - - - - -
             cell.phone.text = result?.phone
             return cell
         } else {

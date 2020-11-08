@@ -24,8 +24,7 @@ public struct Picture: Codable, Equatable, Identifiable {
         self.mediumUrl = medium
         self.thumbnailUrl = thumbnail
         self.id = UUID()
-        
-        self.image = photo
+        self.image = UIImage()
     }
     
     public init(from decoder: Decoder) throws {
@@ -34,7 +33,7 @@ public struct Picture: Codable, Equatable, Identifiable {
         mediumUrl = try values.decode(String.self, forKey: .medium)
         thumbnailUrl = try values.decode(String.self, forKey: .thumbnail)
         id = UUID()
-        image = UIImage()
+        image = UIImage()        
     }
 
     public func encode(to encoder: Encoder) throws {

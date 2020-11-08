@@ -1,4 +1,6 @@
 import Foundation
+import Dispatch
+import Nuke
 
 final class Handler: SetData, JSON {
     internal var jsonDecoder: JSONDecoder!
@@ -9,23 +11,28 @@ final class Handler: SetData, JSON {
     func setdata(_ data: Data?) {
         if let data = data {
             DispatchQueue.main.async { [self] in
-            if let db = try? jsonDecoder.decode(Database.self, from: data) {
-                storage.setdb(results: db.results, info: db.info)
-            }}
+                if let db = try? jsonDecoder.decode(Database.self, from: data) {
+                    self.storage.setdb(results: db.results, info: db.info)
+                } else {
+                    fatalError("Fail decode: Database")
+                }
+            }
         } else {
-            let allKeys = storage.cache.allKeys()
-            print(allKeys)
-            
-//            if let keys = cache.allKeys() as? [String] {
-//                let items = keys.prefix("jsondata").sorted()
-//                for item in items {
-//                    if let cachedata = cache.data(forKey: item) {
-//                        // self.jsonHandler(cachedata)
-//                        sleep(1)
-//                        print(cachedata.count)
-//                    }
-//                }
-//            }
+            if let allKeys = storage.cache.allKeys() as? [String] {
+                for item in allKeys.sorted() where item.hasPrefix(keyJsonData) {
+                    if let data = storage.cache.data(forKey: item) {
+                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1, execute: { [self] in
+                            if let db = try? jsonDecoder.decode(Database.self, from: data) {
+                                self.storage.setdb(results: db.results, info: db.info)
+                            }
+                        })
+                    }
+                }
+            } else {
+            storage.getCoreData(JsondataEntity.self, output: { data in
+                print(data.enumerated())
+            })
+            }
         }
     }
     private init() { }

@@ -8,4 +8,4 @@ public var estimatedRowHeight: CGFloat = UIScreen.main.bounds.height/10
 public let updaterQueue = DispatchQueue(label: "updater.queue")
 public let updaterGroup = DispatchGroup()
 
-// public let cache = NSCache<NSString, NSData>()
+let keyJsonData: String = "jsonData"

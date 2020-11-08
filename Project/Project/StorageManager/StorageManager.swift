@@ -9,27 +9,22 @@ final class StorageManager: DatabaseWorker, Coredata {
     fileprivate(set) public var viewContext: NSManagedObjectContext!
     
     public let cache: EGOCache = EGOCache.global()
-    internal(set) public dynamic var database: Database?
+    internal(set) public var database: Database?
     
     func setdb(results: [Results], info: Info) {
-        let queue = DispatchQueue(label: "com.StorageManager.setdb.\(arc4random())")
-        let group = DispatchGroup()
-        group.enter()
-        queue.async(group: group, execute: { [self] in
         switch database {
         case nil:
             database = Database(results: results, info: info)
-            group.leave()
+            do { updaterGroup.leave() }
         default:
             database?.results.append(contentsOf: results)
-            group.leave()
+            do { updaterGroup.leave() }
         }
-        })
-        group.notify(queue: .main, execute: { [self] in
-        updaterGroup.leave()
-        guard let jsonData = try? database?.jsonData() else { return }
-        saveObject(appDelegate, JsondataEntity.self, viewContext, "jsonData", jsonData)
-        cache.setData(jsonData, forKey: "jsonData", withTimeoutInterval: 2592000) // 2592000 sec == 1 month
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
+            guard let jsonData = try? database?.jsonData() else { return }
+            let timestamp = String(Int(Date().timeIntervalSince1970))
+            saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, jsonData)
+            cache.setData(jsonData, forKey: keyJsonData + timestamp, withTimeoutInterval: 2592000) // 2592000 sec == 1 month
         })
     }
     
@@ -44,7 +39,7 @@ final class StorageManager: DatabaseWorker, Coredata {
             case .count:
                 state(db.results.count)
             break
-            // default: break
+                // default: break
         }
     }
     

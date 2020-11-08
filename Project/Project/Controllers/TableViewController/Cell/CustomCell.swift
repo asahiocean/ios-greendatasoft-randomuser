@@ -1,4 +1,5 @@
 import UIKit
+import Nuke
 import FontAwesome_swift
 
 class CustomCell: UITableViewCell {
@@ -11,10 +12,9 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var firstname: UILabel!
     @IBOutlet weak var surname: UILabel!
     @IBOutlet weak var photo: UIImageView!
-    public var imageUrl: String!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var phoneIcon: FontAwesomeImageView!
-    
+        
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -32,8 +32,8 @@ class CustomCell: UITableViewCell {
         photo.layer.cornerRadius = photo.bounds.width/2
         photo.layer.borderColor = #colorLiteral(red: 0.2031390071, green: 0.2078698874, blue: 0.2164929211, alpha: 1)
         photo.layer.borderWidth = 2
-
-        let n = bounds.height / 8
+        
+        let n = phone.bounds.height
         let sizeicon = CGSize(width: n, height: n)
         phoneIcon.image = .fontAwesomeIcon(
             name: .phoneAlt,
