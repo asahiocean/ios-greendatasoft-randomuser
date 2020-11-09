@@ -1,7 +1,7 @@
 import UIKit
 import Nuke
 
-final class TableViewController: UITableViewController {
+final class TableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     internal let storage = StorageManager.shared
     
@@ -15,6 +15,12 @@ final class TableViewController: UITableViewController {
         tableView.rowHeight = rowHeight
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.decelerationRate = .fast
+        
+        let activityView = UIActivityIndicatorView(style: .large)
+        tableView.backgroundView = activityView
+        activityView.startAnimating()
+        
+        self.navigationController?.popoverPresentationController?.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -22,11 +28,21 @@ final class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-// tableView.deselectRow(at: indexPath, animated: true)
-//        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? CustomCell {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//            cell.backgroundColor = .systemRed
-//        }
+        print(indexPath)
+        // скролл к ячейке
+        //tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+
+        let bundle = Bundle.main.classNamed(UserinfoVC.identifier)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) { }
+        if let result = storage.database?.results[indexPath.row],
+           let nav = navigationController {
+            if let view = UINib(nibName: UserinfoVC.identifier, bundle: Bundle(for: UserinfoVC.self)).instantiate(withOwner: nil, options: nil).first as? UserinfoVC {
+                nav.pushViewController(view, animated: true)
+            }
+            //self.present(controller, animated: true) { }
+        }
     }
     
     //MARK: -- numberOfRowsInSection
@@ -47,18 +63,21 @@ final class TableViewController: UITableViewController {
             cell.surname?.text = result?.name.last
             
             //MARK: Picture Block
-            if let string = result?.picture.mediumUrl, let url = URL(string: string) {
+            if let string = result?.picture.mediumUrl,
+               let url = URL(string: string) {
                 let request = ImageRequest(url: url, priority: .high)
                 if let cached = ImagePipeline.shared.cachedImage(for: request) {
                     DispatchQueue.main.async {
-                        cell.photo?.image = cached.image; print("Cached image size:", cached.image.pngData() ?? .init())
+                        cell.photo?.image = cached.image;
+                        //print("Cached image size:", cached.image.pngData() ?? .init())
                     }
                 } else {
                     ImagePipeline.shared.loadImage(with: request, { response in
                         switch response {
                         case let .success(result):
                             DispatchQueue.main.async {
-                                cell.photo?.image = result.image; print("Load image:", url)
+                                cell.photo?.image = result.image;
+                                // print("Load image:", url)
                             }
                         case .failure(_):
                             DispatchQueue.main.async {
@@ -111,29 +130,4 @@ final class TableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
-
-//
-//extension UITableView {
-//    func reloadDataSavingSelections() {
-//        let selectedRows = indexPathsForSelectedRows
-//
-//        reloadData()
-//
-//        if let selectedRow = selectedRows {
-//            for indexPath in selectedRow {
-//                selectRow(at: indexPath, animated: false, scrollPosition: .none)
-//            }
-//        }
-//    }
-//}
