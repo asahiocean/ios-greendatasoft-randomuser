@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Results: Codable, Equatable {
+public final class Results: Codable, Equatable {
     public let gender: Gender
     public let name: Name
     public let location: Location
@@ -13,6 +13,21 @@ public struct Results: Codable, Equatable {
     public let id: ID
     public var picture: Picture
     public let nat: String
+
+    init(gender: Gender, name: Name, location: Location, email: String?, login: Login, dob: Dob, registered: Registered, phone: String?, cell: String?, id: ID, picture: Picture, nat: String?) {
+        self.gender = gender
+        self.name = name
+        self.location = location
+        self.email = email ?? ""
+        self.login = login
+        self.dob = dob
+        self.registered = registered
+        self.phone = phone ?? ""
+        self.cell = cell ?? ""
+        self.id = id
+        self.picture = picture
+        self.nat = nat ?? ""
+    }
     
     public static func == (lhs: Results, rhs: Results) -> Bool {
         lhs.gender == rhs.gender && lhs.name == rhs.name && lhs.location == rhs.location && lhs.email == rhs.email && lhs.login == rhs.login && lhs.dob == rhs.dob && lhs.registered == rhs.registered && lhs.phone == rhs.phone && lhs.cell == rhs.cell && lhs.id == rhs.id && lhs.picture == rhs.picture && lhs.nat == rhs.nat
@@ -32,23 +47,8 @@ public struct Results: Codable, Equatable {
         case picture = "picture"
         case nat = "nat"
     }
-
-    init(gender: Gender, name: Name, location: Location, email: String, login: Login, dob: Dob, registered: Registered, phone: String, cell: String, id: ID, picture: Picture, nat: String) {
-        self.gender = gender
-        self.name = name
-        self.location = location
-        self.email = email
-        self.login = login
-        self.dob = dob
-        self.registered = registered
-        self.phone = phone
-        self.cell = cell
-        self.id = id
-        self.picture = picture
-        self.nat = nat
-    }
-
-    public init(from decoder: Decoder) throws {
+    
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         gender = try values.decode(Gender.self, forKey: .gender)
         name = try values.decode(Name.self, forKey: .name)
@@ -79,5 +79,4 @@ public struct Results: Codable, Equatable {
         try container.encode(picture, forKey: .picture)
         try container.encode(nat, forKey: .nat)
     }
-
 }

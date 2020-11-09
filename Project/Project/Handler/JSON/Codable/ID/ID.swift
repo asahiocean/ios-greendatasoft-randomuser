@@ -1,8 +1,13 @@
 import Foundation
 
-public struct ID: Codable, Equatable {
-    public let name: String
-    public let value: String?
+public final class ID: Codable, Equatable {
+    var name: String?
+    var value: String?
+
+    init(name: String?, value: String?) {
+        self.name = name ?? ""
+        self.value = value ?? ""
+    }
     
     public static func ==(lhs: ID, rhs: ID) -> Bool {
         return lhs.name == rhs.name && lhs.value == rhs.value
@@ -12,13 +17,8 @@ public struct ID: Codable, Equatable {
         case name = "name"
         case value = "value"
     }
-
-    public init(name: String, value: String?) {
-        self.name = name
-        self.value = value ?? ""
-    }
-
-    public init(from decoder: Decoder) throws {
+    
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
         value = try? values.decode(String.self, forKey: .value)

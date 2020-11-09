@@ -1,18 +1,19 @@
 import Foundation
 
 extension Results {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Results.self, from: data)
+    convenience init(data: Data) throws {
+        let me = try newJSONDecoder().decode(Results.self, from: data)
+        self.init(gender: me.gender, name: me.name, location: me.location, email: me.email, login: me.login, dob: me.dob, registered: me.registered, phone: me.phone, cell: me.cell, id: me.id, picture: me.picture, nat: me.nat)
     }
 
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    init(fromURL url: URL) throws {
+    convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 

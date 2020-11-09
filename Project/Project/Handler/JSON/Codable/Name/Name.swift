@@ -1,29 +1,29 @@
 import Foundation
 
-public struct Name: Codable, Equatable, Identifiable {
+public final class Name: Codable {
     public let id: UUID
-    public let title: String
-    public let first: String
-    public let last: String
+    public let title: String?
+    public let first: String?
+    public let last: String?
+
+    init(title: String?, first: String?, last: String?) {
+        self.title = title ?? ""
+        self.first = first ?? ""
+        self.last = last ?? ""
+        self.id = .init()
+    }
     
     public static func ==(lhs: Name, rhs: Name) -> Bool {
         return lhs.title == rhs.title && lhs.first == rhs.first && lhs.last == rhs.last
     }
-
+    
     private enum CodingKeys: String, CodingKey {
         case title = "title"
         case first = "first"
         case last = "last"
     }
 
-    init(title: String, first: String, last: String) {
-        self.title = title
-        self.first = first
-        self.last = last
-        self.id = UUID()
-    }
-
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         first = try values.decode(String.self, forKey: .first)
@@ -37,5 +37,4 @@ public struct Name: Codable, Equatable, Identifiable {
         try container.encode(first, forKey: .first)
         try container.encode(last, forKey: .last)
     }
-
 }

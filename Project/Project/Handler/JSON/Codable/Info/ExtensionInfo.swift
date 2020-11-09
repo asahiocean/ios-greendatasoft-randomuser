@@ -1,26 +1,27 @@
 import Foundation
 
 extension Info {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Info.self, from: data)
+    convenience init(data: Data) throws {
+        let me = try newJSONDecoder().decode(Info.self, from: data)
+        self.init(seed: me.seed, results: me.results, page: me.page, version: me.version)
     }
 
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    init(fromURL url: URL) throws {
+    convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
     func with(
-        seed: String? = nil,
-        results: Int? = nil,
-        page: Int? = nil,
-        version: String? = nil
+        seed: String?? = nil,
+        results: Int?? = nil,
+        page: Int?? = nil,
+        version: String?? = nil
     ) -> Info {
         return Info(
             seed: seed ?? self.seed,

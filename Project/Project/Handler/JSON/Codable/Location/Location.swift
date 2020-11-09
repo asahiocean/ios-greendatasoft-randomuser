@@ -1,19 +1,29 @@
 import Foundation
 
-public struct Location: Codable, Equatable, Identifiable {
+public final class Location: Codable {
     public let id: UUID
     public let street: Street
-    public let city: String
-    public let state: String
-    public let country: String
+    public let city: String?
+    public let state: String?
+    public let country: String?
     public let postcode: Postcode
     public let coordinates: Coordinates
     public let timezone: Timezone
+
+    init(street: Street, city: String?, state: String?, country: String?, postcode: Postcode, coordinates: Coordinates, timezone: Timezone) {
+        self.street = street
+        self.city = city ?? ""
+        self.state = state ?? ""
+        self.country = country ?? ""
+        self.postcode = postcode
+        self.coordinates = coordinates
+        self.timezone = timezone
+        self.id = .init()
+    }
     
     public static func == (lhs: Location, rhs: Location) -> Bool {
         return lhs.id == rhs.id && lhs.street == rhs.street && lhs.city == rhs.city && lhs.state == rhs.state && lhs.country == rhs.country && lhs.postcode == rhs.postcode && lhs.coordinates == rhs.coordinates && lhs.timezone == rhs.timezone
     }
-
     
     private enum CodingKeys: String, CodingKey {
         case street = "street"
@@ -25,18 +35,7 @@ public struct Location: Codable, Equatable, Identifiable {
         case timezone = "timezone"
     }
     
-    init(street: Street, city: String, state: String, country: String, postcode: Postcode, coordinates: Coordinates, timezone: Timezone) {
-        self.street = street
-        self.city = city
-        self.state = state
-        self.country = country
-        self.postcode = postcode
-        self.coordinates = coordinates
-        self.timezone = timezone
-        self.id = UUID()
-    }
-
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         street = try values.decode(Street.self, forKey: .street)
         city = try values.decode(String.self, forKey: .city)

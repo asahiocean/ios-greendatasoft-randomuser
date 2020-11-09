@@ -1,14 +1,25 @@
 import Foundation
 
-public struct Login: Codable, Equatable, Identifiable {
+public final class Login: Codable, Equatable, Identifiable {
     public let id: UUID
-    let uuid: String
+    public let uuid: String
     public let username: String
     public let password: String
     public let salt: String
-    let md5: String
+    public let md5: String
     public let sha1: String
     public let sha256: String
+
+    init(uuid: String?, username: String?, password: String?, salt: String?, md5: String?, sha1: String?, sha256: String?) {
+        self.uuid = uuid ?? ""
+        self.username = username ?? ""
+        self.password = password ?? ""
+        self.salt = salt ?? ""
+        self.md5 = md5 ?? ""
+        self.sha1 = sha1 ?? ""
+        self.sha256 = sha256 ?? ""
+        self.id = .init()
+    }
     
     public static func ==(lhs: Login, rhs: Login) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.username == rhs.username && lhs.password == rhs.password && lhs.salt == rhs.salt && lhs.md5 == rhs.md5 && lhs.sha1 == rhs.sha1 && lhs.sha256 == rhs.sha256
@@ -23,19 +34,8 @@ public struct Login: Codable, Equatable, Identifiable {
         case sha1 = "sha1"
         case sha256 = "sha256"
     }
-
-    init(uuid: String, username: String, password: String, salt: String, md5: String, sha1: String, sha256: String) {
-        self.uuid = uuid
-        self.username = username
-        self.password = password
-        self.salt = salt
-        self.md5 = md5
-        self.sha1 = sha1
-        self.sha256 = sha256
-        self.id = UUID()
-    }
-
-    public init(from decoder: Decoder) throws {
+    
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         uuid = try values.decode(String.self, forKey: .uuid)
         username = try values.decode(String.self, forKey: .username)
@@ -57,4 +57,5 @@ public struct Login: Codable, Equatable, Identifiable {
         try container.encode(sha1, forKey: .sha1)
         try container.encode(sha256, forKey: .sha256)
     }
+
 }

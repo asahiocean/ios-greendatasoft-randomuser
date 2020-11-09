@@ -1,10 +1,13 @@
 import UIKit
+import Nuke
 // import SimpleImageViewer
 
 class UserinfoVC: UIViewController {
      
-    static var identifier: String { String(describing: self ) }
+    static var nibName: String { String(describing: self ) }
     
+    @IBOutlet weak var photo: UIImageView!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,16 +9,18 @@ final class StorageManager: DatabaseWorker, Coredata {
     fileprivate(set) public var viewContext: NSManagedObjectContext!
     
     public let cache: EGOCache = EGOCache.global()
-    internal(set) public var database: Database?
+    internal(set) public var database: Database? {
+        didSet { print("database COUNT:", database?.results.count) }
+    }
     
-    func setdb(results: [Results], info: Info) {
+    func setdb(_ results: [Results], _ info: Info) {
         switch database {
-        case nil:
-            database = Database(results: results, info: info)
-            do { updaterGroup.leave() }
-        default:
-            database?.results.append(contentsOf: results)
-            do { updaterGroup.leave() }
+            case nil:
+                database = Database(results: results, info: info)
+                do { updaterGroup.leave() }
+            default:
+                database?.results.append(contentsOf: results)
+                do { updaterGroup.leave() }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
             guard let jsonData = try? database?.jsonData() else { return }
@@ -28,12 +30,12 @@ final class StorageManager: DatabaseWorker, Coredata {
         })
     }
     
-    static func getdb(_ completion: @escaping InfRes) {
-        guard let db = StorageManager().database else { return }
+    func getdb(_ completion: @escaping InfRes) {
+        guard let db: Database = database else { return }
         completion(db.results, db.info)
     }
     
-    static func statusdb(_ status: Status, state: @escaping State) {
+    func statusdb(_ status: Status, state: @escaping State) {
         guard let db = StorageManager().database else { return }
         switch status {
             case .count:

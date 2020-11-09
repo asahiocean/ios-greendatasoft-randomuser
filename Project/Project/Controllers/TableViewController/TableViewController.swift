@@ -1,47 +1,55 @@
 import UIKit
 import Nuke
 
-final class TableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+final class TableViewController: UITableViewController {
     
     internal let storage = StorageManager.shared
     
-    override func loadViewIfNeeded() { self._updater() }
+    override func loadViewIfNeeded() {  }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self._updater()
         _navigationBarSetup()
         tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.rowHeight = rowHeight
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.decelerationRate = .fast
+        tableView.contentInsetAdjustmentBehavior = .never
         
         let activityView = UIActivityIndicatorView(style: .large)
         tableView.backgroundView = activityView
         activityView.startAnimating()
-        
-        self.navigationController?.popoverPresentationController?.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let count = storage.database?.results.count, indexPath.row == (count - 8) { self._updater() }
+        if let count = storage.database?.results.count,
+           indexPath.row == (count - 8) {
+            print("UPDATE!")
+             self._updater()
+        }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
         // скролл к ячейке
         //tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-
-        let bundle = Bundle.main.classNamed(UserinfoVC.identifier)
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
         if let cell = tableView.cellForRow(at: indexPath) { }
+        
         if let result = storage.database?.results[indexPath.row],
            let nav = navigationController {
-            if let view = UINib(nibName: UserinfoVC.identifier, bundle: Bundle(for: UserinfoVC.self)).instantiate(withOwner: nil, options: nil).first as? UserinfoVC {
-                nav.pushViewController(view, animated: true)
+            let name = UserinfoVC.nibName
+            let bundle = Bundle(for: UserinfoVC.self)
+            if let userinfo = UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil).first as? UserinfoVC {
+                userinfo.title = "User info"
+                DispatchQueue.main.async {
+                    userinfo.photo.image = result.picture.image
+                }
+                nav.pushViewController(userinfo, animated: true)
             }
-            //self.present(controller, animated: true) { }
         }
     }
     
@@ -49,45 +57,33 @@ final class TableViewController: UITableViewController, UIPopoverPresentationCon
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return storage.database?.results.count ?? 0
     }
-    
+        
     //MARK: -- cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell) {
-            
-            let result = storage.database?.results[indexPath.row]
-            
-            //MARK: Name Block
-            cell.idname = result?.name.id
-            cell.gender = result?.name.title
-            cell.firstname?.text = result?.name.first
-            cell.surname?.text = result?.name.last
-            
-            //MARK: Picture Block
-            if let string = result?.picture.mediumUrl,
-               let url = URL(string: string) {
-                let request = ImageRequest(url: url, priority: .high)
-                if let cached = ImagePipeline.shared.cachedImage(for: request) {
-                    DispatchQueue.main.async {
-                        cell.photo?.image = cached.image;
-                        //print("Cached image size:", cached.image.pngData() ?? .init())
+            if let results = storage.database?.results {
+                let result = results[indexPath.row]
+                //MARK: Name Block
+                cell.idname = result.name.id
+                cell.gender = result.name.title
+                cell.firstname?.text = result.name.first
+                cell.surname?.text = result.name.last
+                
+                //MARK: Picture Block
+                DispatchQueue.main.async {
+                    if let url = URL(string: result.picture.largeUrl) {
+                        let r = ImageRequest(url: url, priority: .high)
+                        ImagePipeline.shared.loadImage(with: r,{ resp in
+                            switch resp {
+                            case .failure: fatalError()
+                            case let .success(result):
+                                cell.photo?.image = result.image
+                            }
+                        })
                     }
-                } else {
-                    ImagePipeline.shared.loadImage(with: request, { response in
-                        switch response {
-                        case let .success(result):
-                            DispatchQueue.main.async {
-                                cell.photo?.image = result.image;
-                                // print("Load image:", url)
-                            }
-                        case .failure(_):
-                            DispatchQueue.main.async {
-                                cell.photo?.image = UIImage(named: "avatar")!
-                            }
-                        }
-                    })
                 }
+                cell.phone.text = result.phone
             }
-            cell.phone.text = result?.phone
             return cell
         } else {
             let defaultCell: UITableViewCell = UITableViewCell(style: .value1, reuseIdentifier: CustomCell.identifier)

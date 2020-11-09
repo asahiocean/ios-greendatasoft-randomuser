@@ -1,29 +1,30 @@
 import Foundation
 
 extension Login {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Login.self, from: data)
+    convenience init(data: Data) throws {
+        let me = try newJSONDecoder().decode(Login.self, from: data)
+        self.init(uuid: me.uuid, username: me.username, password: me.password, salt: me.salt, md5: me.md5, sha1: me.sha1, sha256: me.sha256)
     }
 
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    init(fromURL url: URL) throws {
+    convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
     func with(
-        uuid: String? = nil,
-        username: String? = nil,
-        password: String? = nil,
-        salt: String? = nil,
-        md5: String? = nil,
-        sha1: String? = nil,
-        sha256: String? = nil
+        uuid: String?? = nil,
+        username: String?? = nil,
+        password: String?? = nil,
+        salt: String?? = nil,
+        md5: String?? = nil,
+        sha1: String?? = nil,
+        sha256: String?? = nil
     ) -> Login {
         return Login(
             uuid: uuid ?? self.uuid,

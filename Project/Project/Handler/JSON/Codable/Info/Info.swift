@@ -1,15 +1,11 @@
 import Foundation
 
-public struct Info: Codable, Equatable, Identifiable {
+public final class Info: Codable, Equatable, Identifiable {
     public let id: UUID
-    public let seed: String
-    public let results: Int
-    public let page: Int
-    public let version: String
-    
-    public static func ==(lhs: Info, rhs: Info) -> Bool {
-        return lhs.id == rhs.id && lhs.seed == rhs.seed && lhs.results == rhs.results && lhs.page == rhs.page && lhs.version == rhs.version
-    }
+    public let seed: String?
+    public let results: Int?
+    public let page: Int?
+    public let version: String?
     
     init(seed: String?, results: Int?, page: Int?, version: String?) {
         self.seed = seed ?? ""
@@ -19,6 +15,10 @@ public struct Info: Codable, Equatable, Identifiable {
         self.id = UUID()
     }
 
+    public static func ==(lhs: Info, rhs: Info) -> Bool {
+        return lhs.id == rhs.id && lhs.seed == rhs.seed && lhs.results == rhs.results && lhs.page == rhs.page && lhs.version == rhs.version
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case seed = "seed"
         case results = "results"
@@ -26,7 +26,7 @@ public struct Info: Codable, Equatable, Identifiable {
         case version = "version"
     }
 
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         seed = try values.decode(String.self, forKey: .seed)
         results = try values.decode(Int.self, forKey: .results)
@@ -42,4 +42,5 @@ public struct Info: Codable, Equatable, Identifiable {
         try container.encode(page, forKey: .page)
         try container.encode(version, forKey: .version)
     }
+
 }

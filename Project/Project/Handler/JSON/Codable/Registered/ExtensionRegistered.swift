@@ -1,26 +1,27 @@
 import Foundation
 
 extension Registered {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Registered.self, from: data)
+    convenience init(data: Data) throws {
+        let me = try newJSONDecoder().decode(Registered.self, from: data)
+        self.init(date: me.date, age: me.age)
     }
 
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    init(fromURL url: URL) throws {
+    convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
     func with(
-        date: String? = nil,
-        age: Int? = nil
-    ) -> Registered {
-        return Registered(
+        date: String?? = nil,
+        age: Int?? = nil
+    ) -> Dob {
+        return Dob(
             date: date ?? self.date,
             age: age ?? self.age
         )

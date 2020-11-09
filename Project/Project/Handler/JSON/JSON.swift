@@ -2,6 +2,7 @@ import Foundation
 
 protocol JSON {
     var jsonDecoder: JSONDecoder! { get }
+    func jsonData(_ data: Data, _ completion: @escaping (Any) -> (Void))
 }
 extension JSON {
     var jsonDecoder: JSONDecoder {
