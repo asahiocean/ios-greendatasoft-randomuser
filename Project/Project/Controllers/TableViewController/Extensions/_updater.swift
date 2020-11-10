@@ -1,14 +1,14 @@
 import Foundation
 
 extension TableViewController {
-    func _updater() {
+    func _updater(_ count: Int = 20) {
         _navigationBarRightActivityIndicator(hide: false)
         updaterGroup.enter()
         updaterQueue.async(group: updaterGroup, execute: {
-            API.loadRandomUsers(20)
+            API.loadRandomUsers(count)
         })
         updaterGroup.notify(queue: .main, execute: { [self] in
-            tableView.reloadData()
+            defer { tableView.reloadData() }
             _navigationBarRightActivityIndicator(hide: true)
         })
     }

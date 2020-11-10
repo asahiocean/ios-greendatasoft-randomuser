@@ -7,26 +7,33 @@ final class StorageManager: DatabaseWorker, Coredata {
     public static var shared = StorageManager()
     fileprivate(set) public var appDelegate: AppDelegate!
     fileprivate(set) public var viewContext: NSManagedObjectContext!
+
+    let quene = DispatchQueue(label: "com.StorageManager.setdb")
+    let group = DispatchGroup()
     
     public let cache: EGOCache = EGOCache.global()
-    internal(set) public var database: Database? {
-        didSet { print("database COUNT:", database?.results.count) }
-    }
+    internal(set) public var database: Database?
     
     func setdb(_ results: [Results], _ info: Info) {
-        switch database {
+        group.enter()
+        quene.async(group: group, execute: { [self] in
+            switch database {
             case nil:
                 database = Database(results: results, info: info)
-                do { updaterGroup.leave() }
+                do { group.leave() }
             default:
                 database?.results.append(contentsOf: results)
-                do { updaterGroup.leave() }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
-            guard let jsonData = try? database?.jsonData() else { return }
-            let timestamp = String(Int(Date().timeIntervalSince1970))
-            saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, jsonData)
-            cache.setData(jsonData, forKey: keyJsonData + timestamp, withTimeoutInterval: 2592000) // 2592000 sec == 1 month
+                do { group.leave() }
+            }
+        })
+        group.notify(queue: .main, execute: {
+            defer { updaterGroup.leave() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
+                guard let jsonData = try? database?.jsonData() else { return }
+                let timestamp = String(Int(Date().timeIntervalSince1970))
+                saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, jsonData)
+                cache.setData(jsonData, forKey: keyJsonData + timestamp, withTimeoutInterval: 2592000) // 2592000 sec == 1 month
+            })
         })
     }
     

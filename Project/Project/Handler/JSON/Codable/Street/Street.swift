@@ -2,8 +2,8 @@ import Foundation
 
 public final class Street: Codable, Equatable, Identifiable {
     public let id: UUID
-    public let number: Int?
-    public let name: String?
+    public let number: Int
+    public let name: String
     
     public static func ==(lhs: Street, rhs: Street) -> Bool {
         return lhs.number == rhs.number && lhs.name == rhs.name
@@ -14,9 +14,9 @@ public final class Street: Codable, Equatable, Identifiable {
         case name = "name"
     }
 
-    init(number: Int?, name: String?) {
-        self.number = number ?? 0
-        self.name = name ?? ""
+    init(number: Int, name: String) {
+        self.number = number
+        self.name = name
         self.id = .init()
     }
 

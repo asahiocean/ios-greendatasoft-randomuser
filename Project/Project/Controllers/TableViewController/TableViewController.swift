@@ -25,10 +25,7 @@ final class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let count = storage.database?.results.count,
-           indexPath.row == (count - 8) {
-            print("UPDATE!")
-             self._updater()
-        }
+           indexPath.row == (count - 5) { self._updater(15) }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,18 +33,13 @@ final class TableViewController: UITableViewController {
         //tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath) { }
-        
+                
         if let result = storage.database?.results[indexPath.row],
            let nav = navigationController {
             let name = UserinfoVC.nibName
             let bundle = Bundle(for: UserinfoVC.self)
             if let userinfo = UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil).first as? UserinfoVC {
-                userinfo.title = "User info"
-                DispatchQueue.main.async {
-                    userinfo.photo.image = result.picture.image
-                }
+                userinfo.setUserInfo(result)
                 nav.pushViewController(userinfo, animated: true)
             }
         }
@@ -71,16 +63,9 @@ final class TableViewController: UITableViewController {
                 
                 //MARK: Picture Block
                 DispatchQueue.main.async {
-                    if let url = URL(string: result.picture.largeUrl) {
-                        let r = ImageRequest(url: url, priority: .high)
-                        ImagePipeline.shared.loadImage(with: r,{ resp in
-                            switch resp {
-                            case .failure: fatalError()
-                            case let .success(result):
-                                cell.photo?.image = result.image
-                            }
-                        })
-                    }
+                    API.loadImage(result.picture.largeUrl, { image in
+                        cell.photo?.image = image
+                    })
                 }
                 cell.phone.text = result.phone
             }

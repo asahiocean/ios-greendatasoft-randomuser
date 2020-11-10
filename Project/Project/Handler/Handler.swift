@@ -17,7 +17,19 @@ final class Handler: SetData, JSON {
         if let data = data {
             DispatchQueue.main.async {
                 guard let db = try? self.jsonDecoder.decode(Database.self, from: data) else { fatalError() }
-                self.storage.setdb(db.results,db.info)
+                for i in db.results.indices {
+                    let pic = db.results[i].picture
+                    API.loadImage(pic.largeUrl, { value in
+                        if let image = value {
+                            db.results[i].picture.image = image
+                        } else {
+                            db.results[i].picture.image = UIImage(named: "avatar")!
+                        }
+                    })
+                    if i == db.results.endIndex - 1 {
+                        self.storage.setdb(db.results, db.info)
+                    }
+                }
             }
         } else {
             if let allKeys = storage.cache.allKeys() as? [String] {

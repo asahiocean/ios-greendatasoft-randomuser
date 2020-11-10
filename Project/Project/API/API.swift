@@ -6,7 +6,9 @@ final class API: GET, POST {
         if let url = URL(string: urlStr) {
             let request: URLRequest = URLRequest(url: url)
             get(request,{ data,_,_ -> Void in
-                Handler.shared.setdata(data)
+                DispatchQueue(label: "com.API.loadRandomUsers", qos: .background).async {
+                    Handler.shared.setdata(data)
+                }
             })
         }
     }

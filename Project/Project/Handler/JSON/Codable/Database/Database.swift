@@ -6,7 +6,7 @@ public final class Database: Codable, Identifiable {
     public let id: UUID
 
     public static func ==(lhs: Database, rhs: Database) -> Bool {
-        return lhs.results == rhs.results && lhs.info == rhs.info
+        return lhs.results == rhs.results && lhs.info == rhs.info && lhs.id == rhs.id
     }
     
     public init(results: [Results], info: Info) {
