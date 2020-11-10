@@ -1,7 +1,7 @@
 import Foundation
 
 public final class Dob: Codable, Equatable, Identifiable {
-    public let date: String?
+    public var date: String?
     public let age: Int?
     public let id: UUID
 
@@ -22,9 +22,18 @@ public final class Dob: Codable, Equatable, Identifiable {
 
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        date = try values.decode(String.self, forKey: .date)
+        
+        let formatter1: DateFormatter = .iso8601Full
+        let formatter2: DateFormatter = .ddMMyyyy // ДД.ММ.ГГГГ
+        
+        let rawDate = try values.decode(String.self, forKey: .date)
+        if let isoDate = formatter1.date(from: rawDate) {
+            date = formatter2.string(from: isoDate)
+        } else {
+            date = .none
+        }
         age = try values.decode(Int.self, forKey: .age)
-        id = UUID()
+        id = .init()
     }
 
     public func encode(to encoder: Encoder) throws {

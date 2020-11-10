@@ -4,23 +4,31 @@ import MapKit
 class MapsViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    private var pins: [MKPin] = []
     
     func pinPreview(_ loc: Location) {
-        if pins.isEmpty {
+        let quene = DispatchQueue(label: "pinPreview")
+        let group = DispatchGroup()
+        var pins: [MKPin] = [] { didSet { do { group.leave() } } }
+        
+        group.enter()
+        quene.async {
+            _ = group.wait(wallTimeout: .now() + 1)
             let pin = MKPin(
-                title: loc.street.name,
-                snippet: "QWEQWE",
+                title: loc.city,
+                snippet: loc.street.name + ", " + String(loc.street.number),
                 icon: UIImage(named: "mapsicon")!,
                 coords: loc.coordinates)
             pins.append(pin)
+            self.mapView.addAnnotations(pins)
         }
-        mapView.addAnnotations(pins)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [self] in
-            let center = CLLocation(
-                latitude: pins.center.coordinate.latitude,
-                longitude: pins.center.coordinate.longitude)
-            mapView.centerLocation(center)
+        
+        group.notify(queue: quene, execute: { [self] in
+            DispatchQueue.main.async {
+                let center = CLLocation(
+                    latitude: pins.center.coordinate.latitude,
+                    longitude: pins.center.coordinate.longitude)
+                mapView.centerLocation(center)
+            }
         })
     }
     
@@ -34,8 +42,9 @@ class MapsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        mapView.removeAnnotations(pins)
-        pins.removeAll()
+        for anno in mapView.annotations {
+            mapView.removeAnnotation(anno)
+        }
     }
 }
 

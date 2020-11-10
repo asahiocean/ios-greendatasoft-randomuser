@@ -42,6 +42,15 @@
 		3D154890254CFBDD00F6BBA2 /* newJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D15488F254CFBDD00F6BBA2 /* newJSONDecoder.swift */; };
 		3D154895254CFBFF00F6BBA2 /* newJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D154894254CFBFF00F6BBA2 /* newJSONEncoder.swift */; };
 		3D2AE95525548E6900C08802 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2AE95425548E6900C08802 /* Helpers.swift */; };
+		3D42CD17255AA06B00B6894C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD16255AA06B00B6894C /* DateFormatter.swift */; };
+		3D42CD19255AC6D100B6894C /* contextMenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD18255AC6D100B6894C /* contextMenuInteraction.swift */; };
+		3D42CD1B255AC78100B6894C /* _timezoneSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD1A255AC78100B6894C /* _timezoneSetup.swift */; };
+		3D42CD1D255AC7E500B6894C /* _genderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD1C255AC7E500B6894C /* _genderSetup.swift */; };
+		3D42CD1F255AC85600B6894C /* _nameSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD1E255AC85600B6894C /* _nameSetup.swift */; };
+		3D42CD21255AC8D700B6894C /* _emailSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD20255AC8D700B6894C /* _emailSetup.swift */; };
+		3D42CD23255AC97300B6894C /* _photoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD22255AC97300B6894C /* _photoSetup.swift */; };
+		3D42CD25255ACA0B00B6894C /* _ageSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD24255ACA0B00B6894C /* _ageSetup.swift */; };
+		3D42CD27255ACAA900B6894C /* _locationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD26255ACAA900B6894C /* _locationSetup.swift */; };
 		3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FE9254F4CD30052A195 /* Handler.swift */; };
 		3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FFB254F4E8D0052A195 /* JSON.swift */; };
 		3D593E36255A4EC20072D8F7 /* MKPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D593E35255A4EC20072D8F7 /* MKPin.swift */; };
@@ -162,6 +171,15 @@
 		3D15488F254CFBDD00F6BBA2 /* newJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newJSONDecoder.swift; sourceTree = "<group>"; };
 		3D154894254CFBFF00F6BBA2 /* newJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newJSONEncoder.swift; sourceTree = "<group>"; };
 		3D2AE95425548E6900C08802 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		3D42CD16255AA06B00B6894C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		3D42CD18255AC6D100B6894C /* contextMenuInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contextMenuInteraction.swift; sourceTree = "<group>"; };
+		3D42CD1A255AC78100B6894C /* _timezoneSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _timezoneSetup.swift; sourceTree = "<group>"; };
+		3D42CD1C255AC7E500B6894C /* _genderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _genderSetup.swift; sourceTree = "<group>"; };
+		3D42CD1E255AC85600B6894C /* _nameSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _nameSetup.swift; sourceTree = "<group>"; };
+		3D42CD20255AC8D700B6894C /* _emailSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _emailSetup.swift; sourceTree = "<group>"; };
+		3D42CD22255AC97300B6894C /* _photoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _photoSetup.swift; sourceTree = "<group>"; };
+		3D42CD24255ACA0B00B6894C /* _ageSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _ageSetup.swift; sourceTree = "<group>"; };
+		3D42CD26255ACAA900B6894C /* _locationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _locationSetup.swift; sourceTree = "<group>"; };
 		3D4C4FE9254F4CD30052A195 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		3D4C4FFB254F4E8D0052A195 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3D593E35255A4EC20072D8F7 /* MKPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPin.swift; sourceTree = "<group>"; };
@@ -261,6 +279,7 @@
 				3D15488F254CFBDD00F6BBA2 /* newJSONDecoder.swift */,
 				3D154894254CFBFF00F6BBA2 /* newJSONEncoder.swift */,
 				3D15460D254C4ACA00F6BBA2 /* Codable */,
+				3D42CD16255AA06B00B6894C /* DateFormatter.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -696,7 +715,15 @@
 		3DE0A237255A229F00672BE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3D42CD24255ACA0B00B6894C /* _ageSetup.swift */,
+				3D42CD20255AC8D700B6894C /* _emailSetup.swift */,
+				3D42CD1C255AC7E500B6894C /* _genderSetup.swift */,
 				3DE0A238255A22AA00672BE4 /* _locationIconConfig.swift */,
+				3D42CD26255ACAA900B6894C /* _locationSetup.swift */,
+				3D42CD1E255AC85600B6894C /* _nameSetup.swift */,
+				3D42CD22255AC97300B6894C /* _photoSetup.swift */,
+				3D42CD1A255AC78100B6894C /* _timezoneSetup.swift */,
+				3D42CD18255AC6D100B6894C /* contextMenuInteraction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1069,17 +1096,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D15479E254C6B9600F6BBA2 /* Login.swift in Sources */,
+				3D42CD25255ACA0B00B6894C /* _ageSetup.swift in Sources */,
+				3D42CD19255AC6D100B6894C /* contextMenuInteraction.swift in Sources */,
 				3D68FEE0254A35CC0021C56F /* CustomCell.swift in Sources */,
 				3DEB76DB2548D38700763A2B /* POST.swift in Sources */,
 				3D2AE95525548E6900C08802 /* Helpers.swift in Sources */,
 				3D154758254C674600F6BBA2 /* ExtensionLocation.swift in Sources */,
 				3D1547B4254C6C7A00F6BBA2 /* ExtensionName.swift in Sources */,
 				3DF73C9B2550B5390053BA81 /* SetData.swift in Sources */,
+				3D42CD1D255AC7E500B6894C /* _genderSetup.swift in Sources */,
 				3D593E38255A5DA80072D8F7 /* centerLocation.swift in Sources */,
 				3D63A9E52555C4A00066A25A /* Project.xcdatamodeld in Sources */,
 				3D63AA052555C4AD0066A25A /* SceneDelegate.swift in Sources */,
 				3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */,
 				3D6FB3F2254EB58100CEF2C8 /* prefixArray.swift in Sources */,
+				3D42CD17255AA06B00B6894C /* DateFormatter.swift in Sources */,
 				3DE0A239255A22AA00672BE4 /* _locationIconConfig.swift in Sources */,
 				3D154750254C672000F6BBA2 /* Location.swift in Sources */,
 				3D6800FE254B616F0021C56F /* _navigationBarLeftButton.swift in Sources */,
@@ -1091,11 +1122,13 @@
 				3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */,
 				3D154772254C68CE00F6BBA2 /* ExtensionCoordinates.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */,
+				3D42CD23255AC97300B6894C /* _photoSetup.swift in Sources */,
 				3DEB76BA2548C33200763A2B /* httpMethod.swift in Sources */,
 				3D6729332551374300095BEE /* _navigationBarRightButton.swift in Sources */,
 				3DF73DD92550FDDF0053BA81 /* API_copy.swift in Sources */,
 				3DEB76CC2548C38800763A2B /* GET.swift in Sources */,
 				3D1546D1254C5C4D00F6BBA2 /* ExtensionResult.swift in Sources */,
+				3D42CD1F255AC85600B6894C /* _nameSetup.swift in Sources */,
 				3D15475D254C67B400F6BBA2 /* Postcode.swift in Sources */,
 				3D15477B254C697100F6BBA2 /* Street.swift in Sources */,
 				3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */,
@@ -1108,6 +1141,7 @@
 				3D68FF7E254AE11B0021C56F /* UIAlertController_exitIntuitive.swift in Sources */,
 				3D15471B254C603C00F6BBA2 /* Registered.swift in Sources */,
 				3D15478E254C69FD00F6BBA2 /* ExtensionTimezone.swift in Sources */,
+				3D42CD21255AC8D700B6894C /* _emailSetup.swift in Sources */,
 				3D1547C2254C6CDF00F6BBA2 /* ExtensionPicture.swift in Sources */,
 				3D593E36255A4EC20072D8F7 /* MKPin.swift in Sources */,
 				3D1547BA254C6C9D00F6BBA2 /* Picture.swift in Sources */,
@@ -1115,6 +1149,8 @@
 				3D1546BE254C5B6200F6BBA2 /* Info.swift in Sources */,
 				3D154729254C60FC00F6BBA2 /* Gender.swift in Sources */,
 				3D1546E5254C5D8600F6BBA2 /* ID.swift in Sources */,
+				3D42CD27255ACAA900B6894C /* _locationSetup.swift in Sources */,
+				3D42CD1B255AC78100B6894C /* _timezoneSetup.swift in Sources */,
 				3D1546C6254C5B8C00F6BBA2 /* ExtensionInfo.swift in Sources */,
 				3DF73C4425509E390053BA81 /* DatabaseWorker.swift in Sources */,
 				3D79DA09254977C10048B7B0 /* String_urlValid.swift in Sources */,
@@ -1329,7 +1365,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1353,7 +1389,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
