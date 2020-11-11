@@ -22,16 +22,7 @@ public final class Dob: Codable, Equatable, Identifiable {
 
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let formatter1: DateFormatter = .iso8601Full
-        let formatter2: DateFormatter = .ddMMyyyy // ДД.ММ.ГГГГ
-        
-        let rawDate = try values.decode(String.self, forKey: .date)
-        if let isoDate = formatter1.date(from: rawDate) {
-            date = formatter2.string(from: isoDate)
-        } else {
-            date = .none
-        }
+        date = try values.decode(String.self, forKey: .date)
         age = try values.decode(Int.self, forKey: .age)
         id = .init()
     }

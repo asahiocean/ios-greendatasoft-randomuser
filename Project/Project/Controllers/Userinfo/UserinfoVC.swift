@@ -24,6 +24,8 @@ class UserinfoVC: UIViewController {
     var interactionName: UIContextMenuInteraction!
     var interactionEmail: UIContextMenuInteraction!
     
+    private(set) var result: Results?
+    
     public func setUserInfo(_ result: Results) {
         _photoSetup(result)
         _nameSetup(result)
@@ -31,10 +33,28 @@ class UserinfoVC: UIViewController {
         _ageSetup(result)
         _genderSetup(result)
         _locationSetup(result)
+        self.result = result
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Info"
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.global(qos: .utility).async { [self] in
+            if let username = try? result?.name.jsonString(), let url = URL(string: Url.post.rawValue) {
+                API.post(.contentType, URLRequest(url: url), ["Currently viewed": username])
+            }
+        }
+    }
+    
+    deinit {
+        DispatchQueue.global(qos: .utility).async { [self] in
+            if let username = try? result?.name.jsonString(), let url = URL(string: Url.post.rawValue) {
+                API.post(.contentType, URLRequest(url: url), ["Viewing is over": username])
+            }
+        }
     }
 }

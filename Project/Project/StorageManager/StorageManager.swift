@@ -4,7 +4,7 @@ import EGOCache
 import Network
 
 final class StorageManager: DatabaseWorker, Coredata {
-
+    
     public static var shared = StorageManager()
     fileprivate(set) public var appDelegate: AppDelegate!
     fileprivate(set) public var viewContext: NSManagedObjectContext!
@@ -18,7 +18,6 @@ final class StorageManager: DatabaseWorker, Coredata {
     func setdb(_ results: [Results], _ info: Info) {
         group.enter()
         quene.async(group: group, execute: { [self] in
-            updaterGroup.resume()
             switch database {
             case nil:
                 database = Database(results: results, info: info)
@@ -28,23 +27,26 @@ final class StorageManager: DatabaseWorker, Coredata {
                 do { group.leave() }
             }
         })
-        group.notify(queue: .main, execute: {
+        group.notify(queue: .main, execute: { [self] in
             defer { updaterGroup.leave() }
             
+            let queueMonitor = DispatchQueue(label: "com.monitor.queue")
             let monitor = NWPathMonitor()
-            let queue = DispatchQueue(label: "Monitor")
-            monitor.start(queue: queue)
-            
+            monitor.start(queue: queueMonitor)
             monitor.pathUpdateHandler = { path in
                 if path.status == .satisfied {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
-                        if let data = try? database?.jsonData() {
-                        saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, data)
-                        cache.setData(data, forKey: keyJsonData, withTimeoutInterval: 2592000) // 1 month
+                        if let db = database, let data = try? db.jsonData() {
+                            saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, data)
+                            cache.setData(data, forKey: keyJsonData, withTimeoutInterval: 2592000) // 1 month
+                            DispatchQueue.global(qos: .utility).async {
+                                API.post(.contentType, URLRequest(url: URL(string: Url.post.rawValue)!), ["results":db.results.count])
+                            }
                         }
                     })
                 } else {
-                    print("No connection.")
+                    defer { updaterGroup.resume() }
+                    print("[🛑]: \(type(of: self)): data from cache!")
                 }
             }
         })
@@ -66,10 +68,10 @@ final class StorageManager: DatabaseWorker, Coredata {
     }
     
     private init() {
-        DispatchQueue.main.async {
-            guard let delegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate), let context = try? delegate.persistentContainer.viewContext else { fatalError("ERROR") }
-            self.appDelegate = delegate
-            self.viewContext = context
+        DispatchQueue.main.async { [self] in
+            guard let delegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate), let context = try? delegate.persistentContainer.viewContext else { fatalError("> AppDelegate <") }
+            appDelegate = delegate
+            viewContext = context
         }
     }
 }

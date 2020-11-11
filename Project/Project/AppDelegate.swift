@@ -7,6 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        DispatchQueue.global(qos: .utility).async {
+            if let url = URL(string: Url.post.rawValue) {
+                API.post(.contentType, URLRequest(url: url), ["AppDelegate":"didFinishLaunchingWithOptions - \(Date())"])
+            }
+        }
         return true
     }
 

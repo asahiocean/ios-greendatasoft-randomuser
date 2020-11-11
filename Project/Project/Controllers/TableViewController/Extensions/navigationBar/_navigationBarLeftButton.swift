@@ -2,20 +2,6 @@ import UIKit
 import FontAwesome_swift
 
 extension TableViewController {
-    fileprivate func cacheRemoveKey(_ allKeys: [String], _ completion: @escaping ([String:Any]) throws -> Void) {
-        var params: [String:Any] = [:]
-        for timestamp in allKeys.indices {
-            StorageManager.shared.cache.remove(forKey: allKeys[timestamp])
-            params.updateValue(allKeys[timestamp], forKey: "deleted")
-            if timestamp == allKeys.indices.dropLast().count {
-                params.updateValue(allKeys[timestamp], forKey: "exist")
-                for (key,value) in params {
-                    print(key,value)
-                }
-                try? completion(params)
-            }
-        }
-    }
     
     @objc fileprivate func actionLeft() {
         let alert = UIAlertController(
@@ -28,17 +14,33 @@ extension TableViewController {
             
             var parameters: [String:Any] = [:]
 
-            guard let keys = StorageManager.shared.cache.allKeys() as? [String] else { return }
-            cacheRemoveKey(keys.prefix("jsondata").sorted(), { array in
-                for (key,value) in array {
-                    parameters.updateValue(value, forKey: key)
+            if let keys = storage.cache.allKeys() as? [String] {
+                print(keys)
+                for key in keys where key.hasPrefix(keyJsonData)  {
+                    storage.cache.remove(forKey: key)
+                    parameters.updateValue(key, forKey: "deleted")
+                    if key == keys.last {
+                        if let url = URL(string: Url.post.rawValue) {
+                            DispatchQueue.global(qos: .utility).async {
+                                API.post(.contentType, URLRequest(url: url), parameters, { data in
+                                    print(String(data: data, encoding: .utf8) ?? "")
+                                })
+                            }
+                        }
+                    }
                 }
-            })
-            
-            let request = URLRequest(url: URL(string: Url.post.rawValue.urlValid)!)
-            API.post(.contentType, request, parameters,{ data in
-                print("✅", String(data: data, encoding: .utf8) ?? "")
-            })
+                keys.forEach {
+                    if $0.hasPrefix(keyJsonData) {
+                        storage.getCoreData(JsondataEntity.self, output: { dbs in
+                            if dbs.isEmpty == false {
+//                                let alert = UIAlertController(title: "Кэш успешно очищен!", message: "", preferredStyle: .alert)
+//                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                                self.present(alert, animated: true)
+                            }
+                        })
+                    }
+                }
+            }
         }
         alert.addAction(clearCache)
         // - - - - - -

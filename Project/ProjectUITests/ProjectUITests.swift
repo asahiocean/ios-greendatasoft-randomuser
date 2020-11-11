@@ -1,10 +1,3 @@
-//
-//  ProjectUITests.swift
-//  ProjectUITests
-//
-//  Created by Sergey Fedotov on 27.10.2020.
-//
-
 import XCTest
 
 class ProjectUITests: XCTestCase {
