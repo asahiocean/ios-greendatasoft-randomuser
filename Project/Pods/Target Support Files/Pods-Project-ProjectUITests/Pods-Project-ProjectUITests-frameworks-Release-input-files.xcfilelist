@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/EGOCache/EGOCache.framework
+${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework
+${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
+${BUILT_PRODUCTS_DIR}/SimpleImageViewer/SimpleImageViewer.framework

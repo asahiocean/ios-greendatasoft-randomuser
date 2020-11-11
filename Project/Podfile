@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Project' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Project
+  pod 'FontAwesome.swift'
+  pod 'EGOCache', '~> 2.2.0'
+  pod 'SimpleImageViewer', '~> 1.1.1'
+  pod 'Nuke'
+
+  target 'ProjectTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ProjectUITests' do
+    # Pods for testing
+  end
+
+end
