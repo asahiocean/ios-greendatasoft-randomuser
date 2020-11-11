@@ -14,7 +14,7 @@ extension Decodable {
 }
 
 final class Handler: SetData, JSON {
-    private var storage: StorageManager!
+    private(set) var storage: StorageManager!
 
     public static let shared = Handler()
     
@@ -56,37 +56,6 @@ final class Handler: SetData, JSON {
         }
     }
     
-    fileprivate func gettingBackup(completion: (() -> (Void))?) {
-        let quene = DispatchQueue(label: "com.gettingBackup", qos: .background)
-        let group = DispatchGroup()
-        
-        group.enter()
-        quene.async(group: group, execute: { [self] in
-        if storage.database == nil {
-            if let keys = storage.cache.allKeys() as? [String], keys.isEmpty == false {
-                for key in keys where key.hasPrefix(keyJsonData) {
-                    if let data = storage.cache.data(forKey: key) {
-                        jsonData(data, completion: { _ in group.leave() })
-                    }
-                }
-            } else {
-                storage.getCoreData(JsondataEntity.self, output: { [self] array -> Void in
-                    if let last = array.last, let data = last.jsonData {
-                        jsonData(data, completion: { _ in group.leave() })
-                    } else {
-                        group.leave()
-                    }
-                })
-            }
-        } else {
-            group.leave()
-        }
-        })
-        group.notify(queue: quene, execute: {
-            if let task = completion { task() }
-        })
-    }
-        
     func setdata(_ data: Data?) {
         if let data = data {
             gettingBackup(completion: { [self] in
@@ -96,7 +65,9 @@ final class Handler: SetData, JSON {
             gettingBackup(completion: nil)
         }
     }
+    
     private init() {
         self.storage = StorageManager.shared
     }
 }
+
