@@ -39,9 +39,7 @@ final class StorageManager: DatabaseWorker, Coredata {
                         if let db = database, let data = try? db.jsonData() {
                             saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, data)
                             cache.setData(data, forKey: keyJsonData, withTimeoutInterval: 2592000) // 1 month
-                            apireport.async {
-                                API.post(.contentType, URLRequest(url: URL(string: Url.post.rawValue)!), ["results":db.results.count])
-                            }
+                            API.report(key: "results", value: db.results.count)
                         }
                     })
                 } else {

@@ -20,13 +20,7 @@ extension TableViewController {
                     storage.cache.remove(forKey: key)
                     parameters.updateValue(key, forKey: "deleted")
                     if key == keys.last {
-                        if let url = URL(string: Url.post.rawValue) {
-                            apireport.async {
-                                API.post(.contentType, URLRequest(url: url), parameters, { data in
-                                    print(String(data: data, encoding: .utf8) ?? "")
-                                })
-                            }
-                        }
+                        API.report(key: parameters.map({$0}).description, value: parameters.map({$1}).description)
                     }
                 }
                 keys.forEach {
