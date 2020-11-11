@@ -8,7 +8,7 @@ extension TableViewController {
             API.loadRandomUsers(count)
         })
         updaterGroup.notify(queue: .main, execute: { [self] in
-            defer { tableView.reloadData() }
+            tableView.reloadData()
             _navigationBarRightActivityIndicator(hide: true)
         })
     }
