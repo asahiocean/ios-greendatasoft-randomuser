@@ -2,31 +2,11 @@ import Foundation
 import Dispatch
 import Nuke
 
-extension Decodable {
-    static func map(JSONString:String) -> Self? {
-        do {
-            return try jsonDecoder().decode(Self.self, from: Data(JSONString.utf8))
-        } catch let error {
-            print(error)
-            return nil
-        }
-    }
-}
-
 final class Handler: SetData, JSON {
     private(set) var storage: StorageManager!
 
     public static let shared = Handler()
     
-    private func createWeatherObjectWith<T: Decodable>(json: Data, Object:T.Type ,completion: @escaping (_ data: T?, _ error: Error?) -> Void) {
-        do {
-            let weather = try jsonDecoder().decode(T.self, from: json)
-            return completion(weather, nil)
-        } catch let error {
-            return completion(nil, error)
-        }
-    }
-
     internal func jsonData(_ data: Data, completion: ((Any) -> (Void))?) {
         DispatchQueue.main.async {
             if let db = try? jsonDecoder().decode(Database.self, from: data) {
@@ -42,16 +22,7 @@ final class Handler: SetData, JSON {
                     }
                 }
             } else {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
-                        let user = Database.map(JSONString: String(data: jsonData, encoding: .utf8)!)
-                        print(user ?? "")
-                    }
-                    
-                } catch let error as NSError {
-                    fatalError(error.localizedDescription)
-                }
+                fatalError()
             }
         }
     }
