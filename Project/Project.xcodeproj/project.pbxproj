@@ -82,7 +82,6 @@
 		3D68FEE2254A35CC0021C56F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FEDF254A35CC0021C56F /* CustomCell.swift */; };
 		3D68FF7E254AE11B0021C56F /* UIAlertController_exitIntuitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */; };
 		3D68FF95254AE8B50021C56F /* navigationBarSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FF94254AE8B50021C56F /* navigationBarSetup.swift */; };
-		3D68FFAF254AEB420021C56F /* NotebookVCextraMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */; };
 		3D6FB3BE254E9AFA00CEF2C8 /* center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FB3BD254E9AFA00CEF2C8 /* center.swift */; };
 		3D6FB3F2254EB58100CEF2C8 /* prefixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FB3F1254EB58100CEF2C8 /* prefixArray.swift */; };
 		3D79DA09254977C10048B7B0 /* String_urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* String_urlValid.swift */; };
@@ -219,7 +218,6 @@
 		3D68FEDF254A35CC0021C56F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3D68FF7D254AE11B0021C56F /* UIAlertController_exitIntuitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController_exitIntuitive.swift; sourceTree = "<group>"; };
 		3D68FF94254AE8B50021C56F /* navigationBarSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationBarSetup.swift; sourceTree = "<group>"; };
-		3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookVCextraMenu.swift; sourceTree = "<group>"; };
 		3D6FB3BD254E9AFA00CEF2C8 /* center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = center.swift; sourceTree = "<group>"; };
 		3D6FB3F1254EB58100CEF2C8 /* prefixArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prefixArray.swift; sourceTree = "<group>"; };
 		3D79DA08254977C10048B7B0 /* String_urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_urlValid.swift; sourceTree = "<group>"; };
@@ -558,7 +556,6 @@
 		3D67A93825486433001E392F /* ProjectUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3D68FFAD254AEB010021C56F /* NotebookVC */,
 				3D67A93925486433001E392F /* ProjectUITests.swift */,
 				3D67A93B25486433001E392F /* Info.plist */,
 			);
@@ -636,14 +633,6 @@
 				3D68010B254B63970021C56F /* Extensions */,
 			);
 			path = UIAlertController;
-			sourceTree = "<group>";
-		};
-		3D68FFAD254AEB010021C56F /* NotebookVC */ = {
-			isa = PBXGroup;
-			children = (
-				3D68FFAE254AEB420021C56F /* NotebookVCextraMenu.swift */,
-			);
-			path = NotebookVC;
 			sourceTree = "<group>";
 		};
 		3D6FB387254E858E00CEF2C8 /* Cell */ = {
@@ -1238,7 +1227,6 @@
 				3DDC59062551327500AC120F /* NavigationController.swift in Sources */,
 				3D63A9ED2555C4A10066A25A /* Project.xcdatamodeld in Sources */,
 				3D67A93A25486433001E392F /* ProjectUITests.swift in Sources */,
-				3D68FFAF254AEB420021C56F /* NotebookVCextraMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,7 +1389,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1425,7 +1413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
