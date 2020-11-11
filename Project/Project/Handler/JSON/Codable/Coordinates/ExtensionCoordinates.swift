@@ -2,7 +2,7 @@ import Foundation
 
 extension Coordinates {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Coordinates.self, from: data)
+        let me = try jsonDecoder().decode(Coordinates.self, from: data)
         self.init(latitude: me.latitude, longitude: me.longitude)
     }
 

@@ -9,42 +9,48 @@ final class Handler: SetData, JSON {
 
     internal func jsonData(_ data: Data, completion: ((Any) -> (Void))?) {
         DispatchQueue.main.async {
-            guard let db = try? newJSONDecoder().decode(Database.self, from: data) else { fatalError() }
-            for i in db.results.indices {
-                let pic = db.results[i].picture
-                API.loadImage(pic.largeUrl, { value in
-                    if let image = value {
-                        db.results[i].picture.image = image
-                    } else {
-                        db.results[i].picture.image = UIImage(named: "avatar")!
+            if let db = try? jsonDecoder().decode(Database.self, from: data) {
+                for i in db.results.indices {
+                    let pic = db.results[i].picture
+                    API.loadImage(pic.largeUrl, { value in
+                        if let image = value {
+                            db.results[i].picture.image = image
+                        }
+                    })
+                    if i == db.results.endIndex - 1 {
+                        self.storage.setdb(db.results, db.info)
                     }
-                })
-                if i == db.results.endIndex - 1 {
-                    self.storage.setdb(db.results, db.info)
+                }
+            } else {
+                do {
+                    let _ = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    
+                } catch let error as NSError {
+                    fatalError(error.localizedDescription)
                 }
             }
         }
     }
     
     func setdata(_ data: Data?) {
-        if let data = data {
-            jsonData(data, completion: nil)
+        if let trueData = data {
+            jsonData(trueData, completion: nil)
         } else {
-            if let allKeys = storage.cache.allKeys() as? [String] {
-                for item in allKeys.sorted() where item.hasPrefix(keyJsonData) {
-                    if let data = storage.cache.data(forKey: item) {
-                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1, execute: {
-                            if let db = try? newJSONDecoder().decode(Database.self, from: data) {
-                                fatalError()
-                                // storage.setdb(db.results,db.info)
-                            }
-                        })
+            if let cacheKeys = storage.cache.allKeys() as? [String],
+               cacheKeys.isEmpty == false {
+                for key in cacheKeys where key.hasPrefix(keyJsonData) {
+                    if let data = storage.cache.data(forKey: key) {
+                        self.jsonData(data, completion: nil)
                     }
                 }
             } else {
-            storage.getCoreData(JsondataEntity.self, output: { data in
-                print(data.enumerated())
-            })
+                storage.getCoreData(JsondataEntity.self, output: { array in
+                    for entity in array {
+                        if let data = entity.jsonData {
+                            self.jsonData(data, completion: nil)
+                        }
+                    }
+                })
             }
         }
     }

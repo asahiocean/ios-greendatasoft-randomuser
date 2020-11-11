@@ -13,6 +13,7 @@ extension API {
                 case let .success(result):
                     completion(result.image); // print("Load image:", result.image.pngData() ?? 0, "-> URL:", url.absoluteString)
                 case let .failure(error):
+                    print(error.localizedDescription)
                     completion(nil)
                 }
             })

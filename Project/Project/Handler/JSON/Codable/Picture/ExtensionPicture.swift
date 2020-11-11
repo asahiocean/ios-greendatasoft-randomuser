@@ -2,7 +2,7 @@ import Foundation
 
 extension Picture {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Picture.self, from: data)
+        let me = try jsonDecoder().decode(Picture.self, from: data)
         self.init(large: me.largeUrl, medium: me.mediumUrl, thumbnail: me.thumbnailUrl)
     }
 

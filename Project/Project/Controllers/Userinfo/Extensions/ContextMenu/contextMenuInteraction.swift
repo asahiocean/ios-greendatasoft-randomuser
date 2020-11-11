@@ -8,28 +8,27 @@ extension UserinfoVC: UIContextMenuInteractionDelegate {
         case interactionMap:
             func contextMenu() -> UIMenu {
                 let copy = UIAction(title: "Копировать адрес", image: UIImage(systemName: "doc.text", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)) { action in
-                    print(self.locationFull ?? "no address")
+                    let pasteboard = UIPasteboard.general
+                    pasteboard.string = self.address
                 }
                 
                 let map = UIAction(title: "Перейти в Карты", image: UIImage(systemName: "map", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)) { action in
-                    print("Перейти в Карты")
+                    if let coord = self.location?.coordinates {
+                        if let url = URL(string: "https://maps.apple.com/?ll=\(coord.latitude!),\(coord.longitude!)") {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
                 }
                 return UIMenu(title: "", children: [map, copy])
             }
-
-            if let map = UINib(nibName: MapsViewController.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MapsViewController {
-                
-                if let pin = self.address { map.pinPreview(pin) }
-                
-                let config = UIContextMenuConfiguration(
-                    identifier: nil,
-                    previewProvider: { () -> UIViewController? in
-                    return map
-                }) { _ -> UIMenu? in
-                    return contextMenu()
-                }
-                return config
+            let config = UIContextMenuConfiguration(
+                identifier: nil,
+                previewProvider: { () -> UIViewController? in
+                return nil
+            }) { _ -> UIMenu? in
+                return contextMenu()
             }
+            return config
         case interactionPhoto:
             let cfg = ImageViewerConfiguration { config in
                 config.imageView = photo

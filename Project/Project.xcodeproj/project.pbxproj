@@ -698,6 +698,14 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		3DBF2D32255B73060037C070 /* ContextMenu */ = {
+			isa = PBXGroup;
+			children = (
+				3D42CD18255AC6D100B6894C /* contextMenuInteraction.swift */,
+			);
+			path = ContextMenu;
+			sourceTree = "<group>";
+		};
 		3DDC584E2551223100AC120F /* DatabaseWorker */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,7 +752,7 @@
 				3D42CD1E255AC85600B6894C /* _nameSetup.swift */,
 				3D42CD22255AC97300B6894C /* _photoSetup.swift */,
 				3D42CD1A255AC78100B6894C /* _timezoneSetup.swift */,
-				3D42CD18255AC6D100B6894C /* contextMenuInteraction.swift */,
+				3DBF2D32255B73060037C070 /* ContextMenu */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1393,7 +1401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1417,7 +1425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = KXDT64LHVB;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

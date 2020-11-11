@@ -10,9 +10,9 @@ class UserinfoVC: UIViewController {
     @IBOutlet weak var email: UILabel!
     
     @IBOutlet weak var locationIcon: UIImageView!
-    @IBOutlet weak var location: UILabel!
-    internal var locationFull: String?
-    internal var address: Location?
+    @IBOutlet weak var locationLabel: UILabel!
+    internal var address: String?
+    internal var location: Location?
     
     @IBOutlet weak var genderIcon: UIImageView!
     @IBOutlet weak var dateOfBirth: UILabel!

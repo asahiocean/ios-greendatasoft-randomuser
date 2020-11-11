@@ -2,7 +2,7 @@ import Foundation
 
 extension Name {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Name.self, from: data)
+        let me = try jsonDecoder().decode(Name.self, from: data)
         self.init(title: me.title, first: me.first, last: me.last)
     }
 

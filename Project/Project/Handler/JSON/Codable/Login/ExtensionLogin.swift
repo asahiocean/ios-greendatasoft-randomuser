@@ -2,7 +2,7 @@ import Foundation
 
 extension Login {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Login.self, from: data)
+        let me = try jsonDecoder().decode(Login.self, from: data)
         self.init(uuid: me.uuid, username: me.username, password: me.password, salt: me.salt, md5: me.md5, sha1: me.sha1, sha256: me.sha256)
     }
 

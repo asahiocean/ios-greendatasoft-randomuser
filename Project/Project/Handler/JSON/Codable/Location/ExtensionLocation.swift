@@ -2,7 +2,7 @@ import Foundation
 
 extension Location {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Location.self, from: data)
+        let me = try jsonDecoder().decode(Location.self, from: data)
         self.init(street: me.street, city: me.city, state: me.state, country: me.country, postcode: me.postcode, coordinates: me.coordinates, timezone: me.timezone)
     }
 

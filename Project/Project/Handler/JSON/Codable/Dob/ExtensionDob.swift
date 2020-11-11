@@ -2,7 +2,7 @@ import Foundation
 
 extension Dob {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Dob.self, from: data)
+        let me = try jsonDecoder().decode(Dob.self, from: data)
         self.init(date: me.date, age: me.age)
     }
 

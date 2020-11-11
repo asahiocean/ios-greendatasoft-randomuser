@@ -1,6 +1,7 @@
 import UIKit
 import CoreData
 import EGOCache
+import Network
 
 final class StorageManager: DatabaseWorker, Coredata {
 
@@ -17,6 +18,7 @@ final class StorageManager: DatabaseWorker, Coredata {
     func setdb(_ results: [Results], _ info: Info) {
         group.enter()
         quene.async(group: group, execute: { [self] in
+            updaterGroup.resume()
             switch database {
             case nil:
                 database = Database(results: results, info: info)
@@ -28,12 +30,23 @@ final class StorageManager: DatabaseWorker, Coredata {
         })
         group.notify(queue: .main, execute: {
             defer { updaterGroup.leave() }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
-                guard let jsonData = try? database?.jsonData() else { return }
-                let timestamp = String(Int(Date().timeIntervalSince1970))
-                saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, jsonData)
-                cache.setData(jsonData, forKey: keyJsonData + timestamp, withTimeoutInterval: 2592000) // 2592000 sec == 1 month
-            })
+            
+            let monitor = NWPathMonitor()
+            let queue = DispatchQueue(label: "Monitor")
+            monitor.start(queue: queue)
+            
+            monitor.pathUpdateHandler = { path in
+                if path.status == .satisfied {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
+                        if let data = try? database?.jsonData() {
+                        saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, data)
+                        cache.setData(data, forKey: keyJsonData, withTimeoutInterval: 2592000) // 1 month
+                        }
+                    })
+                } else {
+                    print("No connection.")
+                }
+            }
         })
     }
     

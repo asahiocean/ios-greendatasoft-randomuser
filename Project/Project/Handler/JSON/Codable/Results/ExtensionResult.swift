@@ -2,7 +2,7 @@ import Foundation
 
 extension Results {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Results.self, from: data)
+        let me = try jsonDecoder().decode(Results.self, from: data)
         self.init(gender: me.gender, name: me.name, location: me.location, email: me.email, login: me.login, dob: me.dob, registered: me.registered, phone: me.phone, cell: me.cell, id: me.id, picture: me.picture, nat: me.nat)
     }
 

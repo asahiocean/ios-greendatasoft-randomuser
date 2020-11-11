@@ -4,31 +4,29 @@ import MapKit
 class MapsViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    
+    var pins: [MKPin] = []
+
+    private var quene: DispatchQueue!
+    private var group: DispatchGroup!
     func pinPreview(_ loc: Location) {
-        let quene = DispatchQueue(label: "pinPreview")
-        let group = DispatchGroup()
-        var pins: [MKPin] = [] { didSet { do { group.leave() } } }
-        
         group.enter()
-        quene.async {
-            _ = group.wait(wallTimeout: .now() + 1)
+        quene.async { [self] in
+            _ = group.wait(wallTimeout: .now() + 2)
             let pin = MKPin(
                 title: loc.city,
                 snippet: loc.street.name + ", " + String(loc.street.number),
                 icon: UIImage(named: "mapsicon")!,
                 coords: loc.coordinates)
             pins.append(pin)
-            self.mapView.addAnnotations(pins)
+            mapView.addAnnotations(pins)
+            do { group.leave() }
         }
         
-        group.notify(queue: quene, execute: { [self] in
-            DispatchQueue.main.async {
-                let center = CLLocation(
-                    latitude: pins.center.coordinate.latitude,
-                    longitude: pins.center.coordinate.longitude)
-                mapView.centerLocation(center)
-            }
+        group.notify(queue: .main, execute: { [self] in
+            let center = CLLocation(
+                latitude: pins.center.coordinate.latitude,
+                longitude: pins.center.coordinate.longitude)
+            mapView.centerLocation(center)
         })
     }
     
@@ -38,6 +36,8 @@ class MapsViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         mapView.register(MKPin.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        self.quene = DispatchQueue(label: "com.MapsViewController.quene")
+        self.group = DispatchGroup()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,7 +59,7 @@ extension MapsViewController: MKMapViewDelegate {
             marker.calloutOffset = CGPoint(x: -5, y: 5)
             return marker
         default:
-            fatalError()
+            fatalError("MKAnnotation Class Error")
         }
     }
 }

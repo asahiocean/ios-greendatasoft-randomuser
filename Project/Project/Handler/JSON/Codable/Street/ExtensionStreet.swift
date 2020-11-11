@@ -2,7 +2,7 @@ import Foundation
 
 extension Street {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Street.self, from: data)
+        let me = try jsonDecoder().decode(Street.self, from: data)
         self.init(number: me.number, name: me.name)
     }
 

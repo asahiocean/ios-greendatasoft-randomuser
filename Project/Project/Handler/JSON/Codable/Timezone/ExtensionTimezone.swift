@@ -2,7 +2,7 @@ import Foundation
 
 extension Timezone {
     convenience init(data: Data) throws {
-        let me = try newJSONDecoder().decode(Timezone.self, from: data)
+        let me = try jsonDecoder().decode(Timezone.self, from: data)
         self.init(offset: me.offset, descriptionTimezone: me.descriptionTimezone)
     }
 
