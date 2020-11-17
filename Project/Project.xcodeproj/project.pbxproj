@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,7 +50,6 @@
 		3D42CD23255AC97300B6894C /* _photoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD22255AC97300B6894C /* _photoSetup.swift */; };
 		3D42CD25255ACA0B00B6894C /* _ageSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD24255ACA0B00B6894C /* _ageSetup.swift */; };
 		3D42CD27255ACAA900B6894C /* _locationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD26255ACAA900B6894C /* _locationSetup.swift */; };
-		3D42CD2B255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */; };
 		3D42CD2D255AE34E00B6894C /* tableViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */; };
 		3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FE9254F4CD30052A195 /* Handler.swift */; };
 		3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FFB254F4E8D0052A195 /* JSON.swift */; };
@@ -189,7 +188,6 @@
 		3D42CD22255AC97300B6894C /* _photoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _photoSetup.swift; sourceTree = "<group>"; };
 		3D42CD24255ACA0B00B6894C /* _ageSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _ageSetup.swift; sourceTree = "<group>"; };
 		3D42CD26255ACAA900B6894C /* _locationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _locationSetup.swift; sourceTree = "<group>"; };
-		3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSelectRowAt_UserinfoVC.swift; sourceTree = "<group>"; };
 		3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewSetup.swift; sourceTree = "<group>"; };
 		3D4C4FE9254F4CD30052A195 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		3D4C4FFB254F4E8D0052A195 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -617,7 +615,6 @@
 			children = (
 				3DDC58C02551277300AC120F /* updater.swift */,
 				3DD010F5255AF926006D67F2 /* dequeueReusableCell.swift */,
-				3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */,
 				3DD010F9255AF9A0006D67F2 /* didSelectRowAt.swift */,
 				3DD010F7255AF96A006D67F2 /* numberOfRowsInSection.swift */,
 				3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */,
@@ -1137,7 +1134,6 @@
 				3D63A9E52555C4A00066A25A /* Project.xcdatamodeld in Sources */,
 				3D63AA052555C4AD0066A25A /* SceneDelegate.swift in Sources */,
 				3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */,
-				3D42CD2B255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift in Sources */,
 				3D6FB3F2254EB58100CEF2C8 /* prefixArray.swift in Sources */,
 				3D42CD17255AA06B00B6894C /* DateFormatter.swift in Sources */,
 				3DE0A239255A22AA00672BE4 /* _locationIconConfig.swift in Sources */,
