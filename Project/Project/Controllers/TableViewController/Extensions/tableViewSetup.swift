@@ -13,12 +13,7 @@ extension TableViewController {
         tableView.backgroundView = activityView
         activityView.startAnimating()
     }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let count = storage.database?.results.count,
-           indexPath.row == (count - 5) { updater(15) }
-    }
-    
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = (tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell) {
             if let res = storage.database?.results[indexPath.row] {
