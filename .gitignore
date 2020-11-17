@@ -88,120 +88,121 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-Project/Podfile.lock
-Project/Pods/EGOCache/LICENSE
-Project/Pods/EGOCache/README.markdown
-Project/Pods/EGOCache/Sources/EGOCache.h
-Project/Pods/EGOCache/Sources/EGOCache.m
-Project/Pods/FontAwesome.swift/FontAwesome/Enum.swift
-Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Brands-Regular-400.otf
-Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Regular-400.otf
-Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Solid-900.otf
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesome.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeBarButtonItem.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeExtension.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeImageRepresentable.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeImageView.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeSegmentedControl.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeStateRequirement.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeTabBarItem.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeTextRepresentable.swift
-Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeView.swift
-Project/Pods/FontAwesome.swift/LICENSE
-Project/Pods/FontAwesome.swift/README.md
-Project/Pods/Manifest.lock
-Project/Pods/Nuke/LICENSE
-Project/Pods/Nuke/README.md
-Project/Pods/Nuke/Sources/DataCache.swift
-Project/Pods/Nuke/Sources/DataLoader.swift
-Project/Pods/Nuke/Sources/Deprecated.swift
-Project/Pods/Nuke/Sources/ImageCache.swift
-Project/Pods/Nuke/Sources/ImageDecoding.swift
-Project/Pods/Nuke/Sources/ImageEncoding.swift
-Project/Pods/Nuke/Sources/ImagePipeline.swift
-Project/Pods/Nuke/Sources/ImagePipelineConfiguration.swift
-Project/Pods/Nuke/Sources/ImagePreheater.swift
-Project/Pods/Nuke/Sources/ImageProcessing.swift
-Project/Pods/Nuke/Sources/ImageRequest.swift
-Project/Pods/Nuke/Sources/ImageTask.swift
-Project/Pods/Nuke/Sources/ImageViewExtensions.swift
-Project/Pods/Nuke/Sources/Internal.swift
-Project/Pods/Nuke/Sources/Task.swift
-Project/Pods/Pods.xcodeproj/project.pbxproj
-Project/Pods/SimpleImageViewer/ImageViewer/AnimatableImageView.swift
-Project/Pods/SimpleImageViewer/ImageViewer/ImageViewerConfiguration.swift
-Project/Pods/SimpleImageViewer/ImageViewer/ImageViewerController.swift
-Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/closeButton.imageset/closeButton.pdf
-Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/closeButton.imageset/Contents.json
-Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/Contents.json
-Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewerController.xib
-Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerDismissalInteractor.swift
-Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerDismissalTransition.swift
-Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerPresentationTransition.swift
-Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerTransitioningHandler.swift
-Project/Pods/SimpleImageViewer/ImageViewer/Utilities.swift
-Project/Pods/SimpleImageViewer/LICENSE
-Project/Pods/SimpleImageViewer/README.md
-Project/Pods/Target Support Files/EGOCache/EGOCache-dummy.m
-Project/Pods/Target Support Files/EGOCache/EGOCache-Info.plist
-Project/Pods/Target Support Files/EGOCache/EGOCache-prefix.pch
-Project/Pods/Target Support Files/EGOCache/EGOCache-umbrella.h
-Project/Pods/Target Support Files/EGOCache/EGOCache.debug.xcconfig
-Project/Pods/Target Support Files/EGOCache/EGOCache.modulemap
-Project/Pods/Target Support Files/EGOCache/EGOCache.release.xcconfig
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-dummy.m
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-Info.plist
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-prefix.pch
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-umbrella.h
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.debug.xcconfig
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.modulemap
-Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.release.xcconfig
-Project/Pods/Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist
-Project/Pods/Target Support Files/Nuke/Nuke-dummy.m
-Project/Pods/Target Support Files/Nuke/Nuke-Info.plist
-Project/Pods/Target Support Files/Nuke/Nuke-prefix.pch
-Project/Pods/Target Support Files/Nuke/Nuke-umbrella.h
-Project/Pods/Target Support Files/Nuke/Nuke.debug.xcconfig
-Project/Pods/Target Support Files/Nuke/Nuke.modulemap
-Project/Pods/Target Support Files/Nuke/Nuke.release.xcconfig
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-acknowledgements.markdown
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-acknowledgements.plist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-dummy.m
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Debug-input-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Debug-output-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Release-input-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Release-output-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks.sh
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-Info.plist
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-umbrella.h
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.debug.xcconfig
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.modulemap
-Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.release.xcconfig
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-acknowledgements.markdown
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-acknowledgements.plist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-dummy.m
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Debug-input-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Debug-output-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Release-input-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Release-output-files.xcfilelist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-Info.plist
-Project/Pods/Target Support Files/Pods-Project/Pods-Project-umbrella.h
-Project/Pods/Target Support Files/Pods-Project/Pods-Project.debug.xcconfig
-Project/Pods/Target Support Files/Pods-Project/Pods-Project.modulemap
-Project/Pods/Target Support Files/Pods-Project/Pods-Project.release.xcconfig
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-acknowledgements.markdown
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-acknowledgements.plist
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-dummy.m
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-Info.plist
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-umbrella.h
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.debug.xcconfig
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.modulemap
-Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.release.xcconfig
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-dummy.m
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-Info.plist
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-prefix.pch
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-umbrella.h
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer.debug.xcconfig
-Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer.modulemap
 Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer.release.xcconfig
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer.modulemap
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer.debug.xcconfig
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-umbrella.h
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-prefix.pch
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-Info.plist
+Project/Pods/Target Support Files/SimpleImageViewer/SimpleImageViewer-dummy.m
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.release.xcconfig
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.modulemap
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.debug.xcconfig
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-umbrella.h
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-Info.plist
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-dummy.m
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-acknowledgements.plist
+Project/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-acknowledgements.markdown
+Project/Pods/Target Support Files/Pods-Project/Pods-Project.release.xcconfig
+Project/Pods/Target Support Files/Pods-Project/Pods-Project.modulemap
+Project/Pods/Target Support Files/Pods-Project/Pods-Project.debug.xcconfig
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-umbrella.h
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-Info.plist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Release-output-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Release-input-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Debug-output-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks-Debug-input-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-dummy.m
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-acknowledgements.plist
+Project/Pods/Target Support Files/Pods-Project/Pods-Project-acknowledgements.markdown
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.release.xcconfig
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.modulemap
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.debug.xcconfig
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-umbrella.h
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-Info.plist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks.sh
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Release-output-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Release-input-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Debug-output-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-frameworks-Debug-input-files.xcfilelist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-dummy.m
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-acknowledgements.plist
+Project/Pods/Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests-acknowledgements.markdown
+Project/Pods/Target Support Files/Nuke/Nuke.release.xcconfig
+Project/Pods/Target Support Files/Nuke/Nuke.modulemap
+Project/Pods/Target Support Files/Nuke/Nuke.debug.xcconfig
+Project/Pods/Target Support Files/Nuke/Nuke-umbrella.h
+Project/Pods/Target Support Files/Nuke/Nuke-prefix.pch
+Project/Pods/Target Support Files/Nuke/Nuke-Info.plist
+Project/Pods/Target Support Files/Nuke/Nuke-dummy.m
+Project/Pods/Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.release.xcconfig
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.modulemap
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift.debug.xcconfig
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-umbrella.h
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-prefix.pch
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-Info.plist
+Project/Pods/Target Support Files/FontAwesome.swift/FontAwesome.swift-dummy.m
+Project/Pods/Target Support Files/EGOCache/EGOCache.release.xcconfig
+Project/Pods/Target Support Files/EGOCache/EGOCache.modulemap
+Project/Pods/Target Support Files/EGOCache/EGOCache.debug.xcconfig
+Project/Pods/Target Support Files/EGOCache/EGOCache-umbrella.h
+Project/Pods/Target Support Files/EGOCache/EGOCache-prefix.pch
+Project/Pods/Target Support Files/EGOCache/EGOCache-Info.plist
+Project/Pods/Target Support Files/EGOCache/EGOCache-dummy.m
+Project/Pods/SimpleImageViewer/README.md
+Project/Pods/SimpleImageViewer/LICENSE
+Project/Pods/SimpleImageViewer/ImageViewer/Utilities.swift
+Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerTransitioningHandler.swift
+Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerPresentationTransition.swift
+Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerDismissalTransition.swift
+Project/Pods/SimpleImageViewer/ImageViewer/Transitions/ImageViewerDismissalInteractor.swift
+Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewerController.xib
+Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/Contents.json
+Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/closeButton.imageset/Contents.json
+Project/Pods/SimpleImageViewer/ImageViewer/Resources/ImageViewer-Assets.xcassets/closeButton.imageset/closeButton.pdf
+Project/Pods/SimpleImageViewer/ImageViewer/ImageViewerController.swift
+Project/Pods/SimpleImageViewer/ImageViewer/ImageViewerConfiguration.swift
+Project/Pods/SimpleImageViewer/ImageViewer/AnimatableImageView.swift
+Project/Pods/Pods.xcodeproj/project.pbxproj
+Project/Pods/Nuke/Sources/Task.swift
+Project/Pods/Nuke/Sources/Internal.swift
+Project/Pods/Nuke/Sources/ImageViewExtensions.swift
+Project/Pods/Nuke/Sources/ImageTask.swift
+Project/Pods/Nuke/Sources/ImageRequest.swift
+Project/Pods/Nuke/Sources/ImageProcessing.swift
+Project/Pods/Nuke/Sources/ImagePreheater.swift
+Project/Pods/Nuke/Sources/ImagePipelineConfiguration.swift
+Project/Pods/Nuke/Sources/ImagePipeline.swift
+Project/Pods/Nuke/Sources/ImageEncoding.swift
+Project/Pods/Nuke/Sources/ImageDecoding.swift
+Project/Pods/Nuke/Sources/ImageCache.swift
+Project/Pods/Nuke/Sources/Deprecated.swift
+Project/Pods/Nuke/Sources/DataLoader.swift
+Project/Pods/Nuke/Sources/DataCache.swift
+Project/Pods/Nuke/README.md
+Project/Pods/Nuke/LICENSE
+Project/Pods/Manifest.lock
+Project/Pods/FontAwesome.swift/README.md
+Project/Pods/FontAwesome.swift/LICENSE
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeView.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeTextRepresentable.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeTabBarItem.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeStateRequirement.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeSegmentedControl.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeImageView.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeImageRepresentable.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeExtension.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesomeBarButtonItem.swift
+Project/Pods/FontAwesome.swift/FontAwesome/FontAwesome.swift
+Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Solid-900.otf
+Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Regular-400.otf
+Project/Pods/FontAwesome.swift/FontAwesome/Font Awesome 5 Brands-Regular-400.otf
+Project/Pods/FontAwesome.swift/FontAwesome/Enum.swift
+Project/Pods/EGOCache/Sources/EGOCache.m
+Project/Pods/EGOCache/Sources/EGOCache.h
+Project/Pods/EGOCache/README.markdown
+Project/Pods/EGOCache/LICENSE
+Project/Podfile.lock
+Project/.DS_Store

@@ -1,8 +1,6 @@
 import UIKit
 import CoreData
 
-let apireport = DispatchQueue(label: "com.api.report", qos: .utility)
-
 @main // @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

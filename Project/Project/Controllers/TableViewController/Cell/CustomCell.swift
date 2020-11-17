@@ -24,7 +24,7 @@ class CustomCell: UITableViewCell {
         gender = result.name.title
         firstname?.text = result.name.first
         surname?.text = result.name.last
-
+        
         //MARK: Picture Block
         DispatchQueue.main.async {
             API.loadImage(result.picture.largeUrl, { image in

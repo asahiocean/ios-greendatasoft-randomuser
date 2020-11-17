@@ -43,19 +43,15 @@ class UserinfoVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        apireport.async { [self] in
-            if let username = try? result?.name.jsonString(), let url = URL(string: Url.post.rawValue) {
-                API.post(.contentType, URLRequest(url: url), ["Currently viewed": username])
-            }
+        if let username = try? result?.name.jsonString() {
+            API.report(key: "Currently viewed", value: username)
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        apireport.async { [self] in
-            if let username = try? result?.name.jsonString(), let url = URL(string: Url.post.rawValue) {
-                API.post(.contentType, URLRequest(url: url), ["Viewing is over": username])
-            }
+        if let username = try? result?.name.jsonString() {
+            API.report(key: "Viewing is over", value: username)
         }
     }
 }
