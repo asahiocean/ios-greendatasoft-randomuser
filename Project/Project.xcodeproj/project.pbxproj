@@ -50,7 +50,6 @@
 		3D42CD23255AC97300B6894C /* _photoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD22255AC97300B6894C /* _photoSetup.swift */; };
 		3D42CD25255ACA0B00B6894C /* _ageSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD24255ACA0B00B6894C /* _ageSetup.swift */; };
 		3D42CD27255ACAA900B6894C /* _locationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD26255ACAA900B6894C /* _locationSetup.swift */; };
-		3D42CD2B255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */; };
 		3D42CD2D255AE34E00B6894C /* tableViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */; };
 		3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FE9254F4CD30052A195 /* Handler.swift */; };
 		3D4C4FFC254F4E8D0052A195 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C4FFB254F4E8D0052A195 /* JSON.swift */; };
@@ -91,10 +90,6 @@
 		3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
 		3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
 		3DC7C924254F1A32001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
-		3DD010F6255AF926006D67F2 /* dequeueReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD010F5255AF926006D67F2 /* dequeueReusableCell.swift */; };
-		3DD010F8255AF96A006D67F2 /* numberOfRowsInSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD010F7255AF96A006D67F2 /* numberOfRowsInSection.swift */; };
-		3DD010FA255AF9A0006D67F2 /* didSelectRowAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD010F9255AF9A0006D67F2 /* didSelectRowAt.swift */; };
-		3DD010FC255AF9DF006D67F2 /* willDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD010FB255AF9DF006D67F2 /* willDisplayCell.swift */; };
 		3DD88A632558DAB700774F8D /* nukeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD88A622558DAB700774F8D /* nukeImage.swift */; };
 		3DDC58C12551277300AC120F /* updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC58C02551277300AC120F /* updater.swift */; };
 		3DDC59042551327500AC120F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC59022551327500AC120F /* NavigationController.swift */; };
@@ -187,7 +182,6 @@
 		3D42CD22255AC97300B6894C /* _photoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _photoSetup.swift; sourceTree = "<group>"; };
 		3D42CD24255ACA0B00B6894C /* _ageSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _ageSetup.swift; sourceTree = "<group>"; };
 		3D42CD26255ACAA900B6894C /* _locationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _locationSetup.swift; sourceTree = "<group>"; };
-		3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSelectRowAt_UserinfoVC.swift; sourceTree = "<group>"; };
 		3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewSetup.swift; sourceTree = "<group>"; };
 		3D4C4FE9254F4CD30052A195 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		3D4C4FFB254F4E8D0052A195 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -222,10 +216,6 @@
 		3D79DA2B25498F180048B7B0 /* APIPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostTest.swift; sourceTree = "<group>"; };
 		3D85C458255C7AF700FBDBF9 /* gettingBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gettingBackup.swift; sourceTree = "<group>"; };
 		3D8FF4252556772700FE8DD3 /* removeSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeSubviews.swift; sourceTree = "<group>"; };
-		3DD010F5255AF926006D67F2 /* dequeueReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dequeueReusableCell.swift; sourceTree = "<group>"; };
-		3DD010F7255AF96A006D67F2 /* numberOfRowsInSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = numberOfRowsInSection.swift; sourceTree = "<group>"; };
-		3DD010F9255AF9A0006D67F2 /* didSelectRowAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSelectRowAt.swift; sourceTree = "<group>"; };
-		3DD010FB255AF9DF006D67F2 /* willDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = willDisplayCell.swift; sourceTree = "<group>"; };
 		3DD88A622558DAB700774F8D /* nukeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nukeImage.swift; sourceTree = "<group>"; };
 		3DDC58C02551277300AC120F /* updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updater.swift; sourceTree = "<group>"; };
 		3DDC59022551327500AC120F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -616,12 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				3DDC58C02551277300AC120F /* updater.swift */,
-				3DD010F5255AF926006D67F2 /* dequeueReusableCell.swift */,
-				3D42CD2A255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift */,
-				3DD010F9255AF9A0006D67F2 /* didSelectRowAt.swift */,
-				3DD010F7255AF96A006D67F2 /* numberOfRowsInSection.swift */,
 				3D42CD2C255AE34E00B6894C /* tableViewSetup.swift */,
-				3DD010FB255AF9DF006D67F2 /* willDisplayCell.swift */,
 				3D6FB432254ECDF400CEF2C8 /* navigationBar */,
 			);
 			path = Extensions;
@@ -1114,7 +1099,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D15479E254C6B9600F6BBA2 /* Login.swift in Sources */,
-				3DD010FA255AF9A0006D67F2 /* didSelectRowAt.swift in Sources */,
 				3D42CD25255ACA0B00B6894C /* _ageSetup.swift in Sources */,
 				3D42CD19255AC6D100B6894C /* contextMenuInteraction.swift in Sources */,
 				3D68FEE0254A35CC0021C56F /* CustomCell.swift in Sources */,
@@ -1123,13 +1107,11 @@
 				3D154758254C674600F6BBA2 /* ExtensionLocation.swift in Sources */,
 				3D1547B4254C6C7A00F6BBA2 /* ExtensionName.swift in Sources */,
 				3DF73C9B2550B5390053BA81 /* SetData.swift in Sources */,
-				3DD010F6255AF926006D67F2 /* dequeueReusableCell.swift in Sources */,
 				3D42CD1D255AC7E500B6894C /* _genderSetup.swift in Sources */,
 				3D593E38255A5DA80072D8F7 /* centerLocation.swift in Sources */,
 				3D63A9E52555C4A00066A25A /* Project.xcdatamodeld in Sources */,
 				3D63AA052555C4AD0066A25A /* SceneDelegate.swift in Sources */,
 				3D4C4FEA254F4CD30052A195 /* Handler.swift in Sources */,
-				3D42CD2B255AE2BB00B6894C /* didSelectRowAt_UserinfoVC.swift in Sources */,
 				3D6FB3F2254EB58100CEF2C8 /* prefixArray.swift in Sources */,
 				3D42CD17255AA06B00B6894C /* DateFormatter.swift in Sources */,
 				3DE0A239255A22AA00672BE4 /* _locationIconConfig.swift in Sources */,
@@ -1154,7 +1136,6 @@
 				3D15475D254C67B400F6BBA2 /* Postcode.swift in Sources */,
 				3D15477B254C697100F6BBA2 /* Street.swift in Sources */,
 				3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */,
-				3DD010FC255AF9DF006D67F2 /* willDisplayCell.swift in Sources */,
 				3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */,
 				3D8FF4262556772700FE8DD3 /* removeSubviews.swift in Sources */,
 				3D63A9F52555C4A80066A25A /* AppDelegate.swift in Sources */,
@@ -1194,7 +1175,6 @@
 				3D42CD2D255AE34E00B6894C /* tableViewSetup.swift in Sources */,
 				3DEB76F12548DE1E00763A2B /* Dictionary_percentEncoded.swift in Sources */,
 				3D1547A6254C6BB700F6BBA2 /* ExtensionLogin.swift in Sources */,
-				3DD010F8255AF96A006D67F2 /* numberOfRowsInSection.swift in Sources */,
 				3D1546B3254C5ACE00F6BBA2 /* Database.swift in Sources */,
 				3D6FB3BE254E9AFA00CEF2C8 /* center.swift in Sources */,
 				3D68FF95254AE8B50021C56F /* navigationBarSetup.swift in Sources */,
