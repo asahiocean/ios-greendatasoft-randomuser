@@ -3,7 +3,7 @@ import Dispatch
 import UIKit.UIContextMenuInteraction
 
 extension UserinfoVC {
-    internal func _photoSetup(_ result: Results) {
+    internal func _photoSetup(_ result: Result) {
         API.loadImage(result.picture.largeUrl, { [self] image -> Void in
             DispatchQueue.main.async {
                 photo.image = image

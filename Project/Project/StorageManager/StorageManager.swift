@@ -15,7 +15,7 @@ final class StorageManager: DatabaseWorker, Coredata {
     public let cache: EGOCache = EGOCache.global()
     internal(set) public var database: Database?
     
-    func setdb(_ results: [Results], _ info: Info) {
+    func setdb(_ results: [Result], _ info: Info) {
         group.enter()
         quene.async(group: group, execute: { [self] in
             switch database {

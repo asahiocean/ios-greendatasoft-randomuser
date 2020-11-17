@@ -24,9 +24,9 @@ class UserinfoVC: UIViewController {
     var interactionName: UIContextMenuInteraction!
     var interactionEmail: UIContextMenuInteraction!
     
-    private(set) var result: Results?
+    private(set) var result: Result?
     
-    public func setUserInfo(_ result: Results) {
+    public func setUserInfo(_ result: Result) {
         _photoSetup(result)
         _nameSetup(result)
         _emailSetup(result)

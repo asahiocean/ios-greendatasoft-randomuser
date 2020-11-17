@@ -1,8 +1,8 @@
 import Foundation
 
-extension Results {
+extension Result {
     convenience init(data: Data) throws {
-        let me = try jsonDecoder().decode(Results.self, from: data)
+        let me = try jsonDecoder().decode(Result.self, from: data)
         self.init(gender: me.gender, name: me.name, location: me.location, email: me.email, login: me.login, dob: me.dob, registered: me.registered, phone: me.phone, cell: me.cell, id: me.id, picture: me.picture, nat: me.nat)
     }
 
@@ -30,8 +30,8 @@ extension Results {
         id: ID? = nil,
         picture: Picture? = nil,
         nat: String? = nil
-    ) -> Results {
-        return Results(
+    ) -> Result {
+        return Result(
             gender: gender ?? self.gender,
             name: name ?? self.name,
             location: location ?? self.location,

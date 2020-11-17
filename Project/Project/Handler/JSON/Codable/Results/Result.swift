@@ -1,6 +1,6 @@
 import Foundation
 
-public final class Results: Codable, Equatable {
+public final class Result: Codable, Equatable {
     public let gender: Gender
     public let name: Name
     public let location: Location
@@ -29,7 +29,7 @@ public final class Results: Codable, Equatable {
         self.nat = nat ?? ""
     }
     
-    public static func == (lhs: Results, rhs: Results) -> Bool {
+    public static func == (lhs: Result, rhs: Result) -> Bool {
         lhs.gender == rhs.gender && lhs.name == rhs.name && lhs.location == rhs.location && lhs.email == rhs.email && lhs.login == rhs.login && lhs.dob == rhs.dob && lhs.registered == rhs.registered && lhs.phone == rhs.phone && lhs.cell == rhs.cell && lhs.id == rhs.id && lhs.picture == rhs.picture && lhs.nat == rhs.nat
     }
     
