@@ -19,6 +19,10 @@ class CustomCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
+    func set(result: Result) {
+        
+    }
+    
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
 

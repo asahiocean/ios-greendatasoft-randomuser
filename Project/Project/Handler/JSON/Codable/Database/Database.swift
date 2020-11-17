@@ -1,7 +1,7 @@
 import Foundation
 
 public final class Database: Codable, Identifiable {
-    public var results: [Results]
+    public var results: [Result]
     public let info: Info
     public let id: UUID
 
@@ -9,7 +9,7 @@ public final class Database: Codable, Identifiable {
         return lhs.results == rhs.results && lhs.info == rhs.info && lhs.id == rhs.id
     }
     
-    public init(results: [Results], info: Info) {
+    public init(results: [Result], info: Info) {
         self.results = results
         self.info = info
         self.id = .init()
@@ -22,7 +22,7 @@ public final class Database: Codable, Identifiable {
 
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        results = try values.decode([Results].self, forKey: .results)
+        results = try values.decode([Result].self, forKey: .results)
         info = try values.decode(Info.self, forKey: .info)
         id = .init()
     }

@@ -18,7 +18,7 @@ extension Database {
     }
 
     func with(
-        results: [Results]? = nil,
+        results: [Result]? = nil,
         info: Info? = nil
     ) -> Database {
         return Database(

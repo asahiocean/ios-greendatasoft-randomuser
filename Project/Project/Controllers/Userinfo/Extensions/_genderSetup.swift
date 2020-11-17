@@ -2,7 +2,7 @@ import Foundation
 import FontAwesome_swift
 
 extension UserinfoVC {
-    internal func _genderSetup(_ result: Results) {
+    internal func _genderSetup(_ result: Result) {
         switch result.gender {
         case .male:
             DispatchQueue.main.async { [self] in
