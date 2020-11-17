@@ -20,7 +20,18 @@ class CustomCell: UITableViewCell {
     }
     
     func set(result: Result) {
-        
+        idname = result.name.id
+        gender = result.name.title
+        firstname?.text = result.name.first
+        surname?.text = result.name.last
+
+        //MARK: Picture Block
+        DispatchQueue.main.async {
+            API.loadImage(result.picture.largeUrl, { image in
+                self.photo?.image = image
+            })
+        }
+        phone.text = result.phone
     }
     
     override func layoutSublayers(of layer: CALayer) {
