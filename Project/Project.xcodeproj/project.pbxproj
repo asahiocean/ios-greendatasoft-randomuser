@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -485,7 +485,6 @@
 				3D67A92D25486433001E392F /* ProjectTests */,
 				3D67A93825486433001E392F /* ProjectUITests */,
 				3D67A91225486431001E392F /* Products */,
-				F438AA7D3281FBB5BCB61B07 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -809,13 +808,6 @@
 				3DD88A622558DAB700774F8D /* nukeImage.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F438AA7D3281FBB5BCB61B07 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
