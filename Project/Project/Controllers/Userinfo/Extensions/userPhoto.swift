@@ -7,7 +7,7 @@ extension UserinfoVC {
         
         let urlImage: String = result.picture.largeUrl
         
-        API.loadImage(urlImage, { image in
+        API.shared.loadImage(urlImage, { image in
             DispatchQueue.main.async { self.photo.image = image }
         })
         

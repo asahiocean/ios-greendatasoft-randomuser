@@ -20,7 +20,6 @@ class CustomCell: UITableViewCell {
 //    }
     
     func setResult(_ result: Result) {
-        print(result.name.id)
         idname = result.name.id
         gender = result.name.title
         firstname?.text = result.name.first
@@ -29,7 +28,7 @@ class CustomCell: UITableViewCell {
         //MARK: Picture Block
         DispatchQueue.main.async {
             let url: String = result.picture.largeUrl
-            API.loadImage(url, { image in
+            API.shared.loadImage(url, { image in
                 self.photo?.image = image
             })
         }
