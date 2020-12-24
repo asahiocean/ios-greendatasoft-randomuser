@@ -29,6 +29,7 @@ final class StorageManager: DatabaseWorker, Coredata {
         
         let queueMonitor = DispatchQueue(label: "com.monitor.queue")
         let monitor = NWPathMonitor()
+        
         monitor.start(queue: queueMonitor)
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {

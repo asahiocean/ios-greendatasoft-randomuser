@@ -14,6 +14,10 @@ extension TableViewController {
         indicatorView.startAnimating()
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return storage.database?.results.count ?? 0
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let count = storage.database?.results.count, indexPath.row == (count - 5) { updater(15) }
     }
