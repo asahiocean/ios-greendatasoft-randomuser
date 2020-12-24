@@ -1,37 +1,33 @@
 import Foundation
 
-enum POSTRequestType {
+enum POSTType {
     case contentType
 }
 
 protocol POST {
-    func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)?)
+    func post(_ type: POSTType , _ request: URLRequest?, _ parameters: [String:Any], _ confirm: ((Data)->())?)
 }
 
 extension POST {
-    func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)? = nil) {
-        var request = request
+    func post(_ type: POSTType , _ request: URLRequest?, _ parameters: [String:Any], _ confirm: ((Data)->())? = nil) {
+        guard var request = request else { return }
         
         switch type {
-            case .contentType:
-            DispatchQueue(label: "post.contentType", qos: .background).async {
-                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                request.httpMethod = httpMethod.POST.rawValue
+        case .contentType:
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            
+            DispatchQueue(label: "com.request.post.contentType", qos: .background).async {
                 do {
                     request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted])
+                    URLSession.shared.dataTask(with: request) { data,_,_ in
+                        guard let completion = confirm, let data = data else { return }
+                        completion(data)
+                    }.resume()
                 } catch let error {
                     print(error.localizedDescription)
                 }
-                
-                guard let completion = serverConfirmation else { return }
-                URLSession.shared.dataTask(with: request) { data,_,_ in
-                    if let data = data {
-                        completion(data)
-                    }
-                }.resume()
             }
-            break
-            // default: break
         }
     }
 }

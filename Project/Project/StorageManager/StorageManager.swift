@@ -3,24 +3,26 @@ import CoreData
 import EGOCache
 import Network
 
-final class StorageManager: DatabaseWorker, Coredata {
+final class StorageManager: DBWorker, Coredata {
     
     public static var shared = StorageManager()
-    fileprivate(set) public var appDelegate: AppDelegate!
-    fileprivate(set) public var viewContext: NSManagedObjectContext!
+    private(set) public var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    private(set) public lazy var viewContext: NSManagedObjectContext = {
+        return self.appDelegate.persistentContainer.viewContext
+    }()
     
     public let cache: EGOCache = EGOCache.global()
     internal(set) public var database: Database?
     
-    func setdb(_ results: [Result], _ info: Info) {
+    func setdb(_ db: Database) {
         let semaphore = DispatchSemaphore(value: 0)
-
+        
         switch database {
         case nil:
-            database = Database(results: results, info: info)
+            database = db
             semaphore.signal()
         default:
-            database?.results.append(contentsOf: results)
+            database?.results.append(contentsOf: db.results)
             semaphore.signal()
         }
         
@@ -32,41 +34,25 @@ final class StorageManager: DatabaseWorker, Coredata {
         
         monitor.start(queue: queueMonitor)
         monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
-                    if let db = database, let data = try? db.jsonData() {
-                        saveObject(appDelegate, JsondataEntity.self, viewContext, keyJsonData, data)
-                        cache.setData(data, forKey: keyJsonData, withTimeoutInterval: 2592000) // 1 month
-                        API.shared.report(key: "results", value: db.results.count)
-                    }
-                })
-            } else {
+            guard path.status == .satisfied else {
                 defer { updaterGroup.resume() }
-                print("[🛑]: \(type(of: self)): data from cache!")
+                return
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [self] in
+                if let db = database, let data = try? db.jsonData() {
+                    saveObject(appDelegate, JsondataEntity.self, viewContext, jsonDataKey, data)
+                    cache.setData(data, forKey: jsonDataKey, withTimeoutInterval: 2592000) // 1 month
+                    API.shared.report(key: "results", value: db.results.count)
+                }
+            })
         }
     }
-    
-    func getdb(_ completion: @escaping InfRes) {
-        guard let db: Database = database else { return }
-        completion(db.results, db.info)
-    }
-    
-    func statusdb(_ status: Status, state: @escaping State) {
+        
+    func statusdb(_ status: Status, _ completion: @escaping StatusType) {
         guard let db = StorageManager().database else { return }
         switch status {
-            case .count:
-                state(db.results.count)
-                break
-        // default: break
-        }
-    }
-    
-    private init() {
-        DispatchQueue.main.async { [self] in
-            guard let delegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate), let context = try? delegate.persistentContainer.viewContext else { fatalError() }
-            appDelegate = delegate
-            viewContext = context
+        case .count:
+            completion(db.results.count)
         }
     }
 }

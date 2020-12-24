@@ -19,7 +19,8 @@ extension TableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let count = storage.database?.results.count, indexPath.row == (count - 5) { updater(15) }
+        guard let results = storage.database?.results.count, indexPath.row == (results - 5) else { return }
+        self.updater(15)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

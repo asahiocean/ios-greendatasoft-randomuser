@@ -6,21 +6,17 @@ protocol GET {
 
 extension GET {
     func get(_ request: URLRequest, _ completion: @escaping (Data?,URLResponse?,Error?) -> Void) {
-        DispatchQueue(label: "com.load.get.data", qos: .background).async {
-        URLSession.shared.dataTask(with: request) { (data,resp,error) in
-            if let data = data, let status = (resp as? HTTPURLResponse)?.statusCode {
+        DispatchQueue(label: "com.request.get", qos: .background).async {
+            URLSession.shared.dataTask(with: request) { (data,resp,error) in
+                guard let data = data,
+                      let status = (resp as? HTTPURLResponse)?.statusCode else { completion(nil,nil,nil); return }
                 switch status {
-                case (200...299):
-                    completion(data,resp,error)
-                case 299...:
-                    completion(nil,nil,nil)
+                case 200...299:
+                    completion(data,resp,error);
                 default:
-                    break
+                    completion(nil,nil,nil);
                 }
-            } else { // NO INTERNET
-                completion(nil,nil,nil)
-            }
-        }.resume()
+            }.resume()
         }
     }
 }

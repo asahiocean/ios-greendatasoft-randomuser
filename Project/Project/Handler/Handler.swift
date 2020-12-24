@@ -1,35 +1,36 @@
 import Foundation
 import Dispatch
-import Nuke
 
-final class Handler: SetData, JSON {
-
-    public static let shared = Handler()
-    public var storage: StorageManager!
+final class Handler {
     
-    func jsonData(_ data: Data, completion: ((Any)->())?) {
+    public static let shared = Handler()
+    private init() {}
+    
+    public var storage: StorageManager = StorageManager.shared
+    
+    public final func jsonData(_ data: Data, _ completion: ((Any)->())? = nil) {
         
         guard let db = try? JSONDecoder().decode(Database.self, from: data) else { return }
+        let semaphore = DispatchSemaphore(value: 0)
         
         for i in db.results.indices {
             let url: String = db.results[i].picture.largeUrl
+            
             API.shared.loadImage(url, { image in
-                guard let image: UIImage = image else { return }
+                guard let image = image else { return }
                 db.results[i].picture.image = image
                 
                 guard i == db.results.endIndex - 1 else { return }
-                self.storage.setdb(db.results, db.info)
+                semaphore.signal()
             })
         }
+        
+        semaphore.wait()
+        self.storage.setdb(db)
     }
     
-    func setdata(_ data: Data?) {
-        guard let data = data else { gettingBackup(completion: nil); return }
-        gettingBackup(completion: { self.jsonData(data, completion: nil) })
-    }
-    
-    private init() {
-        self.storage = StorageManager.shared
+    public final func setdata(_ data: Data?) {
+        guard let data = data else { getBackup(); return }
+        jsonData(data)
     }
 }
-
