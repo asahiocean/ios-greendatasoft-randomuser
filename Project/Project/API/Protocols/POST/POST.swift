@@ -5,38 +5,33 @@ enum POSTRequestType {
 }
 
 protocol POST {
-    static func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)?)
+    func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)?)
 }
 
 extension POST {
-    internal static dynamic func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)? = nil) {
+    func post(_ type: POSTRequestType , _ request: URLRequest, _ parameters: [String:Any], _ serverConfirmation: ((Data) -> Void)? = nil) {
         var request = request
         
         switch type {
             case .contentType:
-            DispatchQueue(label: "post.contentType", qos: .utility).async {
+            DispatchQueue(label: "post.contentType", qos: .background).async {
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = httpMethod.POST.rawValue
-                request.httpBody = parameters.percentEncoded()
-                dataTask(request, { data in
-                    if let completion = serverConfirmation {
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted])
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                
+                guard let completion = serverConfirmation else { return }
+                URLSession.shared.dataTask(with: request) { data,_,_ in
+                    if let data = data {
                         completion(data)
                     }
-                })
+                }.resume()
             }
             break
             // default: break
         }
     }
-}
-
-extension POST {
-    fileprivate static func dataTask(_ request: URLRequest, _ competion: @escaping (Data) -> Void) {
-        URLSession.shared.dataTask(with: request) { data,_,_ in
-            if let data = data {
-                competion(data)
-            }
-        }.resume()
-    }
-
 }

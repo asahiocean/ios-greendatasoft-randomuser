@@ -1,4 +1,4 @@
-import UIKit.UITableViewController
+import UIKit
 
 final class TableViewController: UITableViewController {
     
@@ -6,7 +6,7 @@ final class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier); #warning("tableView.register НИКУДА НЕ УБИРАТЬ!")
+        tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.id);
         navigationBarSetup()
         tableViewSetup()
         updater()

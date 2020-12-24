@@ -9,3 +9,5 @@ public let updaterQueue = DispatchQueue(label: "updater.queue")
 public let updaterGroup = DispatchGroup()
 
 public let keyJsonData: String = "jsonData"
+
+let pasteboard: UIPasteboard = UIPasteboard.general

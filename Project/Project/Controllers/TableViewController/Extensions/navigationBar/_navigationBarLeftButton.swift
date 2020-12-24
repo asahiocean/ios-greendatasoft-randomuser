@@ -20,16 +20,16 @@ extension TableViewController {
                     storage.cache.remove(forKey: key)
                     parameters.updateValue(key, forKey: "deleted")
                     if key == keys.last {
-                        API.report(key: parameters.map({$0}).description, value: parameters.map({$1}).description)
+                        API.shared.report(key: parameters.map({$0}).description, value: parameters.map({$1}).description)
                     }
                 }
                 keys.forEach {
                     if $0.hasPrefix(keyJsonData) {
                         storage.getCoreData(JsondataEntity.self, output: { dbs in
                             if dbs.isEmpty == false {
-//                                let alert = UIAlertController(title: "Кэш успешно очищен!", message: "", preferredStyle: .alert)
-//                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                                self.present(alert, animated: true)
+                                // let alert = UIAlertController(title: "Кэш успешно очищен!", message: "", preferredStyle: .alert)
+                                // alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                // self.present(alert, animated: true)
                             }
                         })
                     }

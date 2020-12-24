@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 extension UserinfoVC {
-    func _locationIconConfig() {
+    func userLocationIcon() {
         locationIcon.clipsToBounds = true
         locationIcon.layer.masksToBounds = false
         

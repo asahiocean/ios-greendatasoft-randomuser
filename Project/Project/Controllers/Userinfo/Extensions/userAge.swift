@@ -1,7 +1,7 @@
 import Foundation
 
 extension UserinfoVC {
-    internal func _ageSetup(_ result: Result) {
+    internal func userAge(_ result: Result) {
         let df1: DateFormatter = .iso8601Full
         let df2: DateFormatter = .ddMMyyyy // ДД.ММ.ГГГГ
         

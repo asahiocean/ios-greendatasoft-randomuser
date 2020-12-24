@@ -2,11 +2,10 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
-    fileprivate var tableView: TableViewController!
-
+    private let vc = TableViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView = TableViewController()
-        self.viewControllers = [tableView]
+        self.viewControllers = [vc]
     }
 }
