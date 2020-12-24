@@ -34,3 +34,5 @@ Api с пагинацией для загрузки: https://randomuser.me/docum
 ✅ EGOCache (pod)
 
 ✅ FontAwesome
+
+![](https://media.giphy.com/media/Ppq8c1rCq8iy0tcesx/giphy.gif)
