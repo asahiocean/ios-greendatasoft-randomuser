@@ -26,7 +26,7 @@ Api с пагинацией для загрузки: https://randomuser.me/docum
 ```
 
 Вариант реализации ничем не ограничен, плюсом будет использование следующего стека:
-* CoreData
-* SimpleImageViewer (pod)
-* EGOCache (pod)
-* FontAwesome
+✅ CoreData
+✅ SimpleImageViewer (pod)
+✅ EGOCache (pod)
+✅ FontAwesome
