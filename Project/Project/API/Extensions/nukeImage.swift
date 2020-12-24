@@ -2,7 +2,7 @@ import Foundation
 import Nuke.Swift
 
 extension API {
-    static func loadImage(_ urlSrt: String, _ completion: @escaping (UIImage?)->()) {
+    func loadImage(_ urlSrt: String, _ completion: @escaping (UIImage?)->()) {
         guard let url = URL(string: urlSrt) else { fatalError() }
         let request = ImageRequest(url: url, priority: .high)
         if let cached = ImagePipeline.shared.cachedImage(for: request) {

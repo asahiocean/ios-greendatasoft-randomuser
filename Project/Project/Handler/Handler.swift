@@ -13,7 +13,7 @@ final class Handler: SetData, JSON {
         
         for i in db.results.indices {
             let url: String = db.results[i].picture.largeUrl
-            API.loadImage(url, { image in
+            API.shared.loadImage(url, { image in
                 guard let image: UIImage = image else { return }
                 db.results[i].picture.image = image
                 
