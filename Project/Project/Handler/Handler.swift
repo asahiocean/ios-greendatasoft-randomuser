@@ -3,38 +3,29 @@ import Dispatch
 import Nuke
 
 final class Handler: SetData, JSON {
-    private(set) var storage: StorageManager!
 
     public static let shared = Handler()
+    public var storage: StorageManager!
     
-    internal func jsonData(_ data: Data, completion: ((Any) -> (Void))?) {
-        DispatchQueue.main.async {
-            if let db = try? jsonDecoder().decode(Database.self, from: data) {
-                for i in db.results.indices {
-                    let pic = db.results[i].picture
-                    API.loadImage(pic.largeUrl, { value in
-                        if let image = value {
-                            db.results[i].picture.image = image
-                        }
-                    })
-                    if i == db.results.endIndex - 1 {
-                        self.storage.setdb(db.results, db.info)
-                    }
-                }
-            } else {
-                fatalError()
-            }
+    func jsonData(_ data: Data, completion: ((Any)->())?) {
+        
+        guard let db = try? JSONDecoder().decode(Database.self, from: data) else { return }
+        
+        for i in db.results.indices {
+            let url: String = db.results[i].picture.largeUrl
+            API.loadImage(url, { image in
+                guard let image: UIImage = image else { return }
+                db.results[i].picture.image = image
+                
+                guard i == db.results.endIndex - 1 else { return }
+                self.storage.setdb(db.results, db.info)
+            })
         }
     }
     
     func setdata(_ data: Data?) {
-        if let data = data {
-            gettingBackup(completion: { [self] in
-                jsonData(data, completion: nil)
-            })
-        } else {
-            gettingBackup(completion: nil)
-        }
+        guard let data = data else { gettingBackup(completion: nil); return }
+        gettingBackup(completion: { self.jsonData(data, completion: nil) })
     }
     
     private init() {

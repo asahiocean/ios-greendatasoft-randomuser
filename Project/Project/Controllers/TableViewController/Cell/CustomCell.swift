@@ -3,8 +3,8 @@ import Nuke
 import FontAwesome_swift
 
 class CustomCell: UITableViewCell {
-    static var identifier: String { String(describing: self )}
-    static var nib: UINib { UINib(nibName: identifier, bundle: nil )}
+    static var id: String { String(describing: self )}
+    static var nib: UINib { UINib(nibName: id, bundle: nil )}
     @IBOutlet weak var view: UIView!
     
     public var idname: UUID?
@@ -15,11 +15,12 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var phoneIcon: FontAwesomeImageView!
         
-    override init(style: CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
+//    override init(style: CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    }
     
-    func set(result: Result) {
+    func setResult(_ result: Result) {
+        print(result.name.id)
         idname = result.name.id
         gender = result.name.title
         firstname?.text = result.name.first
@@ -27,7 +28,8 @@ class CustomCell: UITableViewCell {
         
         //MARK: Picture Block
         DispatchQueue.main.async {
-            API.loadImage(result.picture.largeUrl, { image in
+            let url: String = result.picture.largeUrl
+            API.loadImage(url, { image in
                 self.photo?.image = image
             })
         }

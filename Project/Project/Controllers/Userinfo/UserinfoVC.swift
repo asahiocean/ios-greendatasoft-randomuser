@@ -2,7 +2,7 @@ import UIKit
 
 class UserinfoVC: UIViewController {
     
-    static var nibName: String { String(describing: self ) }
+    static var nib: String { String(describing: self) }
     
     @IBOutlet weak var bgGradientPhoto: UIView!
     @IBOutlet weak var photo: UIImageView!
@@ -19,20 +19,20 @@ class UserinfoVC: UIViewController {
     @IBOutlet weak var ages: UILabel!
     @IBOutlet weak var localtime: UILabel!
     
-    var interactionMap: UIContextMenuInteraction!
-    var interactionPhoto: UIContextMenuInteraction!
-    var interactionName: UIContextMenuInteraction!
-    var interactionEmail: UIContextMenuInteraction!
+    internal var interactionMap: UIContextMenuInteraction!
+    internal var interactionPhoto: UIContextMenuInteraction!
+    internal var interactionName: UIContextMenuInteraction!
+    internal var interaction_Email: UIContextMenuInteraction!
     
     private(set) var result: Result?
     
-    public func setUserInfo(_ result: Result) {
-        _photoSetup(result)
-        _nameSetup(result)
-        _emailSetup(result)
-        _ageSetup(result)
-        _genderSetup(result)
-        _locationSetup(result)
+    public func setResult(_ result: Result) {
+        userPhoto(result)
+        userName(result)
+        userEmail(result)
+        userAge(result)
+        userGender(result)
+        userLocation(result)
         self.result = result
     }
     
@@ -44,14 +44,14 @@ class UserinfoVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let username = try? result?.name.jsonString() {
-            API.report(key: "Currently viewed", value: username)
+            API.shared.report(key: "Currently viewed", value: username)
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if let username = try? result?.name.jsonString() {
-            API.report(key: "Viewing is over", value: username)
+            API.shared.report(key: "Viewing is over", value: username)
         }
     }
 }
