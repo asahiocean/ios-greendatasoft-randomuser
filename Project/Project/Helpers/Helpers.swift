@@ -8,6 +8,6 @@ public var estimatedRowHeight: CGFloat = UIScreen.main.bounds.height/10
 public let updaterQueue = DispatchQueue(label: "com.updater.queue")
 public let updaterGroup = DispatchGroup()
 
-public let keyJsonData: String = "jsonData"
+public let jsonDataKey: String = "jsonData"
 
 let pasteboard: UIPasteboard = UIPasteboard.general

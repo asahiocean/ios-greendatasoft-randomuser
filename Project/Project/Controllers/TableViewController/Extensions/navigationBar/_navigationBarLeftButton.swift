@@ -11,14 +11,14 @@ extension TableViewController {
             var parameters: [String:Any] = [:]
 
             if let keys = storage.cache.allKeys() as? [String] {
-                for key in keys where key.hasPrefix(keyJsonData)  {
+                for key in keys where key.hasPrefix(jsonDataKey)  {
                     storage.cache.remove(forKey: key)
                     parameters.updateValue(key, forKey: "deleted")
                     guard key == keys.last else { return }
                     API.shared.report(key: parameters.map({$0}).description, value: parameters.map({$1}).description)
                 }
                 keys.forEach {
-                    guard $0.hasPrefix(keyJsonData) else { return }
+                    guard $0.hasPrefix(jsonDataKey) else { return }
                     storage.getCoreData(JsondataEntity.self, output: { dbs in
                         if dbs.isEmpty == false {
                             // let alert = UIAlertController(title: "Кэш успешно очищен!", message: "", preferredStyle: .alert)
