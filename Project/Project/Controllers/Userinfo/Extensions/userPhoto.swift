@@ -3,7 +3,7 @@ import Dispatch
 import UIKit
 
 extension UserinfoVC {
-    internal func userPhoto(_ result: Result) {
+    public func userPhoto(_ result: Result) {
         
         let urlImage: String = result.picture.largeUrl
         
