@@ -7,7 +7,7 @@ class APIPostTest: XCTestCase {
     let met: httpMethod = .POST
     private var params: [String:Any] = [:]
     let expectation = XCTestExpectation(description: "Exceeded waiting!")
-        
+    
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -18,7 +18,7 @@ class APIPostTest: XCTestCase {
     
     override func setUpWithError() throws { }
     override func tearDownWithError() throws { }
-        
+    
     func testExample() throws {
         XCTAssertFalse(params.isEmpty, "parameters should not be empty!")
         guard let url = URL(string: Url.post.rawValue.urlValid) else { fatalError() }
@@ -28,11 +28,11 @@ class APIPostTest: XCTestCase {
             print("✅ Server confirm: \(answer)")
             expectation.fulfill()
         })
-                
+        
         let result = XCTWaiter.wait(for: [expectation], timeout: 3) // ждет ответ указанное время
         XCTAssertEqual(result, .completed) // остановка теста, если ответ пришел раньше
     }
-
+    
     func testPerformanceExample() throws {
         self.measure { }
     }

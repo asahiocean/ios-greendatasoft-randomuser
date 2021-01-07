@@ -5,10 +5,10 @@ class APIGetTest: XCTestCase {
     
     override func setUpWithError() throws {
     }
-
+    
     override func tearDownWithError() throws {
     }
-
+    
     func testExample() throws {
         guard let url = URL(string: Url.get.rawValue.urlValid) else { fatalError() }
         let request = URLRequest(url: url)
@@ -25,7 +25,7 @@ class APIGetTest: XCTestCase {
             }
         })
     }
-
+    
     func testPerformanceExample() throws {
         self.measure {
             // try? testExample()
