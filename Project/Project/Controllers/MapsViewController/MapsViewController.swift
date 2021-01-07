@@ -2,10 +2,10 @@ import UIKit
 import MapKit
 
 class MapsViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     var pins: [MKPin] = []
-
+    
     private var quene: DispatchQueue!
     private var group: DispatchGroup!
     func pinPreview(_ loc: Location) {
@@ -31,7 +31,7 @@ class MapsViewController: UIViewController {
     }
     
     static var nibName: String { String(describing: self ) }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
