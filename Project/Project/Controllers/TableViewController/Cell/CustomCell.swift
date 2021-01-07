@@ -15,10 +15,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var phoneIcon: FontAwesomeImageView!
         
-//    override init(style: CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//    }
-    
     func setResult(_ result: Result) {
         idname = result.name.id
         gender = result.name.title
@@ -37,7 +33,7 @@ class CustomCell: UITableViewCell {
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
-
+        
         self.layer.borderWidth = 0.5
         self.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
         self.autoresizingMask =

@@ -7,7 +7,7 @@ extension UserinfoVC: UIContextMenuInteractionDelegate {
     private static let icon_copy: UIImage! = {
         return UIImage(systemName: "doc.text", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
     }()
-
+    
     private static let icon_map: UIImage! = {
         return UIImage(systemName: "map", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
     }()
@@ -17,14 +17,14 @@ extension UserinfoVC: UIContextMenuInteractionDelegate {
         case interactionMap:
             func contextMenu() -> UIMenu {
                 let copy = UIAction(title: "Копировать адрес", image: Self.icon_copy) { [weak self] action in
-
+                    
                     pasteboard.string = self?.address
                     
                     if let location = try? self?.result?.location.jsonString() {
                         API.shared.report(key: "Copied address", value: location)
                     }
                 }
-                                
+                
                 let map = UIAction(title: "Перейти в Карты", image: Self.icon_map) { action in
                     if let coord = self.location?.coordinates, let lat = coord.latitude, let lon = coord.longitude {
                         if let url = URL(string: "https://maps.apple.com/?ll=\(lat),\(lon)") {

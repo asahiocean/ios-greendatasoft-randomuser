@@ -1,7 +1,7 @@
 import Foundation
 
 extension UserinfoVC {
-    internal func userLocation(_ result: Result) {
+    public func userLocation(_ result: Result) {
         let loc = result.location; self.location = loc
         let country = String(describing: loc.country ?? "") + ", "
         let state = String(describing: loc.state ?? "") + ", "

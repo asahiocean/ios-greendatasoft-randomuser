@@ -40,7 +40,7 @@ class UserinfoVC: UIViewController {
         super.viewDidLoad()
         self.title = "Info"
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let username = try? result?.name.jsonString() {

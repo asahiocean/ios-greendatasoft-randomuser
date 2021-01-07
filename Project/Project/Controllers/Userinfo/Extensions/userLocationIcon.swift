@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 extension UserinfoVC {
-    func userLocationIcon() {
+    public func userLocationIcon() {
         locationIcon.clipsToBounds = true
         locationIcon.layer.masksToBounds = false
         
@@ -14,7 +14,7 @@ extension UserinfoVC {
         locationIcon.layer.shadowOpacity = 0.5
         
         locationIcon.isUserInteractionEnabled = true
-        self.interactionMap = UIContextMenuInteraction(delegate: self)
+        interactionMap = UIContextMenuInteraction(delegate: self)
         locationIcon.addInteraction(interactionMap)
     }
 }

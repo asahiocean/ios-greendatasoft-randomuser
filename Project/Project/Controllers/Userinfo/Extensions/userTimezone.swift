@@ -1,7 +1,7 @@
 import Foundation
 
 extension UserinfoVC {
-    internal func userTimezone(_ result: Result) {
+    public func userTimezone(_ result: Result) {
         guard let timezone = result.location.timezone.offset else { return }
         let currentDate = Date()
         let formatter = DateFormatter()

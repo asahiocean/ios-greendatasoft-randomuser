@@ -2,11 +2,11 @@ import Foundation
 import UIKit.UIImage
 import MapKit
 
-class MKPin: NSObject, MKAnnotation {
-    var title: String?
-    var snippet: String?
-    var image: UIImage?
-    var coordinate: CLLocationCoordinate2D
+final class MKPin: NSObject, MKAnnotation {
+    public var title: String?
+    public var snippet: String?
+    public var image: UIImage?
+    public var coordinate: CLLocationCoordinate2D
     
     init(title: String?, snippet: String?, icon: UIImage, coords: Coordinates) {
         self.title = title ?? "Untitled"
@@ -17,8 +17,7 @@ class MKPin: NSObject, MKAnnotation {
         
         let lat = CLLocationDegrees(CGFloat(truncating: lt))
         let long = CLLocationDegrees(CGFloat(truncating: ln))
-        self.coordinate = CLLocationCoordinate2D(latitude: lat,
-                                                 longitude: long)
+        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         super.init()
     }
 }
