@@ -16,7 +16,7 @@ extension TableViewController {
         navigationBar_left_button(size: buttonSize, textColor: color) //MARK: <- Left Button Action
         navigationItem.leftBarButtonItem?.accessibilityIdentifier = "navigationItem.leftBarButtonItem"
         
-         _navigationBarRightActivityIndicator()
+        _navigationBarRightActivityIndicator()
         navigationItem.rightBarButtonItem?.accessibilityIdentifier = "navigationItem.rightBarButtonItem"
     }
 }
