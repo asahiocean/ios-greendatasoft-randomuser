@@ -8,8 +8,7 @@ extension UserinfoVC {
         if let raw = result.dob.date,
            let iso = df1.date(from: raw) {
             dateOfBirth.text = df2.string(from: iso)
-            if let age = result.dob.age,
-            let years = ages.text?.replacingOccurrences(of: "00", with: String(age)) {
+            if let age = result.dob.age, let years = ages.text?.replacingOccurrences(of: "00", with: String(age)) {
                 do { ages.text = years }
             } else {
                 ages.removeSubviews()
