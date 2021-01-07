@@ -1,7 +1,7 @@
 import Foundation
 
 class API: GET, POST {
-
+    
     static let shared = API()
     private init(){}
     
