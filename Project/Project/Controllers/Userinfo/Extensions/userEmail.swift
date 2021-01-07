@@ -1,7 +1,7 @@
 import UIKit
 
 extension UserinfoVC {
-    internal func userEmail(_ result: Result) {
+    public func userEmail(_ result: Result) {
         defer { email.text = result.email }
         
         // Context Menu Interaction
