@@ -2,7 +2,7 @@ import UIKit
 
 final class TableViewController: UITableViewController {
     
-    internal let storage = StorageManager.shared
+    let storage = StorageManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
