@@ -3,6 +3,11 @@ import CoreData
 import EGOCache
 import Network
 
+protocol Coredata {
+    public func saveObject<T:NSManagedObject>(_ appDelegate: AppDelegate, _ entity: T.Type, _ context: NSManagedObjectContext, _ key: String, _ value: Any)
+    public func getCoreData<T>(_: T.Type, output: (([T]) -> Void)?) where T : NSManagedObject
+}
+
 final class StorageManager: DBWorker, Coredata {
     
     public static var shared = StorageManager()
@@ -47,7 +52,7 @@ final class StorageManager: DBWorker, Coredata {
             })
         }
     }
-        
+    
     func statusdb(_ status: Status, _ completion: @escaping StatusType) {
         guard let db = StorageManager().database else { return }
         switch status {

@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2DC2555E3E8005006D9 /* Coredata.swift */; };
 		3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */; };
 		3D1545BE254C26A500F6BBA2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1545BD254C26A500F6BBA2 /* StorageManager.swift */; };
 		3D1546B3254C5ACE00F6BBA2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1546B2254C5ACE00F6BBA2 /* Database.swift */; };
@@ -126,7 +125,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D0FB2DC2555E3E8005006D9 /* Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coredata.swift; sourceTree = "<group>"; };
 		3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionStorageManager.swift; sourceTree = "<group>"; };
 		3D1545BD254C26A500F6BBA2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3D1546B2254C5ACE00F6BBA2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -642,14 +640,6 @@
 			path = DatabaseWorker;
 			sourceTree = "<group>";
 		};
-		3DDC584F2551224400AC120F /* Coredata */ = {
-			isa = PBXGroup;
-			children = (
-				3D0FB2DC2555E3E8005006D9 /* Coredata.swift */,
-			);
-			path = Coredata;
-			sourceTree = "<group>";
-		};
 		3DDC59012551324200AC120F /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,7 +730,6 @@
 		3DF73C972550B4A50053BA81 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				3DDC584F2551224400AC120F /* Coredata */,
 				3DDC584E2551223100AC120F /* DatabaseWorker */,
 			);
 			path = Protocols;
@@ -934,7 +923,6 @@
 				3D42CD1F255AC85600B6894C /* userName.swift in Sources */,
 				3D15475D254C67B400F6BBA2 /* Postcode.swift in Sources */,
 				3D15477B254C697100F6BBA2 /* Street.swift in Sources */,
-				3D0FB2DD2555E3E8005006D9 /* Coredata.swift in Sources */,
 				3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */,
 				3D8FF4262556772700FE8DD3 /* removeSubviews.swift in Sources */,
 				3D63A9F52555C4A80066A25A /* AppDelegate.swift in Sources */,
