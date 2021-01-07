@@ -1,7 +1,7 @@
 import UIKit
 
 extension TableViewController {
-//  @objc fileprivate func actionRight() { print("NavBarRightActInd") }
+    //  @objc fileprivate func actionRight() { print("NavBarRightActInd") }
     
     func _navigationBarRightActivityIndicator(hide: Bool = false) {
         let activityIndicator = UIActivityIndicatorView()

@@ -9,7 +9,7 @@ extension TableViewController {
         let clearCache = UIAlertAction(title: "Очистить кэш", style: .destructive) { [self] action -> Void in
             
             var parameters: [String:Any] = [:]
-
+            
             if let keys = storage.cache.allKeys() as? [String] {
                 for key in keys where key.hasPrefix(jsonDataKey)  {
                     storage.cache.remove(forKey: key)
