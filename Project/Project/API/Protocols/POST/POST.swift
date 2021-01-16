@@ -14,7 +14,7 @@ extension POST {
         
         switch type {
         case .contentType:
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             
             DispatchQueue(label: "com.request.post.contentType", qos: .background).async {
