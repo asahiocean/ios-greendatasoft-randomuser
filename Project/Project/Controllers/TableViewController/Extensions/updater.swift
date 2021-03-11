@@ -5,7 +5,7 @@ extension TableViewController {
         _navigationBarRightActivityIndicator(hide: false)
         updaterGroup.enter()
         updaterQueue.async(group: updaterGroup, execute: {
-            API.shared.loadUsers(count)
+            API.loadUsers(count)
         })
         updaterGroup.notify(queue: .main, execute: { [self] in
             tableView.reloadData()

@@ -7,6 +7,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.window = UIWindow()
+        guard let window = window else { fatalError("UIWindow nil") }
+        windowSceneConfig(window)
         return true
     }
     
@@ -15,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) { }
     
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {

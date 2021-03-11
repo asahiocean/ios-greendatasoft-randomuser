@@ -3,18 +3,20 @@ import Nuke
 import FontAwesome_swift
 
 class CustomCell: UITableViewCell {
+    
     static var id: String { String(describing: self )}
     static var nib: UINib { UINib(nibName: id, bundle: nil )}
-    @IBOutlet weak var view: UIView!
     
-    public var idname: UUID?
-    public var gender: String?
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var firstname: UILabel!
     @IBOutlet weak var surname: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var phoneIcon: FontAwesomeImageView!
-        
+    
+    public var idname: UUID?
+    public var gender: String?
+    
     func setResult(_ result: Result) {
         idname = result.name.id
         gender = result.name.title
@@ -24,8 +26,8 @@ class CustomCell: UITableViewCell {
         //MARK: Picture Block
         DispatchQueue.main.async {
             let url: String = result.picture.largeUrl
-            API.shared.loadImage(url, { image in
-                self.photo?.image = image
+            API.shared.loadImage(url, { [weak self] (image) -> Void in
+                self?.photo?.image = image
             })
         }
         phone.text = result.phone
