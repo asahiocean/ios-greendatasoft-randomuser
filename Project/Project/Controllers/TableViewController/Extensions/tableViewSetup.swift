@@ -31,7 +31,7 @@ extension TableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let result = storage.database?.results[indexPath.row], let nav = navigationController {
-            if let userinfo = UINib(nibName: UserinfoVC.nib, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UserinfoVC {
+            if let userinfo = UserinfoVC.nib.instantiate(withOwner: nil, options: nil)[0] as? UserinfoVC {
                 userinfo.setResult(result)
                 nav.pushViewController(userinfo, animated: true)
             }

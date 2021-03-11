@@ -13,7 +13,7 @@ class APIGetTest: XCTestCase {
         guard let url = URL(string: Url.get.rawValue.urlValid) else { fatalError() }
         let request = URLRequest(url: url)
         
-        API.shared.get(request, { data,_,_ in
+        API.get(request, { data,_,_ in
             if let data = data {
                 do {
                     print(try JSONSerialization.jsonObject(with: data, options: []))

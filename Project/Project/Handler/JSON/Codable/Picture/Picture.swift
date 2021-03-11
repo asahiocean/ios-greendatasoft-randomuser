@@ -7,8 +7,8 @@ public final class Picture: Codable, Identifiable {
     public let mediumUrl: String
     public let thumbnailUrl: String
     
-    public var image: UIImage
-
+    public var image: UIImage?
+    
     init(large: String?, medium: String?, thumbnail: String?) {
         self.largeUrl = large ?? ""
         self.mediumUrl = medium ?? ""
@@ -26,7 +26,7 @@ public final class Picture: Codable, Identifiable {
         case medium = "medium"
         case thumbnail = "thumbnail"
     }
-
+    
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         largeUrl = try values.decode(String.self, forKey: .large)
@@ -35,7 +35,7 @@ public final class Picture: Codable, Identifiable {
         id = .init()
         image = .init()
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(largeUrl, forKey: .large)

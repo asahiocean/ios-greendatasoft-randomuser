@@ -1,22 +1,22 @@
 import UIKit
 
+func windowSceneConfig(_ window: UIWindow) {
+    let navigationController = UINavigationController()
+    let tableViewController = TableViewController()
+    navigationController.viewControllers.append(tableViewController)
+    window.rootViewController = navigationController
+    window.makeKeyAndVisible()
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var navigationController: NavigationController!
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        if let windowScene = scene as? UIWindowScene {
-            self.window = UIWindow(windowScene: windowScene)
-            if let window = window {
-                navigationController = NavigationController()
-                window.rootViewController = navigationController
-                window.makeKeyAndVisible()
-            }
-        }
-        
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { fatalError("scene != UIWindowScene") }
+        self.window = UIWindow(windowScene: windowScene)
+        guard let window = window else { fatalError("UIWindow nil") }
+        windowSceneConfig(window)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) { }

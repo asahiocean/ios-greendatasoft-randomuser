@@ -11,7 +11,7 @@ final class POST {
             
             guard let url = URL(string: URLs.post) else { return }
             request = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = MethodRequest.POST.rawValue
             
             let datacount = data?.count ?? 0

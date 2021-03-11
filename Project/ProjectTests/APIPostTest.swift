@@ -3,7 +3,7 @@ import XCTest
 
 class APIPostTest: XCTestCase {
     
-    let api: API = API.shared
+    let api: API = API
     let met: httpMethod = .POST
     private var params: [String:Any] = [:]
     let expectation = XCTestExpectation(description: "Exceeded waiting!")
@@ -22,7 +22,7 @@ class APIPostTest: XCTestCase {
     func testExample() throws {
         XCTAssertFalse(params.isEmpty, "parameters should not be empty!")
         guard let url = URL(string: Url.post.rawValue.urlValid) else { fatalError() }
-        API.shared.post(.contentType, URLRequest(url: url), params, { [self] data -> Void in
+        API.post(.contentType, URLRequest(url: url), params, { [self] data -> Void in
             XCTAssertNotNil(data, "Failed to execute POST request (data: nil)")
             guard let answer = String(data: data, encoding: .utf8) else { return }
             print("✅ Server confirm: \(answer)")
