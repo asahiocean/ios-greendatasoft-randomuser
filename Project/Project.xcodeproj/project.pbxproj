@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0961D77BE40B061D48107B9B /* Pods_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1526E150D2BB8FAA9D7BE687 /* Pods_Project.framework */; };
 		1CF7AF3CE5205573321EBD0A /* Pods_Project_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712826BD5DFB4A0673F15A44 /* Pods_Project_ProjectUITests.framework */; };
-		3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */; };
 		3D1545BE254C26A500F6BBA2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1545BD254C26A500F6BBA2 /* StorageManager.swift */; };
 		3D1546B3254C5ACE00F6BBA2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1546B2254C5ACE00F6BBA2 /* Database.swift */; };
 		3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1546B7254C5AFF00F6BBA2 /* ExtensionDatabase.swift */; };
@@ -76,7 +75,6 @@
 		3D79DA09254977C10048B7B0 /* String_urlValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA08254977C10048B7B0 /* String_urlValid.swift */; };
 		3D79DA1E25498A860048B7B0 /* APIGetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA1D25498A860048B7B0 /* APIGetTest.swift */; };
 		3D79DA2C25498F180048B7B0 /* APIPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79DA2B25498F180048B7B0 /* APIPostTest.swift */; };
-		3D85C459255C7AF700FBDBF9 /* getBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D85C458255C7AF700FBDBF9 /* getBackup.swift */; };
 		3D8FF4262556772700FE8DD3 /* removeSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8FF4252556772700FE8DD3 /* removeSubviews.swift */; };
 		3DC7C91F254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
 		3DC7C923254F1A31001A1D83 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D680097254B2C640021C56F /* CustomCell.xib */; };
@@ -119,7 +117,6 @@
 		1526E150D2BB8FAA9D7BE687 /* Pods_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31150881ACB747B2E84EFEA3 /* Pods-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project.release.xcconfig"; path = "Target Support Files/Pods-Project/Pods-Project.release.xcconfig"; sourceTree = "<group>"; };
 		3725049048E1720553D2E4E6 /* Pods-Project-ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project-ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-Project-ProjectUITests/Pods-Project-ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionStorageManager.swift; sourceTree = "<group>"; };
 		3D1545BD254C26A500F6BBA2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3D1546B2254C5ACE00F6BBA2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		3D1546B7254C5AFF00F6BBA2 /* ExtensionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDatabase.swift; sourceTree = "<group>"; };
@@ -183,7 +180,6 @@
 		3D79DA08254977C10048B7B0 /* String_urlValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_urlValid.swift; sourceTree = "<group>"; };
 		3D79DA1D25498A860048B7B0 /* APIGetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetTest.swift; sourceTree = "<group>"; };
 		3D79DA2B25498F180048B7B0 /* APIPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostTest.swift; sourceTree = "<group>"; };
-		3D85C458255C7AF700FBDBF9 /* getBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getBackup.swift; sourceTree = "<group>"; };
 		3D8FF4252556772700FE8DD3 /* removeSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeSubviews.swift; sourceTree = "<group>"; };
 		3DD88A622558DAB700774F8D /* loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadImage.swift; sourceTree = "<group>"; };
 		3DDC58C02551277300AC120F /* updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updater.swift; sourceTree = "<group>"; };
@@ -400,7 +396,6 @@
 		3D4C4FAF254F47FF0052A195 /* StorageManager */ = {
 			isa = PBXGroup;
 			children = (
-				3D0FB2DE2555E47B005006D9 /* extensionStorageManager.swift */,
 				3D1545BD254C26A500F6BBA2 /* StorageManager.swift */,
 				3DF73C972550B4A50053BA81 /* Protocols */,
 			);
@@ -410,7 +405,6 @@
 		3D4C4FE8254F4CC10052A195 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				3D85C458255C7AF700FBDBF9 /* getBackup.swift */,
 				3D4C4FE9254F4CD30052A195 /* Handler.swift */,
 				3D1545FF254C4A5B00F6BBA2 /* JSON */,
 			);
@@ -966,12 +960,10 @@
 				3D6800BB254B47900021C56F /* _navigationBarThemeConfig.swift in Sources */,
 				3DDC58C12551277300AC120F /* updater.swift in Sources */,
 				3D6704092557FB8D001EED1F /* UserinfoVC.swift in Sources */,
-				3D0FB2DF2555E47B005006D9 /* extensionStorageManager.swift in Sources */,
 				3D154772254C68CE00F6BBA2 /* ExtensionCoordinates.swift in Sources */,
 				3DEB76FA2548DE3E00763A2B /* CharacterSet_urlQueryValueAllowed.swift in Sources */,
 				3D6729332551374300095BEE /* _navigationBarRightButton.swift in Sources */,
 				3D1546D1254C5C4D00F6BBA2 /* ExtensionResult.swift in Sources */,
-				3D85C459255C7AF700FBDBF9 /* getBackup.swift in Sources */,
 				3D15475D254C67B400F6BBA2 /* Postcode.swift in Sources */,
 				3D15477B254C697100F6BBA2 /* Street.swift in Sources */,
 				3D1546B8254C5AFF00F6BBA2 /* ExtensionDatabase.swift in Sources */,
